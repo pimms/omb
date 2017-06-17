@@ -47,5 +47,7 @@ class Ball: SKShapeNode {
         self.physicsBody!.linearDamping = 0.0
         self.physicsBody!.mass = 1.0
         self.physicsBody!.friction = 0.0
+        self.physicsBody!.categoryBitMask = PhysicsFlags.ballBit
+        self.physicsBody!.collisionBitMask = PhysicsFlags.blockBit
     }
 }

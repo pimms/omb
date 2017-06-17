@@ -73,7 +73,6 @@ class GridController: NSObject {
     private func shiftBlocksDown() {
         for y in stride(from: self.gridHeight-1, to: 0, by: -1) {
             for x in 0...self.gridWidth-1 {
-                print("Shifting [\(x)][\(y)]")
                 self.blocks[x]![y] = self.blocks[x]![y-1]
                 self.blocks[x]![y-1] = nil
                 self.blocks[x]![y]?.position = getCenterForCoord(x: x, y: y)
@@ -95,8 +94,6 @@ class GridController: NSObject {
         block.position = getCenterForCoord(x: x, y: y)
         self.blocks[x]![y] = block
         self.scene.addChild(block)
-        
-        print("-> Block(\(x) \(y)): \(block.position)")
     }
 
     private func getCenterForCoord(x: Int, y: Int) -> CGPoint {
@@ -106,7 +103,6 @@ class GridController: NSObject {
         
         let ret = CGPoint(x: (CGFloat(x) + 0.5) * blockSize.width + self.bounds.minX,
                           y: self.bounds.maxY - (CGFloat(y) + 0.5) * blockSize.height)
-        print("Center(\(x), \(y)) = \(ret)")
         return ret
     }
     

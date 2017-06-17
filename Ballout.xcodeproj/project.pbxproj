@@ -26,6 +26,7 @@
 		193F0ADE1EF5A99F00A03F94 /* DestroyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0ADD1EF5A99F00A03F94 /* DestroyState.swift */; };
 		193F0AE01EF5CF9500A03F94 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0ADF1EF5CF9500A03F94 /* Block.swift */; };
 		193F0AE21EF5D1B400A03F94 /* GridController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0AE11EF5D1B400A03F94 /* GridController.swift */; };
+		193F0AE41EF5EF9500A03F94 /* PhysicsFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0AE31EF5EF9500A03F94 /* PhysicsFlags.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		193F0ADD1EF5A99F00A03F94 /* DestroyState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestroyState.swift; sourceTree = "<group>"; };
 		193F0ADF1EF5CF9500A03F94 /* Block.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
 		193F0AE11EF5D1B400A03F94 /* GridController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridController.swift; sourceTree = "<group>"; };
+		193F0AE31EF5EF9500A03F94 /* PhysicsFlags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsFlags.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 				193F0ADB1EF59D5000A03F94 /* AimTrajectory.swift */,
 				193F0ADF1EF5CF9500A03F94 /* Block.swift */,
 				193F0AE11EF5D1B400A03F94 /* GridController.swift */,
+				193F0AE31EF5EF9500A03F94 /* PhysicsFlags.swift */,
 			);
 			name = Doodads;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				193F0AD71EF5826400A03F94 /* ShootoutState.swift in Sources */,
+				193F0AE41EF5EF9500A03F94 /* PhysicsFlags.swift in Sources */,
 				193F0AE21EF5D1B400A03F94 /* GridController.swift in Sources */,
 				193F0A9E1EF5741700A03F94 /* GameScene.swift in Sources */,
 				193F0AD41EF57F8800A03F94 /* GameState.swift in Sources */,

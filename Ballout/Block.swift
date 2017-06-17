@@ -33,6 +33,8 @@ class Block: SKShapeNode {
         self.physicsBody!.isDynamic = false
         self.physicsBody!.affectedByGravity = false
         self.physicsBody!.friction = 0.0
+        self.physicsBody!.collisionBitMask = PhysicsFlags.ballBit
+        self.physicsBody!.categoryBitMask = PhysicsFlags.blockBit
         
         self.label = SKLabelNode(text: String(self.hitCount))
         self.label?.verticalAlignmentMode = .center
