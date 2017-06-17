@@ -17,6 +17,13 @@
 		193F0AA81EF5741700A03F94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 193F0AA61EF5741700A03F94 /* LaunchScreen.storyboard */; };
 		193F0AB31EF5741700A03F94 /* BalloutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0AB21EF5741700A03F94 /* BalloutTests.swift */; };
 		193F0ABE1EF5741700A03F94 /* BalloutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0ABD1EF5741700A03F94 /* BalloutUITests.swift */; };
+		193F0ACE1EF57AFC00A03F94 /* BalloutScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 193F0ACD1EF57AFC00A03F94 /* BalloutScene.sks */; };
+		193F0AD01EF57BA900A03F94 /* BalloutScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0ACF1EF57BA900A03F94 /* BalloutScene.swift */; };
+		193F0AD41EF57F8800A03F94 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0AD31EF57F8800A03F94 /* GameState.swift */; };
+		193F0AD71EF5826400A03F94 /* ShootoutState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0AD61EF5826400A03F94 /* ShootoutState.swift */; };
+		193F0AD91EF5952100A03F94 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0AD81EF5952100A03F94 /* Ball.swift */; };
+		193F0ADC1EF59D5000A03F94 /* AimTrajectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0ADB1EF59D5000A03F94 /* AimTrajectory.swift */; };
+		193F0ADE1EF5A99F00A03F94 /* DestroyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0ADD1EF5A99F00A03F94 /* DestroyState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +60,13 @@
 		193F0AB91EF5741700A03F94 /* BalloutUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BalloutUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		193F0ABD1EF5741700A03F94 /* BalloutUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloutUITests.swift; sourceTree = "<group>"; };
 		193F0ABF1EF5741700A03F94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		193F0ACD1EF57AFC00A03F94 /* BalloutScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BalloutScene.sks; sourceTree = "<group>"; };
+		193F0ACF1EF57BA900A03F94 /* BalloutScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloutScene.swift; sourceTree = "<group>"; };
+		193F0AD31EF57F8800A03F94 /* GameState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
+		193F0AD61EF5826400A03F94 /* ShootoutState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShootoutState.swift; sourceTree = "<group>"; };
+		193F0AD81EF5952100A03F94 /* Ball.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Ball.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		193F0ADB1EF59D5000A03F94 /* AimTrajectory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AimTrajectory.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		193F0ADD1EF5A99F00A03F94 /* DestroyState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestroyState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +117,7 @@
 		193F0A961EF5741700A03F94 /* Ballout */ = {
 			isa = PBXGroup;
 			children = (
+				193F0AD11EF57F6600A03F94 /* Game */,
 				193F0A971EF5741700A03F94 /* AppDelegate.swift */,
 				193F0A991EF5741700A03F94 /* GameScene.sks */,
 				193F0A9B1EF5741700A03F94 /* Actions.sks */,
@@ -132,6 +147,44 @@
 				193F0ABF1EF5741700A03F94 /* Info.plist */,
 			);
 			path = BalloutUITests;
+			sourceTree = "<group>";
+		};
+		193F0AD11EF57F6600A03F94 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				193F0ADA1EF59D3700A03F94 /* Doodads */,
+				193F0AD51EF5810D00A03F94 /* Scenes */,
+				193F0AD21EF57F7200A03F94 /* GameState */,
+			);
+			name = Game;
+			sourceTree = "<group>";
+		};
+		193F0AD21EF57F7200A03F94 /* GameState */ = {
+			isa = PBXGroup;
+			children = (
+				193F0AD31EF57F8800A03F94 /* GameState.swift */,
+				193F0AD61EF5826400A03F94 /* ShootoutState.swift */,
+				193F0ADD1EF5A99F00A03F94 /* DestroyState.swift */,
+			);
+			name = GameState;
+			sourceTree = "<group>";
+		};
+		193F0AD51EF5810D00A03F94 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				193F0ACD1EF57AFC00A03F94 /* BalloutScene.sks */,
+				193F0ACF1EF57BA900A03F94 /* BalloutScene.swift */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		193F0ADA1EF59D3700A03F94 /* Doodads */ = {
+			isa = PBXGroup;
+			children = (
+				193F0AD81EF5952100A03F94 /* Ball.swift */,
+				193F0ADB1EF59D5000A03F94 /* AimTrajectory.swift */,
+			);
+			name = Doodads;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,6 +255,7 @@
 				TargetAttributes = {
 					193F0A931EF5741700A03F94 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = WSQ25TFDK3;
 						ProvisioningStyle = Automatic;
 					};
 					193F0AAD1EF5741700A03F94 = {
@@ -245,6 +299,7 @@
 				193F0A9A1EF5741700A03F94 /* GameScene.sks in Resources */,
 				193F0AA51EF5741700A03F94 /* Assets.xcassets in Resources */,
 				193F0AA81EF5741700A03F94 /* LaunchScreen.storyboard in Resources */,
+				193F0ACE1EF57AFC00A03F94 /* BalloutScene.sks in Resources */,
 				193F0A9C1EF5741700A03F94 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,8 +325,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				193F0AD71EF5826400A03F94 /* ShootoutState.swift in Sources */,
 				193F0A9E1EF5741700A03F94 /* GameScene.swift in Sources */,
+				193F0AD41EF57F8800A03F94 /* GameState.swift in Sources */,
 				193F0AA01EF5741700A03F94 /* GameViewController.swift in Sources */,
+				193F0ADC1EF59D5000A03F94 /* AimTrajectory.swift in Sources */,
+				193F0AD01EF57BA900A03F94 /* BalloutScene.swift in Sources */,
+				193F0ADE1EF5A99F00A03F94 /* DestroyState.swift in Sources */,
+				193F0AD91EF5952100A03F94 /* Ball.swift in Sources */,
 				193F0A981EF5741700A03F94 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,6 +487,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = WSQ25TFDK3;
 				INFOPLIST_FILE = Ballout/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -439,6 +501,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = WSQ25TFDK3;
 				INFOPLIST_FILE = Ballout/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
