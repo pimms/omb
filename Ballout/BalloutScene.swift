@@ -11,36 +11,55 @@ import SpriteKit
 import GameKit
 
 class BalloutScene: SKScene {
+    private var isInitialized: Bool = false
     private var stateMachine: GKStateMachine?
     
     public var entities = [GKEntity]()
     public var graphs = [String : GKGraph]()
+    
     private var lastUpdateTime: TimeInterval = 0
+    public var gridController: GridController? = nil
     
     // TODO? Encapsulate the game "scores" into a separate object
     public var numBalls: Int = 0
     
     
-    func initialize() {
+    private func initialize() {
+        if (self.isInitialized) {
+            return
+        }
+        
         // 1. Initialize myself
         self.numBalls = 2
         self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
         self.physicsBody?.isDynamic = false
         self.physicsBody?.friction = 0.0
         
-        // 2. Initialize the state machine and kick it off
+        // 2. Initialize the GridController
+        //    Don't allow blocks to be placed below 'launchNode' or above the
+        //    score GUI at the very top. 600 is a crude estimation.
+        let minY: CGFloat = (self.childNode(withName: "launchNode")?.position.y)!
+        let maxY: CGFloat = 600
+        let size = CGSize(width: self.frame.width, height: maxY - minY)
+        let center = CGPoint(x: 0 - size.width / 2,
+                             y: (maxY + minY) / 2 - size.height / 2)
+        let bounds = CGRect(origin: center, size: size)
+        self.gridController = GridController(withScene: self, bounds: bounds, width: 6, height: 8)
+        
+        // 3. Initialize the state machine and kick it off
         var states = [GKState]()
         states.append(ShootoutState(scene: self))
         states.append(DestroyState(scene: self))
-        stateMachine = GKStateMachine(states: states)
-        stateMachine!.enter(ShootoutState.self)
+        self.stateMachine = GKStateMachine(states: states)
+        self.stateMachine!.enter(ShootoutState.self)
+        
+        self.isInitialized = true
     }
     
     override func sceneDidLoad() {
-        super.sceneDidLoad()
+        print("BalloutScene loaded")
         initialize()
     }
-    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches {
@@ -66,7 +85,6 @@ class BalloutScene: SKScene {
         }
     }
     
-    
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         
@@ -86,4 +104,5 @@ class BalloutScene: SKScene {
         
         self.lastUpdateTime = currentTime
     }
+
 }

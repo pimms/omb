@@ -30,6 +30,10 @@ class ShootoutState: GameState {
         print("ShootoutState entered")
         self.isAiming = false
         self.shootOnRelease = false
+        
+        // TODO: Use the actual score instead of the number of balls, although
+        // these numbers should be pretty much identical for the most part.
+        self.gameScene?.gridController?.update(hitCountGuideline: (self.gameScene?.numBalls)!)
     }
     
     override func willExit(to nextState: GKState) {

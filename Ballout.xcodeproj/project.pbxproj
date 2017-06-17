@@ -24,6 +24,8 @@
 		193F0AD91EF5952100A03F94 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0AD81EF5952100A03F94 /* Ball.swift */; };
 		193F0ADC1EF59D5000A03F94 /* AimTrajectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0ADB1EF59D5000A03F94 /* AimTrajectory.swift */; };
 		193F0ADE1EF5A99F00A03F94 /* DestroyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0ADD1EF5A99F00A03F94 /* DestroyState.swift */; };
+		193F0AE01EF5CF9500A03F94 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0ADF1EF5CF9500A03F94 /* Block.swift */; };
+		193F0AE21EF5D1B400A03F94 /* GridController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0AE11EF5D1B400A03F94 /* GridController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		193F0AD81EF5952100A03F94 /* Ball.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Ball.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		193F0ADB1EF59D5000A03F94 /* AimTrajectory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AimTrajectory.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		193F0ADD1EF5A99F00A03F94 /* DestroyState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestroyState.swift; sourceTree = "<group>"; };
+		193F0ADF1EF5CF9500A03F94 /* Block.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
+		193F0AE11EF5D1B400A03F94 /* GridController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +187,8 @@
 			children = (
 				193F0AD81EF5952100A03F94 /* Ball.swift */,
 				193F0ADB1EF59D5000A03F94 /* AimTrajectory.swift */,
+				193F0ADF1EF5CF9500A03F94 /* Block.swift */,
+				193F0AE11EF5D1B400A03F94 /* GridController.swift */,
 			);
 			name = Doodads;
 			sourceTree = "<group>";
@@ -326,12 +332,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				193F0AD71EF5826400A03F94 /* ShootoutState.swift in Sources */,
+				193F0AE21EF5D1B400A03F94 /* GridController.swift in Sources */,
 				193F0A9E1EF5741700A03F94 /* GameScene.swift in Sources */,
 				193F0AD41EF57F8800A03F94 /* GameState.swift in Sources */,
 				193F0AA01EF5741700A03F94 /* GameViewController.swift in Sources */,
 				193F0ADC1EF59D5000A03F94 /* AimTrajectory.swift in Sources */,
 				193F0AD01EF57BA900A03F94 /* BalloutScene.swift in Sources */,
 				193F0ADE1EF5A99F00A03F94 /* DestroyState.swift in Sources */,
+				193F0AE01EF5CF9500A03F94 /* Block.swift in Sources */,
 				193F0AD91EF5952100A03F94 /* Ball.swift in Sources */,
 				193F0A981EF5741700A03F94 /* AppDelegate.swift in Sources */,
 			);
