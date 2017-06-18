@@ -24,10 +24,10 @@ class AimTrajectory: SKNode {
         createBalls()
     }
     
-    public func setAimAngle(aimAngle angle: CGFloat) {
+    public func setAimAngle(aimAngle angle: CGFloat, magnitude: CGFloat) {
         self.angle = angle
         
-        let deltaDist: CGFloat = 50
+        let deltaDist: CGFloat = magnitude
         let unit = CGVector(dx: cos(angle), dy: sin(angle))
 
         var index: Int = 0
@@ -43,8 +43,6 @@ class AimTrajectory: SKNode {
     private func createBalls() {
         for _ in 0...9 {
             let b = Ball(createPhysics: false)
-            b.physicsBody?.affectedByGravity = false
-            //b.isHidden = true
             balls.append(b)
             addChild(b)
         }

@@ -75,7 +75,8 @@ class ShootoutState: GameState {
     private func updateTrajectory(touchPoint pos: CGPoint!) {
         let delta = CGVector(dx: self.initialTouch!.x-pos.x, dy: self.initialTouch!.y-pos.y)
 
-        if sqrt(delta.dx * delta.dx + delta.dy * delta.dy) <= 30 {
+        let length = sqrt(delta.dx * delta.dx + delta.dy * delta.dy)
+        if length <= 30 {
             self.shootOnRelease = false
             self.aimTrajectory?.isHidden = true
         } else {
@@ -83,7 +84,7 @@ class ShootoutState: GameState {
             self.shootAngle = angle
             
             //self.aimTrajectory?.position = launchPoint
-            self.aimTrajectory?.setAimAngle(aimAngle: angle)
+            self.aimTrajectory?.setAimAngle(aimAngle: angle, magnitude: log(length) * 15)
             
             self.shootOnRelease = (delta.dy >= 0)
             self.aimTrajectory?.isHidden = !self.shootOnRelease
