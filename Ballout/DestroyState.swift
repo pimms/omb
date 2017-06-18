@@ -17,6 +17,7 @@ class DestroyState: GameState {
     private var nextShot: TimeInterval = 0
     private var elapsedTime: TimeInterval = 0
     private var shotBalls: Int = 0
+    private var ballsToShoot: Int = 0
     private var ballsAtHome: Int = 0
     private var balls: NSMutableArray?
     
@@ -28,10 +29,11 @@ class DestroyState: GameState {
         print("DestroyState entered")
         assert(self.angleDefined)
         
-        self.launchPoint = (self.gameScene?.childNode(withName: "launchNode")?.position)!
+        self.launchPoint = (self.gameScene.childNode(withName: "launchNode")?.position)!
         self.balls = NSMutableArray()
         self.shotBalls = 0
         self.ballsAtHome = 0
+        self.ballsToShoot = self.gameScore.numBalls
     }
     
     override func willExit(to nextState: GKState) {
@@ -55,7 +57,7 @@ class DestroyState: GameState {
         
         // If we've got balls to shoot, and enough time has elapsed for us to
         // do so, shoot a ball.
-        if self.shotBalls < (self.gameScene?.numBalls)! && self.elapsedTime >= self.nextShot {
+        if self.shotBalls < self.ballsToShoot && self.elapsedTime >= self.nextShot {
             shootBall()
             self.nextShot = self.elapsedTime + 0.2
             self.shotBalls += 1
@@ -64,17 +66,21 @@ class DestroyState: GameState {
         // Check if any of the balls have bounces below the threshold, and if so
         // move them back to the launch position. Once all balls are moved back,
         // transition to the next appropriate state.
+        var toRemove: [Any] = [Any]()
         for o in self.balls! {
             let b: Ball! = (o as! Ball)
             if (b.position.y <= self.launchPoint.y - 5.0) {
                 self.moveBallHome(ball: b)
-                self.balls?.remove(o)
+                toRemove.append(o)
             }
+        }
+        
+        for o in toRemove {
+            self.balls?.remove(o)
         }
     }
     
     private func shootBall() {
-        print("Shooting ball \(self.shotBalls)")
         let ball = Ball(createPhysics: true)
         ball.position.x = self.launchPoint.x
         ball.position.y = self.launchPoint.y
@@ -100,7 +106,7 @@ class DestroyState: GameState {
     
     @objc private func onBallMovedHome() {
         self.ballsAtHome += 1
-        if (self.ballsAtHome == self.gameScene!.numBalls) {
+        if (self.ballsAtHome == self.ballsToShoot) {
             self.stateMachine?.enter(ShootoutState.self)
         }
     }

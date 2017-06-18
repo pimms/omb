@@ -33,7 +33,7 @@ class ShootoutState: GameState {
         
         // TODO: Use the actual score instead of the number of balls, although
         // these numbers should be pretty much identical for the most part.
-        self.gameScene?.gridController?.update(hitCountGuideline: (self.gameScene?.numBalls)!)
+        self.gameScene?.gridController?.update(hitCountGuideline: self.gameScore.numBalls)
     }
     
     override func willExit(to nextState: GKState) {

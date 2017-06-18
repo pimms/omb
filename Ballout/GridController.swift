@@ -18,7 +18,7 @@ class GridController: NSObject {
     private var bounds: CGRect
     private var blockSize: CGSize
     
-    private var blocks: [[Block?]?]
+    private var blocks: [[Spawnable?]?]
     
     
     init(withScene scene: SKScene!, bounds: CGRect, width: Int, height: Int) {
@@ -44,7 +44,7 @@ class GridController: NSObject {
     public func update(hitCountGuideline count: Int) {
         shiftBlocksDown()
 
-        var numToSpawn = Int(arc4random()) % self.gridWidth / 2 + 1
+        var numToSpawn = Int(arc4random()) % self.gridWidth / 2 + 2
         if (numToSpawn > self.gridWidth) {
             numToSpawn = self.gridWidth
         }
@@ -56,7 +56,7 @@ class GridController: NSObject {
 
         var shuffled = indices.shuffled()
         
-        for _ in 0...numToSpawn-1 {
+        for i in 0...numToSpawn-1 {
             // Give blocks a 25% chance to have twice the guidance-count
             var hitCount: Int = count
             if arc4random() % 4 == 0 {
@@ -66,16 +66,22 @@ class GridController: NSObject {
             let xCoord = shuffled.first as! Int
             shuffled.remove(at: 0)
             
-            createBlockAt(x: xCoord, hitCount: hitCount)
+            
+            var spawnable: Spawnable
+            if (i == 0) {
+                spawnable = ExtraBall(size: self.blockSize)
+            } else {
+                spawnable = Block(hitCount: hitCount, size: self.blockSize)
+            }
+            
+            spawn(spawnable: spawnable, x: xCoord, hitCount: hitCount)
         }
     }
     
-    public func onBlockDestroyed(block: Block) {
-        // TODO
-        print("TODO: GridController.onBlockDestoyed")
+    public func onSpawnableDestroyed(spawnable: Spawnable) {
         for x in 0...self.gridWidth-1 {
             for y in 0...self.gridHeight-1 {
-                if self.blocks[x]![y] == block {
+                if self.blocks[x]![y] == spawnable {
                     self.blocks[x]![y] = nil
                 }
             }
@@ -92,7 +98,7 @@ class GridController: NSObject {
         }
     }
 
-    private func createBlockAt(x: Int, hitCount: Int) {
+    private func spawn(spawnable: Spawnable, x: Int, hitCount: Int) {
         if (x < 0 || x >= self.gridWidth) {
             fatalError("Index out of bounds")
         }
@@ -102,10 +108,9 @@ class GridController: NSObject {
             fatalError("Element already exists at coordinate")
         }
 
-        let block: Block = Block(hitCount: hitCount, size: self.blockSize)
-        block.position = getCenterForCoord(x: x, y: y)
-        self.blocks[x]![y] = block
-        self.scene.addChild(block)
+        spawnable.position = getCenterForCoord(x: x, y: y)
+        self.blocks[x]![y] = spawnable
+        self.scene.addChild(spawnable)
     }
 
     private func getCenterForCoord(x: Int, y: Int) -> CGPoint {

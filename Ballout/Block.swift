@@ -11,7 +11,7 @@ import SpriteKit
 import GameplayKit
 
 
-class Block: SKShapeNode {
+class Block: Spawnable {
     private var hitCount: Int = 0
     private var label: SKLabelNode?
     
@@ -22,20 +22,12 @@ class Block: SKShapeNode {
                           y: -size.height/2,
                           width: size.width,
                           height: size.height)
-        super.init()
+        super.init(gridSize: size, collideWithBall: true)
         
         self.path = CGPath(rect: rect, transform: nil)
         self.strokeColor = UIColor.black
         self.fillColor   = UIColor.red
         self.lineWidth   = 3.0
-        
-        self.physicsBody = SKPhysicsBody(rectangleOf: size)
-        self.physicsBody!.isDynamic = false
-        self.physicsBody!.affectedByGravity = false
-        self.physicsBody!.friction = 0.0
-        self.physicsBody!.collisionBitMask = PhysicsFlags.ballBit
-        self.physicsBody!.categoryBitMask = PhysicsFlags.blockBit
-        self.physicsBody!.contactTestBitMask = PhysicsFlags.ballBit
         
         self.label = SKLabelNode(text: String(self.hitCount))
         self.label?.verticalAlignmentMode = .center
@@ -48,13 +40,17 @@ class Block: SKShapeNode {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func onBallHit() {
-        self.hitCount -= 1
-        self.label?.text = String(self.hitCount)
+    override func onFulfillment(gameScore: GameScore!) {
+        gameScore.destroyedBlocks += 1
     }
     
-    public func getHitCount() -> Int {
-        return self.hitCount
+    override func shouldBeRemoved() -> Bool {
+        return self.hitCount <= 0
+    }
+    
+    override func onBallCollided() {
+        self.hitCount -= 1
+        self.label?.text = String(self.hitCount)
     }
 }
 

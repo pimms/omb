@@ -11,10 +11,12 @@ import SpriteKit
 import GameKit
 
 class GameState: GKState {
-    var gameScene: BalloutScene?
+    var gameScene: BalloutScene!
+    var gameScore: GameScore!
     
     required init(scene s: BalloutScene) {
         self.gameScene = s
+        self.gameScore = self.gameScene!.gameScore!
         super.init()
     }
     

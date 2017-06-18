@@ -20,9 +20,7 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
     private var lastUpdateTime: TimeInterval = 0
     public var gridController: GridController? = nil
     
-    // TODO? Encapsulate the game "scores" into a separate object
-    public var numBalls: Int = 0
-    public var score: Int = 0
+    public var gameScore: GameScore?
     
     
     private func initialize() {
@@ -31,7 +29,7 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
         }
         
         // 1. Initialize myself
-        self.numBalls = 2
+        self.gameScore = GameScore()
         self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
         self.physicsBody?.isDynamic = false
         self.physicsBody?.friction = 0.0
@@ -41,7 +39,7 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
         //    Don't allow blocks to be placed below 'launchNode' or above the
         //    score GUI at the very top. 600 is a crude estimation.
         let minY: CGFloat = (self.childNode(withName: "launchNode")?.position.y)!
-        let maxY: CGFloat = 600
+        let maxY: CGFloat = 550
         let size = CGSize(width: self.frame.width, height: maxY - minY)
         let center = CGPoint(x: 0 - size.width / 2,
                              y: (maxY + minY) / 2 - size.height / 2)
@@ -93,20 +91,22 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
         let b = contact.bodyB
         
         var blockBody: SKPhysicsBody?
-        if a.categoryBitMask == PhysicsFlags.blockBit && b.categoryBitMask == PhysicsFlags.ballBit {
+        if a.node as? Spawnable != nil && b.categoryBitMask == PhysicsFlags.ballBit {
             blockBody = a
-        } else if b.categoryBitMask == PhysicsFlags.blockBit && a.categoryBitMask == PhysicsFlags.ballBit {
+        } else if b.node as? Spawnable != nil && a.categoryBitMask == PhysicsFlags.ballBit {
             blockBody = b
         } else {
             return
         }
         
-        if blockBody?.node != nil, let block: Block = (blockBody?.node! as! Block) {
-            block.onBallHit()
-            if block.getHitCount() == 0 {
-                self.gridController?.onBlockDestroyed(block: block)
-                block.removeFromParent()
-                self.score += 1
+        if blockBody?.node != nil {
+            if let spawnable: Spawnable = (blockBody?.node as! Spawnable?)  {
+                spawnable.onBallCollided()
+                if spawnable.shouldBeRemoved() {
+                    spawnable.onFulfillment(gameScore: self.gameScore)
+                    self.gridController?.onSpawnableDestroyed(spawnable: spawnable)
+                    spawnable.removeFromParent()
+                }
             }
         }
     }

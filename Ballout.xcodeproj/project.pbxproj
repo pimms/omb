@@ -27,6 +27,9 @@
 		193F0AE01EF5CF9500A03F94 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0ADF1EF5CF9500A03F94 /* Block.swift */; };
 		193F0AE21EF5D1B400A03F94 /* GridController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0AE11EF5D1B400A03F94 /* GridController.swift */; };
 		193F0AE41EF5EF9500A03F94 /* PhysicsFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0AE31EF5EF9500A03F94 /* PhysicsFlags.swift */; };
+		197F48DC1EF686F800A469F4 /* ExtraBall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197F48DB1EF686F800A469F4 /* ExtraBall.swift */; };
+		197F48E01EF6878A00A469F4 /* Spawnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197F48DF1EF6878A00A469F4 /* Spawnable.swift */; };
+		197F48E21EF68B0800A469F4 /* GameScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197F48E11EF68B0800A469F4 /* GameScore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +76,9 @@
 		193F0ADF1EF5CF9500A03F94 /* Block.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
 		193F0AE11EF5D1B400A03F94 /* GridController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridController.swift; sourceTree = "<group>"; };
 		193F0AE31EF5EF9500A03F94 /* PhysicsFlags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsFlags.swift; sourceTree = "<group>"; };
+		197F48DB1EF686F800A469F4 /* ExtraBall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtraBall.swift; sourceTree = "<group>"; };
+		197F48DF1EF6878A00A469F4 /* Spawnable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spawnable.swift; sourceTree = "<group>"; };
+		197F48E11EF68B0800A469F4 /* GameScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +177,7 @@
 				193F0AD31EF57F8800A03F94 /* GameState.swift */,
 				193F0AD61EF5826400A03F94 /* ShootoutState.swift */,
 				193F0ADD1EF5A99F00A03F94 /* DestroyState.swift */,
+				197F48E11EF68B0800A469F4 /* GameScore.swift */,
 			);
 			name = GameState;
 			sourceTree = "<group>";
@@ -187,13 +194,23 @@
 		193F0ADA1EF59D3700A03F94 /* Doodads */ = {
 			isa = PBXGroup;
 			children = (
+				197F48DD1EF6877600A469F4 /* Spawnable */,
 				193F0AD81EF5952100A03F94 /* Ball.swift */,
 				193F0ADB1EF59D5000A03F94 /* AimTrajectory.swift */,
-				193F0ADF1EF5CF9500A03F94 /* Block.swift */,
 				193F0AE11EF5D1B400A03F94 /* GridController.swift */,
 				193F0AE31EF5EF9500A03F94 /* PhysicsFlags.swift */,
 			);
 			name = Doodads;
+			sourceTree = "<group>";
+		};
+		197F48DD1EF6877600A469F4 /* Spawnable */ = {
+			isa = PBXGroup;
+			children = (
+				193F0ADF1EF5CF9500A03F94 /* Block.swift */,
+				197F48DB1EF686F800A469F4 /* ExtraBall.swift */,
+				197F48DF1EF6878A00A469F4 /* Spawnable.swift */,
+			);
+			name = Spawnable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,8 +360,11 @@
 				193F0ADC1EF59D5000A03F94 /* AimTrajectory.swift in Sources */,
 				193F0AD01EF57BA900A03F94 /* BalloutScene.swift in Sources */,
 				193F0ADE1EF5A99F00A03F94 /* DestroyState.swift in Sources */,
+				197F48E01EF6878A00A469F4 /* Spawnable.swift in Sources */,
 				193F0AE01EF5CF9500A03F94 /* Block.swift in Sources */,
+				197F48E21EF68B0800A469F4 /* GameScore.swift in Sources */,
 				193F0AD91EF5952100A03F94 /* Ball.swift in Sources */,
+				197F48DC1EF686F800A469F4 /* ExtraBall.swift in Sources */,
 				193F0A981EF5741700A03F94 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -596,6 +616,7 @@
 				193F0AC41EF5741700A03F94 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		193F0AC51EF5741700A03F94 /* Build configuration list for PBXNativeTarget "BalloutTests" */ = {
 			isa = XCConfigurationList;
@@ -604,6 +625,7 @@
 				193F0AC71EF5741700A03F94 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		193F0AC81EF5741700A03F94 /* Build configuration list for PBXNativeTarget "BalloutUITests" */ = {
 			isa = XCConfigurationList;
@@ -612,6 +634,7 @@
 				193F0ACA1EF5741700A03F94 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
