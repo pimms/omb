@@ -10,6 +10,8 @@ import Foundation
 import GameplayKit
 
 class DestroyState: GameState {
+    private var launchNode: SKNode?
+
     private var angleDefined: Bool = false
     private var angle: CGFloat = 0.0
     private var launchPoint: CGPoint = CGPoint(x:0, y:0)
@@ -24,18 +26,21 @@ class DestroyState: GameState {
     
     required init(scene s: BalloutScene) {
         super.init(scene: s)
+        self.launchNode = self.gameScene.childNode(withName: "launchNode")
     }
     
     override func didEnter(from previousState: GKState?) {
         print("DestroyState entered")
         assert(self.angleDefined)
         
-        self.launchPoint = (self.gameScene.childNode(withName: "launchNode")?.position)!
+        self.launchPoint = self.launchNode!.position
         self.homePoint = nil
         self.balls = NSMutableArray()
         self.shotBalls = 0
         self.ballsAtHome = 0
         self.ballsToShoot = self.gameScore.numBalls
+        
+        self.removeLaunchIndicator()
     }
     
     override func willExit(to nextState: GKState) {
@@ -98,10 +103,26 @@ class DestroyState: GameState {
     
     private func moveBallHome(ball: Ball) {
         if self.homePoint == nil {
-            self.homePoint = ball.position
-            let launchNode: SKNode! = self.gameScene.childNode(withName: "launchNode")!
-            self.homePoint!.y = launchNode.position.y
-            launchNode.position = self.homePoint!
+            // Find the intersection point between the balls trajectory and the
+            // line at which the launchNode lies
+            var newPos = ball.position
+            newPos.y = self.launchNode!.position.y
+
+            var vel = ball.physicsBody!.velocity
+            let len = sqrt(vel.dx*vel.dx + vel.dy*vel.dy)
+            vel.dx = -(vel.dx/len)
+            vel.dy = -(vel.dy/len)
+            
+            if vel.dx != 0 && vel.dy != 0 {
+                let ratio = vel.dx / vel.dy
+                let ydiff = self.launchNode!.position.y - ball.position.y
+                newPos = CGPoint(x: ball.position.x + ydiff * ratio,
+                                 y: self.launchNode!.position.y)
+            }
+            
+            self.homePoint = newPos
+            self.launchNode!.position = self.homePoint!
+            self.addLaunchIndicator()
         }
 
         // TODO: Make something sexy with splines. I believe that we can create
@@ -127,5 +148,14 @@ class DestroyState: GameState {
         if (self.ballsAtHome == self.ballsToShoot) {
             self.stateMachine?.enter(SpawnState.self)
         }
+    }
+
+
+    private func removeLaunchIndicator() {
+        self.launchNode?.childNode(withName: "launchIndicator")?.isHidden = true
+    }
+    
+    private func addLaunchIndicator() {
+        self.launchNode?.childNode(withName: "launchIndicator")?.isHidden = false
     }
 }

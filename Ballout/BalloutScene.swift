@@ -48,7 +48,12 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
         // 2. Initialize the GridController
         self.gridController = GridController(withScene: self, bounds: playRect, width: 7, height: 8)
         
-        // 3. Initialize the state machine and kick it off
+        // 3. Add a launch indiator node to the launchNode
+        let launchIndicator = Ball(createPhysics: false)
+        launchIndicator.name = "launchIndicator"
+        self.childNode(withName: "launchNode")?.addChild(launchIndicator)
+        
+        // 4. Initialize the state machine and kick it off
         var states = [GKState]()
         states.append(ShootoutState(scene: self))
         states.append(DestroyState(scene: self))
