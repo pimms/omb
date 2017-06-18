@@ -13,6 +13,7 @@ class DestroyState: GameState {
     private var angleDefined: Bool = false
     private var angle: CGFloat = 0.0
     private var launchPoint: CGPoint = CGPoint(x:0, y:0)
+    private var homePoint: CGPoint?
     
     private var nextShot: TimeInterval = 0
     private var elapsedTime: TimeInterval = 0
@@ -30,6 +31,7 @@ class DestroyState: GameState {
         assert(self.angleDefined)
         
         self.launchPoint = (self.gameScene.childNode(withName: "launchNode")?.position)!
+        self.homePoint = nil
         self.balls = NSMutableArray()
         self.shotBalls = 0
         self.ballsAtHome = 0
@@ -95,11 +97,18 @@ class DestroyState: GameState {
     }
     
     private func moveBallHome(ball: Ball) {
+        if self.homePoint == nil {
+            self.homePoint = ball.position
+            let launchNode: SKNode! = self.gameScene.childNode(withName: "launchNode")!
+            self.homePoint!.y = launchNode.position.y
+            launchNode.position = self.homePoint!
+        }
+
         // TODO: Make something sexy with splines. I believe that we can create
         // a sexy curved movement if we create a spline originating from the ball's
         // current position along it's current velocity vector, and the next point
         // at the (launchPoint + velocityDelta).
-        ball.run(SKAction.sequence([SKAction.move(to: self.launchPoint, duration: 0.3),
+        ball.run(SKAction.sequence([SKAction.move(to: self.homePoint!, duration: 0.3),
                                     SKAction.removeFromParent(),
                                     SKAction.perform(#selector(DestroyState.onBallMovedHome), onTarget: self)]))
     }

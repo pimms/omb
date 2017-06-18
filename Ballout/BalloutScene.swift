@@ -13,6 +13,7 @@ import GameKit
 class BalloutScene: SKScene, SKPhysicsContactDelegate {
     private var isInitialized: Bool = false
     private var stateMachine: GKStateMachine?
+    private var scoreLabel: SKLabelNode?
     
     public var entities = [GKEntity]()
     public var graphs = [String : GKGraph]()
@@ -34,6 +35,8 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
         self.physicsBody?.isDynamic = false
         self.physicsBody?.friction = 0.0
         self.physicsWorld.contactDelegate = self
+        self.scoreLabel = self.childNode(withName: "scoreLabel") as? SKLabelNode
+        self.updateScoreLabel()
         
         // 2. Initialize the GridController
         //    Don't allow blocks to be placed below 'launchNode' or above the
@@ -106,6 +109,7 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
                     spawnable.onFulfillment(gameScore: self.gameScore)
                     self.gridController?.onSpawnableDestroyed(spawnable: spawnable)
                     spawnable.removeFromParent()
+                    self.updateScoreLabel()
                 }
             }
         }
@@ -136,4 +140,8 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
         self.lastUpdateTime = currentTime
     }
 
+    
+    private func updateScoreLabel() {
+        self.scoreLabel?.text = String(describing: self.gameScore?.destroyedBlocks)
+    }
 }
