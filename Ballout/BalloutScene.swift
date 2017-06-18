@@ -29,9 +29,16 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
             return
         }
         
+        let playfield = self.childNode(withName: "playfield")!
+        let playRect = playfield.frame
+        
         // 1. Initialize myself
+        let physBounds = CGRect(x: self.frame.minX,
+                                y: self.frame.minY,
+                                width: self.frame.width,
+                                height: self.frame.height - (self.frame.maxY - playRect.maxY))
         self.gameScore = GameScore()
-        self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
+        self.physicsBody = SKPhysicsBody(edgeLoopFrom: physBounds)
         self.physicsBody?.isDynamic = false
         self.physicsBody?.friction = 0.0
         self.physicsWorld.contactDelegate = self
@@ -39,15 +46,7 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
         self.updateScoreLabel()
         
         // 2. Initialize the GridController
-        //    Don't allow blocks to be placed below 'launchNode' or above the
-        //    score GUI at the very top. 600 is a crude estimation.
-        let minY: CGFloat = (self.childNode(withName: "launchNode")?.position.y)!
-        let maxY: CGFloat = 550
-        let size = CGSize(width: self.frame.width, height: maxY - minY)
-        let center = CGPoint(x: 0 - size.width / 2,
-                             y: (maxY + minY) / 2 - size.height / 2)
-        let bounds = CGRect(origin: center, size: size)
-        self.gridController = GridController(withScene: self, bounds: bounds, width: 6, height: 8)
+        self.gridController = GridController(withScene: self, bounds: playRect, width: 7, height: 8)
         
         // 3. Initialize the state machine and kick it off
         var states = [GKState]()

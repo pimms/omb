@@ -18,16 +18,15 @@ class Block: Spawnable {
     init(hitCount count: Int, size: CGSize) {
         self.hitCount = count
         
-        let rect = CGRect(x: -size.width/2,
-                          y: -size.height/2,
-                          width: size.width,
-                          height: size.height)
+        let displaySize = CGSize(width: size.width*0.85, height: size.height * 0.85)
+        let rect = CGRect(x: -displaySize.width/2,
+                          y: -displaySize.height/2,
+                          width: displaySize.width,
+                          height: displaySize.height)
         super.init(gridSize: size, collideWithBall: true)
         
         self.path = CGPath(rect: rect, transform: nil)
-        self.strokeColor = UIColor.black
         self.fillColor   = UIColor.red
-        self.lineWidth   = 3.0
         
         self.label = SKLabelNode(text: String(self.hitCount))
         self.label?.verticalAlignmentMode = .center
