@@ -10,7 +10,7 @@ import Foundation
 import SpriteKit
 import GameKit
 
-class BalloutScene: SKScene {
+class BalloutScene: SKScene, SKPhysicsContactDelegate {
     private var isInitialized: Bool = false
     private var stateMachine: GKStateMachine?
     
@@ -22,6 +22,7 @@ class BalloutScene: SKScene {
     
     // TODO? Encapsulate the game "scores" into a separate object
     public var numBalls: Int = 0
+    public var score: Int = 0
     
     
     private func initialize() {
@@ -34,6 +35,7 @@ class BalloutScene: SKScene {
         self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
         self.physicsBody?.isDynamic = false
         self.physicsBody?.friction = 0.0
+        self.physicsWorld.contactDelegate = self
         
         // 2. Initialize the GridController
         //    Don't allow blocks to be placed below 'launchNode' or above the
@@ -84,6 +86,35 @@ class BalloutScene: SKScene {
             (stateMachine?.currentState as! GameState).onTouchUp(atPos: t.location(in: self))
         }
     }
+    
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        let a = contact.bodyA
+        let b = contact.bodyB
+        
+        var blockBody: SKPhysicsBody?
+        if a.categoryBitMask == PhysicsFlags.blockBit && b.categoryBitMask == PhysicsFlags.ballBit {
+            blockBody = a
+        } else if b.categoryBitMask == PhysicsFlags.blockBit && a.categoryBitMask == PhysicsFlags.ballBit {
+            blockBody = b
+        } else {
+            return
+        }
+        
+        if blockBody?.node != nil, let block: Block = (blockBody?.node! as! Block) {
+            block.onBallHit()
+            if block.getHitCount() == 0 {
+                self.gridController?.onBlockDestroyed(block: block)
+                block.removeFromParent()
+                self.score += 1
+            }
+        }
+    }
+    
+    func didEnd(_ contact: SKPhysicsContact) {
+        // nop
+    }
+    
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered

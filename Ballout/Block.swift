@@ -35,6 +35,7 @@ class Block: SKShapeNode {
         self.physicsBody!.friction = 0.0
         self.physicsBody!.collisionBitMask = PhysicsFlags.ballBit
         self.physicsBody!.categoryBitMask = PhysicsFlags.blockBit
+        self.physicsBody!.contactTestBitMask = PhysicsFlags.ballBit
         
         self.label = SKLabelNode(text: String(self.hitCount))
         self.label?.verticalAlignmentMode = .center
@@ -47,5 +48,13 @@ class Block: SKShapeNode {
         fatalError("init(coder:) has not been implemented")
     }
 
+    public func onBallHit() {
+        self.hitCount -= 1
+        self.label?.text = String(self.hitCount)
+    }
+    
+    public func getHitCount() -> Int {
+        return self.hitCount
+    }
 }
 

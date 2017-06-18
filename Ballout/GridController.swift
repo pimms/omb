@@ -1,4 +1,4 @@
-//
+ //
 //  BlockGrid.swift
 //  Ballout
 //
@@ -70,6 +70,18 @@ class GridController: NSObject {
         }
     }
     
+    public func onBlockDestroyed(block: Block) {
+        // TODO
+        print("TODO: GridController.onBlockDestoyed")
+        for x in 0...self.gridWidth-1 {
+            for y in 0...self.gridHeight-1 {
+                if self.blocks[x]![y] == block {
+                    self.blocks[x]![y] = nil
+                }
+            }
+        }
+    }
+    
     private func shiftBlocksDown() {
         for y in stride(from: self.gridHeight-1, to: 0, by: -1) {
             for x in 0...self.gridWidth-1 {
@@ -105,5 +117,5 @@ class GridController: NSObject {
                           y: self.bounds.maxY - (CGFloat(y) + 0.5) * blockSize.height)
         return ret
     }
-    
+
 }
