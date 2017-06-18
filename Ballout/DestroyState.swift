@@ -108,7 +108,16 @@ class DestroyState: GameState {
         // a sexy curved movement if we create a spline originating from the ball's
         // current position along it's current velocity vector, and the next point
         // at the (launchPoint + velocityDelta).
-        ball.run(SKAction.sequence([SKAction.move(to: self.homePoint!, duration: 0.3),
+        let duration: CGFloat = 0.3
+
+        let dest = CGPoint(x: ball.position.x + (ball.physicsBody?.velocity.dx)! * duration,
+                           y: ball.position.y + (ball.physicsBody?.velocity.dy)! * duration)
+        ball.physicsBody = nil
+        
+        let moveAndFade = SKAction.group([SKAction.move(to: dest, duration: TimeInterval(duration)),
+                                          SKAction.fadeOut(withDuration: TimeInterval(duration))])
+
+        ball.run(SKAction.sequence([moveAndFade,
                                     SKAction.removeFromParent(),
                                     SKAction.perform(#selector(DestroyState.onBallMovedHome), onTarget: self)]))
     }

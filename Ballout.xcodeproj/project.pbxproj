@@ -32,6 +32,7 @@
 		197F48E21EF68B0800A469F4 /* GameScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197F48E11EF68B0800A469F4 /* GameScore.swift */; };
 		197F48E41EF69A6B00A469F4 /* GameOverState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197F48E31EF69A6B00A469F4 /* GameOverState.swift */; };
 		197F48E61EF6B75B00A469F4 /* SpawnState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197F48E51EF6B75B00A469F4 /* SpawnState.swift */; };
+		197F48E81EF6CC5B00A469F4 /* Updatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197F48E71EF6CC5B00A469F4 /* Updatable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		197F48E11EF68B0800A469F4 /* GameScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScore.swift; sourceTree = "<group>"; };
 		197F48E31EF69A6B00A469F4 /* GameOverState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverState.swift; sourceTree = "<group>"; };
 		197F48E51EF6B75B00A469F4 /* SpawnState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpawnState.swift; sourceTree = "<group>"; };
+		197F48E71EF6CC5B00A469F4 /* Updatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Updatable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +207,7 @@
 				193F0ADB1EF59D5000A03F94 /* AimTrajectory.swift */,
 				193F0AE11EF5D1B400A03F94 /* GridController.swift */,
 				193F0AE31EF5EF9500A03F94 /* PhysicsFlags.swift */,
+				197F48E71EF6CC5B00A469F4 /* Updatable.swift */,
 			);
 			name = Doodads;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				193F0AD01EF57BA900A03F94 /* BalloutScene.swift in Sources */,
 				193F0ADE1EF5A99F00A03F94 /* DestroyState.swift in Sources */,
 				197F48E01EF6878A00A469F4 /* Spawnable.swift in Sources */,
+				197F48E81EF6CC5B00A469F4 /* Updatable.swift in Sources */,
 				193F0AE01EF5CF9500A03F94 /* Block.swift in Sources */,
 				197F48E21EF68B0800A469F4 /* GameScore.swift in Sources */,
 				193F0AD91EF5952100A03F94 /* Ball.swift in Sources */,

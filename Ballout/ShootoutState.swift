@@ -84,7 +84,7 @@ class ShootoutState: GameState {
             self.shootAngle = angle
             
             //self.aimTrajectory?.position = launchPoint
-            self.aimTrajectory?.setAimAngle(aimAngle: angle, magnitude: log(length) * 15)
+            self.aimTrajectory?.setAimAngle(aimAngle: angle, distance: log(length) * 15)
             
             self.shootOnRelease = (delta.dy >= 0)
             self.aimTrajectory?.isHidden = !self.shootOnRelease

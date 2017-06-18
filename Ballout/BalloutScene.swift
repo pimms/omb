@@ -138,7 +138,19 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
             entity.update(deltaTime: dt)
         }
         
+        updateNode(deltaTime: dt, node: self)
+        
         self.lastUpdateTime = currentTime
+    }
+    
+    private func updateNode(deltaTime: TimeInterval, node: SKNode!) {
+        if let updatable = node as? Updatable {
+            updatable.update(deltaTime: deltaTime)
+        }
+
+        for n in node.children {
+            updateNode(deltaTime: deltaTime, node: n)
+        }
     }
 
     
