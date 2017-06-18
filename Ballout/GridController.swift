@@ -18,6 +18,7 @@ class GridController: NSObject {
     private var scene: SKScene!
     private var bounds: CGRect
     private var blockSize: CGSize
+    private var animationsRunning: Bool = false
     
     private var blocks: [[Spawnable?]?]
     
@@ -51,6 +52,14 @@ class GridController: NSObject {
         }
         
         return true
+    }
+    
+    public func update(hitCountGuideline count: Int, completion: @escaping (Void)->Void) {
+        update(hitCountGuideline: count)
+        
+        let durMs = Int(GridController.animationDuration * 1000.0)
+        let deadline = DispatchTime.now() + .milliseconds(durMs)
+        DispatchQueue.main.asyncAfter(deadline: deadline, execute: completion)
     }
     
     public func update(hitCountGuideline count: Int) {

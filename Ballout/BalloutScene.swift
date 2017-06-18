@@ -53,8 +53,9 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
         states.append(ShootoutState(scene: self))
         states.append(DestroyState(scene: self))
         states.append(GameOverState(scene: self))
+        states.append(SpawnState(scene: self))
         self.stateMachine = GKStateMachine(states: states)
-        self.stateMachine!.enter(ShootoutState.self)
+        self.stateMachine!.enter(SpawnState.self)
         
         self.isInitialized = true
     }

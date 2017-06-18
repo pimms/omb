@@ -30,19 +30,7 @@ class ShootoutState: GameState {
     
     override func didEnter(from previousState: GKState?) {
         print("ShootoutState entered")
-        self.isAiming = false
         self.shootOnRelease = false
-        
-        // TODO: Use the actual score instead of the number of balls, although
-        // these numbers should be pretty much identical for the most part.
-        let grid = self.gameScene!.gridController!
-        
-        if grid.canShiftWithoutDropping() {
-            grid.update(hitCountGuideline: self.gameScore.numBalls)
-        } else {
-            // Transition to the game-over screen, the user is being a moron
-            self.stateMachine?.enter(GameOverState.self)
-        }
     }
     
     override func willExit(to nextState: GKState) {
@@ -63,20 +51,24 @@ class ShootoutState: GameState {
     }
     
     override func onTouchMoved(atPos point: CGPoint) {
-        self.updateTrajectory(touchPoint: point)
+        if self.isAiming {
+            self.updateTrajectory(touchPoint: point)
+        }
     }
     
     override func onTouchUp(atPos point: CGPoint) {
-        self.isAiming = false
-        self.aimTrajectory?.isHidden = true
-        
-        if self.shootOnRelease {
-            self.stateMachine?.enter(DestroyState.self)
+        if self.isAiming {
+            self.isAiming = false
+            self.aimTrajectory?.isHidden = true
+            
+            if self.shootOnRelease {
+                self.stateMachine?.enter(DestroyState.self)
+            }
         }
     }
     
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass == DestroyState.self || stateClass == GameOverState.self
+        return stateClass == DestroyState.self
     }
     
 

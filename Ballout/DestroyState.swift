@@ -45,7 +45,7 @@ class DestroyState: GameState {
     }
     
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass == ShootoutState.self
+        return stateClass == ShootoutState.self || stateClass == SpawnState.self
     }
     
     
@@ -116,7 +116,7 @@ class DestroyState: GameState {
     @objc private func onBallMovedHome() {
         self.ballsAtHome += 1
         if (self.ballsAtHome == self.ballsToShoot) {
-            self.stateMachine?.enter(ShootoutState.self)
+            self.stateMachine?.enter(SpawnState.self)
         }
     }
 }
