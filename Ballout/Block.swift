@@ -13,10 +13,12 @@ import GameplayKit
 
 class Block: Spawnable {
     private var hitCount: Int = 0
+    private var initialHitCount: Int = 0
     private var label: SKLabelNode?
     
     init(hitCount count: Int, size: CGSize) {
         self.hitCount = count
+        self.initialHitCount = self.hitCount
         
         let displaySize = CGSize(width: size.width*0.85, height: size.height * 0.85)
         let rect = CGRect(x: -displaySize.width/2,
@@ -26,13 +28,15 @@ class Block: Spawnable {
         super.init(gridSize: size, collideWithBall: true)
         
         self.path = CGPath(rect: rect, transform: nil)
-        self.fillColor   = UIColor.red
+        self.strokeColor = UIColor.clear
         
         self.label = SKLabelNode(text: String(self.hitCount))
         self.label?.verticalAlignmentMode = .center
         self.label?.horizontalAlignmentMode = .center
         self.label?.fontName = "Arial"
         self.addChild(self.label!)
+        
+        self.updateColorTint()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -50,6 +54,15 @@ class Block: Spawnable {
     override func onBallCollided() {
         self.hitCount -= 1
         self.label?.text = String(self.hitCount)
+        self.updateColorTint()
+    }
+    
+    private func updateColorTint() {
+        let factor = CGFloat(self.hitCount) / CGFloat(self.initialHitCount)
+        
+        self.fillColor = UIColor(hue: (1 - factor) * 0.3,
+                                 saturation: 0.43,
+                                 brightness: 0.66, alpha: 1.0)
     }
 }
 
