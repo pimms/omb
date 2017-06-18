@@ -53,6 +53,7 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
         var states = [GKState]()
         states.append(ShootoutState(scene: self))
         states.append(DestroyState(scene: self))
+        states.append(GameOverState(scene: self))
         self.stateMachine = GKStateMachine(states: states)
         self.stateMachine!.enter(ShootoutState.self)
         

@@ -28,7 +28,7 @@ class Ball: SKShapeNode {
         self.name = "ball"
         self.zPosition = 1
         //self.fillTexture = textureBall
-        self.fillColor = UIColor.red
+        self.fillColor = UIColor.white
         
         if (physics) {
             self.createPhysics()

@@ -40,6 +40,17 @@ class GridController: NSObject {
         
         super.init()
     }
+
+    public func canShiftWithoutDropping() -> Bool {
+        let y = self.gridHeight - 1
+        for x in 0...self.gridWidth-1 {
+            if self.blocks[x]![y] != nil {
+                return false
+            }
+        }
+        
+        return true
+    }
     
     public func update(hitCountGuideline count: Int) {
         shiftBlocksDown()

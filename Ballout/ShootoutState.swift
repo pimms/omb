@@ -33,7 +33,14 @@ class ShootoutState: GameState {
         
         // TODO: Use the actual score instead of the number of balls, although
         // these numbers should be pretty much identical for the most part.
-        self.gameScene?.gridController?.update(hitCountGuideline: self.gameScore.numBalls)
+        let grid = self.gameScene!.gridController!
+        
+        if grid.canShiftWithoutDropping() {
+            grid.update(hitCountGuideline: self.gameScore.numBalls)
+        } else {
+            // Transition to the game-over screen, the user is being a moron
+            self.stateMachine?.enter(GameOverState.self)
+        }
     }
     
     override func willExit(to nextState: GKState) {
@@ -68,11 +75,7 @@ class ShootoutState: GameState {
     }
     
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        if stateClass == DestroyState.self {
-            return true
-        }
-        
-        return false
+        return stateClass == DestroyState.self || stateClass == GameOverState.self
     }
     
 
