@@ -61,7 +61,7 @@ class DestroyState: GameState {
         // do so, shoot a ball.
         if self.shotBalls < self.ballsToShoot && self.elapsedTime >= self.nextShot {
             shootBall()
-            self.nextShot = self.elapsedTime + 0.2
+            self.nextShot = self.elapsedTime + 0.08
             self.shotBalls += 1
         }
         
@@ -87,7 +87,7 @@ class DestroyState: GameState {
         ball.position.x = self.launchPoint.x
         ball.position.y = self.launchPoint.y
         
-        let impulse = CGVector(dx: cos(self.angle) * 2000, dy: sin(self.angle) * 2000)
+        let impulse = CGVector(dx: cos(self.angle) * 1500, dy: sin(self.angle) * 1500)
         
         self.gameScene?.addChild(ball)
         self.balls!.add(ball)
@@ -108,7 +108,7 @@ class DestroyState: GameState {
         // a sexy curved movement if we create a spline originating from the ball's
         // current position along it's current velocity vector, and the next point
         // at the (launchPoint + velocityDelta).
-        let duration: CGFloat = 0.3
+        let duration: CGFloat = 0.1
 
         let dest = CGPoint(x: ball.position.x + (ball.physicsBody?.velocity.dx)! * duration,
                            y: ball.position.y + (ball.physicsBody?.velocity.dy)! * duration)
