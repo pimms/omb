@@ -12,6 +12,7 @@ import GameplayKit
 import UIKit
 
 class GridController: NSObject {
+    private static let animationDuration: TimeInterval = 0.4
     private var gridWidth: Int = 0
     private var gridHeight: Int = 0
     private var scene: SKScene!
@@ -104,7 +105,8 @@ class GridController: NSObject {
             for x in 0...self.gridWidth-1 {
                 self.blocks[x]![y] = self.blocks[x]![y-1]
                 self.blocks[x]![y-1] = nil
-                self.blocks[x]![y]?.position = getCenterForCoord(x: x, y: y)
+                self.blocks[x]![y]?.run(SKAction.move(to: getCenterForCoord(x: x, y: y),
+                                                      duration: GridController.animationDuration))
             }
         }
     }
@@ -119,7 +121,14 @@ class GridController: NSObject {
             fatalError("Element already exists at coordinate")
         }
 
-        spawnable.position = getCenterForCoord(x: x, y: y)
+        let dest = getCenterForCoord(x: x, y: y)
+        let from = CGPoint(x: dest.x, y: dest.y + self.blockSize.height)
+        let fadeIn = SKAction.fadeIn(withDuration: GridController.animationDuration)
+        let move = SKAction.move(to: dest, duration: GridController.animationDuration)
+        
+        spawnable.alpha = 0.0
+        spawnable.position = from
+        spawnable.run(SKAction.group([fadeIn, move]))
         self.blocks[x]![y] = spawnable
         self.scene.addChild(spawnable)
     }
