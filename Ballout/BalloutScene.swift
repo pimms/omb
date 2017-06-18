@@ -160,6 +160,6 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
 
     
     private func updateScoreLabel() {
-        self.scoreLabel?.text = String(describing: self.gameScore?.destroyedBlocks)
+        self.scoreLabel?.text = String(describing: self.gameScore!.destroyedBlocks)
     }
 }
