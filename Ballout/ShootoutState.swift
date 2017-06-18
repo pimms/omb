@@ -16,6 +16,8 @@ class ShootoutState: GameState {
     private var aimTrajectory: AimTrajectory?
     private var launchNode: SKNode?
     
+    private var initialTouch: CGPoint?
+    
     
     required init(scene s: BalloutScene) {
         super.init(scene: s)
@@ -57,8 +59,7 @@ class ShootoutState: GameState {
     
     override func onTouchDown(atPos point: CGPoint) {
         self.isAiming = true
-        self.aimTrajectory?.isHidden = false;
-        self.updateTrajectory(touchPoint: point)
+        self.initialTouch = point
     }
     
     override func onTouchMoved(atPos point: CGPoint) {
@@ -80,15 +81,20 @@ class ShootoutState: GameState {
     
 
     private func updateTrajectory(touchPoint pos: CGPoint!) {
-        let launchPoint: CGPoint! = self.launchNode?.position
-        let delta = CGVector(dx: launchPoint.x-pos.x, dy: launchPoint.y-pos.y)
-        let angle: CGFloat = atan2(delta.dy, delta.dx)
-        self.shootAngle = angle
-        
-        //self.aimTrajectory?.position = launchPoint
-        self.aimTrajectory?.setAimAngle(aimAngle: angle)
-        
-        self.shootOnRelease = (delta.dy >= 0)
-        self.aimTrajectory?.isHidden = !self.shootOnRelease
+        let delta = CGVector(dx: self.initialTouch!.x-pos.x, dy: self.initialTouch!.y-pos.y)
+
+        if sqrt(delta.dx * delta.dx + delta.dy * delta.dy) <= 30 {
+            self.shootOnRelease = false
+            self.aimTrajectory?.isHidden = true
+        } else {
+            let angle: CGFloat = atan2(delta.dy, delta.dx)
+            self.shootAngle = angle
+            
+            //self.aimTrajectory?.position = launchPoint
+            self.aimTrajectory?.setAimAngle(aimAngle: angle)
+            
+            self.shootOnRelease = (delta.dy >= 0)
+            self.aimTrajectory?.isHidden = !self.shootOnRelease
+        }
     }
 }
