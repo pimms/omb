@@ -66,7 +66,7 @@ class DestroyState: GameState {
         // do so, shoot a ball.
         if self.shotBalls < self.ballsToShoot && self.elapsedTime >= self.nextShot {
             shootBall()
-            self.nextShot = self.elapsedTime + 0.08
+            self.nextShot = self.elapsedTime + 0.04
             self.shotBalls += 1
         }
         

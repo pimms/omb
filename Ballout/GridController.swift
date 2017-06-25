@@ -80,6 +80,13 @@ class GridController: NSObject {
         for i in 0...numToSpawn-1 {
             // Give blocks a 25% chance to have twice the guidance-count
             var hitCount: Int = count
+            if count > 4 {
+                // Add some extra noise
+                let range = count / 2
+                let ran = arc4random() % UInt32(range)
+                hitCount += Int(ran) - range / 2
+            }
+            
             if arc4random() % 4 == 0 {
                 hitCount *= 2
             }
