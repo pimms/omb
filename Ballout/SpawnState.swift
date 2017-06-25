@@ -28,8 +28,7 @@ class SpawnState: GameState {
         let grid = self.gameScene!.gridController!
         
         if grid.canShiftWithoutDropping() {
-            grid.update(hitCountGuideline: self.gameScore.numBalls) {
-                () in
+            grid.update(hitCountGuideline: self.gameScore.numBalls) { () in
                 self.stateMachine?.enter(ShootoutState.self)
             }
         } else {

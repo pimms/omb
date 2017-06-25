@@ -36,4 +36,8 @@ class ExtraBall: Spawnable {
     override func onBallCollided() {
         self.hit = true
     }
+    
+    override func isDeadly() -> Bool {
+        return false
+    }
 }

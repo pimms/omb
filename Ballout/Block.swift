@@ -57,6 +57,10 @@ class Block: Spawnable {
         self.updateColorTint()
     }
     
+    override func isDeadly() -> Bool {
+        return true
+    }
+    
     private func updateColorTint() {
         let factor = CGFloat(self.hitCount) / CGFloat(self.initialHitCount)
         

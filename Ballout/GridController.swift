@@ -46,7 +46,7 @@ class GridController: NSObject {
     public func canShiftWithoutDropping() -> Bool {
         let y = self.gridHeight - 1
         for x in 0...self.gridWidth-1 {
-            if self.blocks[x]![y] != nil {
+            if self.blocks[x]![y] != nil && self.blocks[x]![y]!.isDeadly() {
                 return false
             }
         }
@@ -63,6 +63,7 @@ class GridController: NSObject {
     }
     
     public func update(hitCountGuideline count: Int) {
+        despawnNonFatals()
         shiftBlocksDown()
 
         var numToSpawn = Int(arc4random()) % self.gridWidth / 2 + 2
@@ -126,6 +127,24 @@ class GridController: NSObject {
             }
         }
     }
+    
+    private func despawnNonFatals() {
+        let y = self.gridHeight - 1
+        for x in 0...self.gridWidth-1 {
+            if self.blocks[x]![y] != nil && !self.blocks[x]![y]!.isDeadly() {
+                let npos = getCenterForCoord(x: x, y: y+1)
+                
+                let move = SKAction.move(to: npos, duration: GridController.animationDuration)
+                let fade = SKAction.fadeOut(withDuration: GridController.animationDuration)
+                let group =  SKAction.group([move, fade])
+                let remove = SKAction.removeFromParent()
+                let sequence = SKAction.sequence([group, remove])
+                
+                self.blocks[x]![y]!.run(sequence)
+                self.blocks[x]![y] = nil
+            }
+        }
+    }
 
     private func spawn(spawnable: Spawnable, x: Int, hitCount: Int) {
         if (x < 0 || x >= self.gridWidth) {
@@ -150,10 +169,6 @@ class GridController: NSObject {
     }
 
     private func getCenterForCoord(x: Int, y: Int) -> CGPoint {
-        if (x < 0 || x >= self.gridWidth || y < 0 || y >= self.gridHeight) {
-            fatalError("Index out of bounds")
-        }
-        
         let ret = CGPoint(x: (CGFloat(x) + 0.5) * blockSize.width + self.bounds.minX,
                           y: self.bounds.maxY - (CGFloat(y) + 0.5) * blockSize.height)
         return ret
