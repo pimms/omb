@@ -16,6 +16,7 @@ class DestroyState: GameState {
     private var angle: CGFloat = 0.0
     private var launchPoint: CGPoint = CGPoint(x:0, y:0)
     private var homePoint: CGPoint?
+    private var countLabel: SKLabelNode?
     
     private var nextShot: TimeInterval = 0
     private var elapsedTime: TimeInterval = 0
@@ -27,6 +28,7 @@ class DestroyState: GameState {
     required init(scene s: BalloutScene) {
         super.init(scene: s)
         self.launchNode = self.gameScene.childNode(withName: "launchNode")
+        self.countLabel = self.launchNode?.childNode(withName: "countLabel") as? SKLabelNode
     }
     
     override func didEnter(from previousState: GKState?) {
@@ -68,6 +70,14 @@ class DestroyState: GameState {
             shootBall()
             self.nextShot = self.elapsedTime + 0.04
             self.shotBalls += 1
+            
+            // Update the label indicating the number of balls remaining
+            let left = self.ballsToShoot - self.shotBalls
+            if left == 0 {
+                self.countLabel?.text = ""
+            } else {
+                self.countLabel?.text = String(left)
+            }
         }
         
         // Check if any of the balls have bounces below the threshold, and if so

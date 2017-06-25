@@ -23,8 +23,6 @@ class SpawnState: GameState {
     override func didEnter(from previousState: GKState?) {
         print("SpawnState entering")
         
-        // TODO: Use the actual score instead of the number of balls, although
-        // these numbers should be pretty much identical for the most part.
         let grid = self.gameScene!.gridController!
         
         if grid.canShiftWithoutDropping() {
@@ -35,6 +33,11 @@ class SpawnState: GameState {
             // Transition to the game-over screen, the user is being a moron
             self.stateMachine?.enter(GameOverState.self)
         }
+        
+        // Initiate the ball-count label
+        let launchNode = self.gameScene.childNode(withName: "launchNode")
+        let countLabel = launchNode?.childNode(withName: "countLabel") as? SKLabelNode
+        countLabel?.text = String(self.gameScore.numBalls)
     }
     
     override func willExit(to nextState: GKState) {
