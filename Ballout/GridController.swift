@@ -124,6 +124,12 @@ class GridController: NSObject {
                 self.blocks[x]![y-1] = nil
                 self.blocks[x]![y]?.run(SKAction.move(to: getCenterForCoord(x: x, y: y),
                                                       duration: GridController.animationDuration))
+                
+                if y == self.gridHeight-1 {
+                    self.blocks[x]![y]?.showWarning(level: .Error)
+                } else if (y == self.gridHeight - 2) {
+                    self.blocks[x]![y]?.showWarning(level: .Warning)
+                }
             }
         }
     }
@@ -151,7 +157,7 @@ class GridController: NSObject {
             fatalError("Index out of bounds")
         }
 
-        let y = 1
+        let y = self.gridHeight-3
         if (self.blocks[x]![y] != nil) {
             fatalError("Element already exists at coordinate")
         }

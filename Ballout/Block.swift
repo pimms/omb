@@ -61,6 +61,50 @@ class Block: Spawnable {
         return true
     }
     
+    override func showWarning(level: WarningLevel) {
+        let name = "warningLight"
+        let maxScale = 1.0
+        let maxAlpha = 0.8
+        let minAlpha = 0.05
+        
+        var duration = 0.0
+        var color = UIColor.clear
+        
+        // If we already have a warning running, remove it
+        self.childNode(withName: name)?.removeFromParent()
+        
+        switch level {
+        case WarningLevel.Warning:
+            color = UIColor.yellow
+            duration = 1.0
+            
+        case WarningLevel.Error:
+            color = UIColor.red
+            duration = 0.5
+        }
+        
+        // Create the node and launch the action
+        let warningLight = SKShapeNode(rectOf: self.frame.size)
+        warningLight.lineWidth = 5
+        warningLight.strokeColor = color
+        warningLight.fillColor = UIColor.clear
+        warningLight.name = "warningLight"
+        warningLight.position = CGPoint(x: 0, y: 0)
+        warningLight.alpha = 0.5
+        
+        let scaleUp = SKAction.scale(to: CGFloat(maxScale), duration: duration)
+        let fadeOut = SKAction.fadeAlpha(to: CGFloat(minAlpha), duration: duration)
+        let group1 = SKAction.group([scaleUp, fadeOut])
+            
+        let scaleDown = SKAction.scale(to: 1.0, duration: duration)
+        let fadeIn = SKAction.fadeAlpha(to: CGFloat(maxAlpha), duration: duration)
+        let group2 = SKAction.group([scaleDown, fadeIn])
+            
+        let rep = SKAction.repeatForever(SKAction.sequence([group1, group2]))
+        warningLight.run(rep)
+        self.addChild(warningLight)
+    }
+    
     private func updateColorTint() {
         let factor = CGFloat(self.hitCount) / CGFloat(self.initialHitCount)
         

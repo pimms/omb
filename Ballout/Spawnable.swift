@@ -55,4 +55,8 @@ class Spawnable: SKShapeNode {
     public func isDeadly() -> Bool {
         fatalError("Spawnable must override 'isDeadly'")
     }
+    
+    public func showWarning(level: WarningLevel) {
+        // No default behaviour
+    }
 }
