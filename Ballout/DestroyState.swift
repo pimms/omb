@@ -117,7 +117,9 @@ class DestroyState: GameState {
             // line at which the launchNode lies
             var newPos = ball.position
             newPos.y = self.launchNode!.position.y
-
+            
+            // As the ball will almost certainly "tunnel" through the line, we
+            // need to project the actual point back to where it intersected.
             var vel = ball.physicsBody!.velocity
             let len = sqrt(vel.dx*vel.dx + vel.dy*vel.dy)
             vel.dx = -(vel.dx/len)
@@ -130,15 +132,20 @@ class DestroyState: GameState {
                                  y: self.launchNode!.position.y)
             }
             
+            // Ensure that the new position is within the screen boundaries
+            let half = self.gameScene.frame.width / 2
+            let rad = ball.frame.width / 2
+            if newPos.x + rad < -half {
+                newPos.x = -half + ball.frame.width
+            } else if newPos.x - rad > half {
+                newPos.x = half - ball.frame.width
+            }
+            
             self.homePoint = newPos
             self.launchNode!.position = self.homePoint!
             self.addLaunchIndicator()
         }
-
-        // TODO: Make something sexy with splines. I believe that we can create
-        // a sexy curved movement if we create a spline originating from the ball's
-        // current position along it's current velocity vector, and the next point
-        // at the (launchPoint + velocityDelta).
+        
         let duration: CGFloat = 0.1
 
         let dest = CGPoint(x: ball.position.x + (ball.physicsBody?.velocity.dx)! * duration,
@@ -147,7 +154,7 @@ class DestroyState: GameState {
         
         let moveAndFade = SKAction.group([SKAction.move(to: dest, duration: TimeInterval(duration)),
                                           SKAction.fadeOut(withDuration: TimeInterval(duration))])
-
+ 
         ball.run(SKAction.sequence([moveAndFade,
                                     SKAction.removeFromParent(),
                                     SKAction.perform(#selector(DestroyState.onBallMovedHome), onTarget: self)]))
