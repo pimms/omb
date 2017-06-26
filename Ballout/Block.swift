@@ -106,9 +106,23 @@ class Block: Spawnable {
     }
     
     private func updateColorTint() {
-        let factor = CGFloat(self.hitCount) / CGFloat(self.initialHitCount)
+        // The hue is projected from 235 degrees to 110 degrees (0.65->0.3) with
+        // a logarithmic falloff.
         
-        self.fillColor = UIColor(hue: (1 - factor) * 0.3,
+        let maxHue = 0.65
+        let minHue = 0.3
+        let range = (1.0 - maxHue) + minHue
+        
+        var hue = log(pow(Double(self.hitCount) + 1, 2.0))
+        hue /= 13.0
+        hue = 1.0 - hue
+        hue *= range
+        hue -= (1.0 - maxHue)
+        while hue < 0.0 {
+            hue += 1.0
+        }
+        
+        self.fillColor = UIColor(hue: CGFloat(hue),
                                  saturation: 0.43,
                                  brightness: 0.66, alpha: 1.0)
     }
