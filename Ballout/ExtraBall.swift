@@ -14,7 +14,8 @@ class ExtraBall: Spawnable {
     private var hit: Bool = false
     
     init(size: CGSize) {
-        super.init(gridSize: size, collideWithBall: false)
+        super.init(gridSize: CGSize(width: size.width/2, height: size.height/2),
+                   collideWithBall: false, shape: .Circle)
         
         let ball = Ball(createPhysics: false)
         ball.run(SKAction.repeatForever(SKAction(named: "ExtraBallOscillation")!))

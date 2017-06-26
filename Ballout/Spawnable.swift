@@ -11,16 +11,26 @@ import GameplayKit
 import SpriteKit
 
 class Spawnable: SKShapeNode {
+    enum PhysicsShape {
+        case Circle
+        case Square
+    }
+    
     private var size: CGSize
     
-    init(gridSize: CGSize, collideWithBall: Bool) {
+    init(gridSize: CGSize, collideWithBall: Bool, shape: PhysicsShape) {
         self.size = gridSize
         super.init()
         
         let collisionBitmask = (collideWithBall ? PhysicsFlags.ballBit : 0)
         let categoryBitMask = (collideWithBall ? PhysicsFlags.blockBit : 0)
         
-        self.physicsBody = SKPhysicsBody(rectangleOf: size)
+        if shape == .Circle {
+            self.physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(size.width/2))
+        } else if shape == .Square {
+            self.physicsBody = SKPhysicsBody(rectangleOf: size)
+        }
+        
         self.physicsBody!.isDynamic = false
         self.physicsBody!.affectedByGravity = false
         self.physicsBody!.friction = 0.0
