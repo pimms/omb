@@ -39,7 +39,6 @@ class TouchHandler: NSObject {
                         self.buttonTouches[t.hash] = (n as! Button)
                         self.buttonTouches[t.hash]?.onTouchBegan()
                         hitButton = true
-                        print(" -- [btn] touch began")
                         break
                     }
                 }
@@ -67,10 +66,8 @@ class TouchHandler: NSObject {
             if button != nil {
                 let loc = t.location(in: button!.parent!)
                 if button!.isTouched && !button!.contains(loc) {
-                    print(" -- [btn] touch exited")
                     button!.onTouchEnded()
                 } else if !button!.isTouched && button!.contains(loc) {
-                    print(" -- [btn] touch re-entered")
                     button!.onTouchBegan()
                 }
             }
@@ -95,8 +92,6 @@ class TouchHandler: NSObject {
                 if button!.contains(t.location(in: button!.parent!)) {
                     button!.onClick()
                 }
-                
-                print(" -- [btn] touch terminated")
             }
             self.buttonTouches.removeValue(forKey: t.hash)
         }
@@ -117,7 +112,6 @@ class TouchHandler: NSObject {
                 button?.onTouchEnded()
             }
             self.buttonTouches.removeValue(forKey: t.hash)
-            print(" -- [btn] touch cancelled")
         }
     }
 }

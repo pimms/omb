@@ -26,6 +26,7 @@
 		193F0AE41EF5EF9500A03F94 /* PhysicsFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0AE31EF5EF9500A03F94 /* PhysicsFlags.swift */; };
 		194796E61F0F800C0042F3E7 /* UIColor_rgb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194796E51F0F800C0042F3E7 /* UIColor_rgb.swift */; };
 		194796E81F0F815A0042F3E7 /* TouchHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194796E71F0F815A0042F3E7 /* TouchHandler.swift */; };
+		194796EA1F0FC1D40042F3E7 /* GameOverViewNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194796E91F0FC1D40042F3E7 /* GameOverViewNode.swift */; };
 		1973BF1E1F0187A600BE0406 /* WarningLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1973BF1D1F0187A600BE0406 /* WarningLevel.swift */; };
 		197F48DC1EF686F800A469F4 /* ExtraBall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197F48DB1EF686F800A469F4 /* ExtraBall.swift */; };
 		197F48E01EF6878A00A469F4 /* Spawnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197F48DF1EF6878A00A469F4 /* Spawnable.swift */; };
@@ -81,6 +82,7 @@
 		193F0AE31EF5EF9500A03F94 /* PhysicsFlags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsFlags.swift; sourceTree = "<group>"; };
 		194796E51F0F800C0042F3E7 /* UIColor_rgb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor_rgb.swift; sourceTree = "<group>"; };
 		194796E71F0F815A0042F3E7 /* TouchHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchHandler.swift; sourceTree = "<group>"; };
+		194796E91F0FC1D40042F3E7 /* GameOverViewNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewNode.swift; sourceTree = "<group>"; };
 		1973BF1D1F0187A600BE0406 /* WarningLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningLevel.swift; sourceTree = "<group>"; };
 		197F48DB1EF686F800A469F4 /* ExtraBall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtraBall.swift; sourceTree = "<group>"; };
 		197F48DF1EF6878A00A469F4 /* Spawnable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spawnable.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 			children = (
 				19BA1C8A1F01A14F00EA4976 /* Button.swift */,
 				19BA1C8D1F01A19300EA4976 /* SpeedButton.swift */,
+				194796E91F0FC1D40042F3E7 /* GameOverViewNode.swift */,
 			);
 			name = HUD;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				193F0AD01EF57BA900A03F94 /* BalloutScene.swift in Sources */,
 				193F0ADE1EF5A99F00A03F94 /* DestroyState.swift in Sources */,
 				197F48E01EF6878A00A469F4 /* Spawnable.swift in Sources */,
+				194796EA1F0FC1D40042F3E7 /* GameOverViewNode.swift in Sources */,
 				197F48E81EF6CC5B00A469F4 /* Updatable.swift in Sources */,
 				193F0AE01EF5CF9500A03F94 /* Block.swift in Sources */,
 				197F48E21EF68B0800A469F4 /* GameScore.swift in Sources */,
