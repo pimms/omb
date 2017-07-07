@@ -14,6 +14,7 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
     private var isInitialized: Bool = false
     private var stateMachine: GKStateMachine?
     private var scoreLabel: SKLabelNode?
+    private var speedButton: Button?
     
     public var entities = [GKEntity]()
     public var graphs = [String : GKGraph]()
@@ -31,6 +32,9 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
         
         let playfield = self.childNode(withName: "playfield")!
         let playRect = playfield.frame
+        
+        self.speedButton = self.childNode(withName: "speedButton") as? Button
+        self.speedButton?.gameScene = self;
         
         // 1. Initialize myself
         let physBounds = CGRect(x: self.frame.minX,
@@ -72,7 +76,21 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches {
-            (stateMachine?.currentState as! GameState).onTouchDown(atPos: t.location(in: self))
+            let loc = t.location(in: self)
+            let nodes = self.nodes(at: loc)
+            var handled = false
+            
+            for n in nodes {
+                if let button = n as? Button {
+                    handled = true
+                    button.onClick()
+                    break
+                }
+            }
+            
+            if !handled {
+                (stateMachine?.currentState as! GameState).onTouchDown(atPos: t.location(in: self))
+            }
         }
     }
     

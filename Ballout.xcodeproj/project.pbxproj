@@ -8,12 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		193F0A981EF5741700A03F94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0A971EF5741700A03F94 /* AppDelegate.swift */; };
-		193F0A9A1EF5741700A03F94 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 193F0A991EF5741700A03F94 /* GameScene.sks */; };
 		193F0A9C1EF5741700A03F94 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 193F0A9B1EF5741700A03F94 /* Actions.sks */; };
-		193F0A9E1EF5741700A03F94 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0A9D1EF5741700A03F94 /* GameScene.swift */; };
 		193F0AA01EF5741700A03F94 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0A9F1EF5741700A03F94 /* GameViewController.swift */; };
 		193F0AA31EF5741700A03F94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 193F0AA11EF5741700A03F94 /* Main.storyboard */; };
-		193F0AA51EF5741700A03F94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 193F0AA41EF5741700A03F94 /* Assets.xcassets */; };
 		193F0AA81EF5741700A03F94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 193F0AA61EF5741700A03F94 /* LaunchScreen.storyboard */; };
 		193F0AB31EF5741700A03F94 /* BalloutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0AB21EF5741700A03F94 /* BalloutTests.swift */; };
 		193F0ABE1EF5741700A03F94 /* BalloutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0ABD1EF5741700A03F94 /* BalloutUITests.swift */; };
@@ -34,6 +31,9 @@
 		197F48E41EF69A6B00A469F4 /* GameOverState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197F48E31EF69A6B00A469F4 /* GameOverState.swift */; };
 		197F48E61EF6B75B00A469F4 /* SpawnState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197F48E51EF6B75B00A469F4 /* SpawnState.swift */; };
 		197F48E81EF6CC5B00A469F4 /* Updatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197F48E71EF6CC5B00A469F4 /* Updatable.swift */; };
+		19BA1C891F019F9500EA4976 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19BA1C881F019F9500EA4976 /* Assets.xcassets */; };
+		19BA1C8B1F01A14F00EA4976 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BA1C8A1F01A14F00EA4976 /* Button.swift */; };
+		19BA1C8E1F01A19300EA4976 /* SpeedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BA1C8D1F01A19300EA4976 /* SpeedButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,12 +56,9 @@
 /* Begin PBXFileReference section */
 		193F0A941EF5741700A03F94 /* Ballout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ballout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		193F0A971EF5741700A03F94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		193F0A991EF5741700A03F94 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		193F0A9B1EF5741700A03F94 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
-		193F0A9D1EF5741700A03F94 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		193F0A9F1EF5741700A03F94 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		193F0AA21EF5741700A03F94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		193F0AA41EF5741700A03F94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		193F0AA71EF5741700A03F94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		193F0AA91EF5741700A03F94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		193F0AAE1EF5741700A03F94 /* BalloutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BalloutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,6 +84,9 @@
 		197F48E31EF69A6B00A469F4 /* GameOverState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverState.swift; sourceTree = "<group>"; };
 		197F48E51EF6B75B00A469F4 /* SpawnState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpawnState.swift; sourceTree = "<group>"; };
 		197F48E71EF6CC5B00A469F4 /* Updatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Updatable.swift; sourceTree = "<group>"; };
+		19BA1C881F019F9500EA4976 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		19BA1C8A1F01A14F00EA4976 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		19BA1C8D1F01A19300EA4976 /* SpeedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,14 +137,12 @@
 		193F0A961EF5741700A03F94 /* Ballout */ = {
 			isa = PBXGroup;
 			children = (
+				19BA1C881F019F9500EA4976 /* Assets.xcassets */,
 				193F0AD11EF57F6600A03F94 /* Game */,
 				193F0A971EF5741700A03F94 /* AppDelegate.swift */,
-				193F0A991EF5741700A03F94 /* GameScene.sks */,
 				193F0A9B1EF5741700A03F94 /* Actions.sks */,
-				193F0A9D1EF5741700A03F94 /* GameScene.swift */,
 				193F0A9F1EF5741700A03F94 /* GameViewController.swift */,
 				193F0AA11EF5741700A03F94 /* Main.storyboard */,
-				193F0AA41EF5741700A03F94 /* Assets.xcassets */,
 				193F0AA61EF5741700A03F94 /* LaunchScreen.storyboard */,
 				193F0AA91EF5741700A03F94 /* Info.plist */,
 			);
@@ -204,6 +202,7 @@
 		193F0ADA1EF59D3700A03F94 /* Doodads */ = {
 			isa = PBXGroup;
 			children = (
+				19BA1C8C1F01A18000EA4976 /* HUD */,
 				197F48DD1EF6877600A469F4 /* Spawnable */,
 				193F0AD81EF5952100A03F94 /* Ball.swift */,
 				193F0ADB1EF59D5000A03F94 /* AimTrajectory.swift */,
@@ -223,6 +222,15 @@
 				1973BF1D1F0187A600BE0406 /* WarningLevel.swift */,
 			);
 			name = Spawnable;
+			sourceTree = "<group>";
+		};
+		19BA1C8C1F01A18000EA4976 /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				19BA1C8A1F01A14F00EA4976 /* Button.swift */,
+				19BA1C8D1F01A19300EA4976 /* SpeedButton.swift */,
+			);
+			name = HUD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,11 +342,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				193F0AA31EF5741700A03F94 /* Main.storyboard in Resources */,
-				193F0A9A1EF5741700A03F94 /* GameScene.sks in Resources */,
-				193F0AA51EF5741700A03F94 /* Assets.xcassets in Resources */,
 				193F0AA81EF5741700A03F94 /* LaunchScreen.storyboard in Resources */,
 				193F0ACE1EF57AFC00A03F94 /* BalloutScene.sks in Resources */,
 				193F0A9C1EF5741700A03F94 /* Actions.sks in Resources */,
+				19BA1C891F019F9500EA4976 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,9 +373,9 @@
 				193F0AD71EF5826400A03F94 /* ShootoutState.swift in Sources */,
 				193F0AE41EF5EF9500A03F94 /* PhysicsFlags.swift in Sources */,
 				193F0AE21EF5D1B400A03F94 /* GridController.swift in Sources */,
-				193F0A9E1EF5741700A03F94 /* GameScene.swift in Sources */,
 				193F0AD41EF57F8800A03F94 /* GameState.swift in Sources */,
 				1973BF1E1F0187A600BE0406 /* WarningLevel.swift in Sources */,
+				19BA1C8B1F01A14F00EA4976 /* Button.swift in Sources */,
 				197F48E41EF69A6B00A469F4 /* GameOverState.swift in Sources */,
 				193F0AA01EF5741700A03F94 /* GameViewController.swift in Sources */,
 				197F48E61EF6B75B00A469F4 /* SpawnState.swift in Sources */,
@@ -380,6 +387,7 @@
 				193F0AE01EF5CF9500A03F94 /* Block.swift in Sources */,
 				197F48E21EF68B0800A469F4 /* GameScore.swift in Sources */,
 				193F0AD91EF5952100A03F94 /* Ball.swift in Sources */,
+				19BA1C8E1F01A19300EA4976 /* SpeedButton.swift in Sources */,
 				197F48DC1EF686F800A469F4 /* ExtraBall.swift in Sources */,
 				193F0A981EF5741700A03F94 /* AppDelegate.swift in Sources */,
 			);
