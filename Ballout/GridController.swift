@@ -135,7 +135,7 @@ class GridController: NSObject {
     }
     
     private func despawnNonFatals() {
-        let y = self.gridHeight - 1
+        let y = self.gridHeight - 2
         for x in 0...self.gridWidth-1 {
             if self.blocks[x]![y] != nil && !self.blocks[x]![y]!.isDeadly() {
                 let npos = getCenterForCoord(x: x, y: y+1)
