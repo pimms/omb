@@ -26,6 +26,8 @@ class GameOverState: GameState {
         self.gameOverView = GameOverViewNode(scene: self.gameScene)
         self.gameOverView!.position = CGPoint(x: 0, y: 0)
         self.gameScene.addChild(self.gameOverView!)
+        self.gameOverView!.setScore(score: self.gameScore.score)
+        self.gameOverView!.runPresentationAnimation()
         
         self.gameOverView!.setContinue(action: { () in
             self.stateMachine!.enter(SpawnState.self)

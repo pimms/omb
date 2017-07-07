@@ -12,6 +12,8 @@ class GameScore: NSObject {
     public var destroyedBlocks: Int = 0
     public var numBalls: Int = 0
     
+    public var score: Int { return self.destroyedBlocks }
+    
     override init() {
         super.init()
         self.reset()

@@ -22,6 +22,8 @@ class GameOverViewNode: SKNode {
     init(scene: SKScene) {
         super.init()
         
+        self.alpha = 0.0
+        
         let templ = scene.childNode(withName: "GameOverViewNode")!
         for child in templ.children {
             let copy = child.copy() as! SKNode
@@ -37,6 +39,34 @@ class GameOverViewNode: SKNode {
     
     public func setScore(score: Int) {
         self.score = score
+    }
+    
+    public func runPresentationAnimation() {
+        let fadeDuration = 0.2
+        self.run(SKAction.fadeIn(withDuration: fadeDuration))
+        
+        self.scoreLabel?.text = "0"
+        
+        var actions = [SKAction]()
+        //actions.append(SKAction.wait(forDuration: fadeDuration))
+        
+        var scoreIncr = 1
+        for i in stride(from: self.score, to: 0, by: -1) {
+            let prev = log10(Double(i+1))
+            let cur = log10(Double(i))
+            let dt = (prev - cur) / 2
+            
+            let textAction = SKAction.run {
+                self.scoreLabel?.text = String(scoreIncr)
+                scoreIncr += 1
+            }
+            
+            let waitAction = SKAction.wait(forDuration: dt)
+            actions.append(textAction)
+            actions.append(waitAction)
+        }
+        
+        self.scoreLabel?.run(SKAction.sequence(actions))
     }
     
     private func findChildren() {
