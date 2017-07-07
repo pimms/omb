@@ -9,8 +9,8 @@
 import Foundation
 import SpriteKit
 
-class SpeedButton: HUDButton {
-    private var fastForward: Bool = true
+class SpeedButton: Button {
+    private var fastForward: Bool = false
     private var scale: CGFloat = CGFloat(0.14)
     
     override func onClick() {

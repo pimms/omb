@@ -29,17 +29,17 @@ class TouchHandler: NSObject {
     
     func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches {
-            let loc = t.location(in: self.scene)
             let state = self.stateMachine.currentState as! GameState
             
             var hitButton = false
             if self.stateTouch != t.hash {
-                let nodes = self.scene.nodes(at: loc)
+                let nodes = self.scene.nodes(at: t.location(in: self.scene))
                 for n in nodes {
                     if n is Button {
                         self.buttonTouches[t.hash] = (n as! Button)
                         self.buttonTouches[t.hash]?.onTouchBegan()
                         hitButton = true
+                        print(" -- [btn] touch began")
                         break
                     }
                 }
@@ -48,25 +48,31 @@ class TouchHandler: NSObject {
             // The GameState only receives touches that hit no buttons
             if !hitButton && self.stateTouch == 0 {
                 self.stateTouch = t.hash
-                state.onTouchDown(atPos: loc)
+                state.onTouchDown(atPos: t.location(in: self.scene))
             }
         }
     }
     
     func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches {
-            let loc = t.location(in: self.scene)
             let state = self.stateMachine.currentState as! GameState
             
             if self.stateTouch == t.hash {
-                state.onTouchMoved(atPos: loc)
+                state.onTouchMoved(atPos: t.location(in: self.scene))
             }
             
             // The touch may have ended, but that does not mean the button
             // won't be properly clicked. The touch may re-enter the button.
             let button = self.buttonTouches[t.hash]
-            if button != nil && !button!.contains(loc) {
-                button?.onTouchEnded()
+            if button != nil {
+                let loc = t.location(in: button!.parent!)
+                if button!.isTouched && !button!.contains(loc) {
+                    print(" -- [btn] touch exited")
+                    button!.onTouchEnded()
+                } else if !button!.isTouched && button!.contains(loc) {
+                    print(" -- [btn] touch re-entered")
+                    button!.onTouchBegan()
+                }
             }
         }
     }
@@ -83,10 +89,15 @@ class TouchHandler: NSObject {
             
             let button = self.buttonTouches[t.hash]
             if button != nil {
-                button?.onTouchEnded()
-                if button!.contains(loc) {
-                    button?.onClick()
+                if button!.isTouched {
+                    button!.onTouchEnded()
                 }
+                
+                if button!.contains(loc) {
+                    button!.onClick()
+                }
+                
+                print(" -- [btn] touch terminated")
             }
             self.buttonTouches.removeValue(forKey: t.hash)
         }
@@ -107,6 +118,7 @@ class TouchHandler: NSObject {
                 button?.onTouchEnded()
             }
             self.buttonTouches.removeValue(forKey: t.hash)
+            print(" -- [btn] touch cancelled")
         }
     }
 }

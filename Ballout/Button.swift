@@ -11,23 +11,45 @@ import SpriteKit
 
 class Button: SKSpriteNode {
     public var gameScene: SKScene?
+    public var showHoverTint: Bool = true
+    public var hoverTintFactor: Float = 0.9
+    public var isTouched: Bool = false
+    
+    private var defaultBackgroundColor: UIColor
     
     required init?(coder aDecoder: NSCoder) {
+        self.defaultBackgroundColor = UIColor.white
         super.init(coder: aDecoder)
     }
     
-    func onTouchBegan() -> Void {
-        // No default action
+    override init(texture: SKTexture?, color: UIColor, size: CGSize) {
+        self.defaultBackgroundColor = UIColor.white
+        super.init(texture: texture, color: color, size: size)
     }
     
-    // Touch ended is called whenver a touch has ended - regardless of whether
-    // or not the touch is still active. onTouchEnded might be called multiple
-    // times from the same touch if the user is swiping across the screen.
-    func onTouchEnded() -> Void {
-        // No default action
+    public func onTouchBegan() -> Void {
+        self.isTouched = true
+        
+        if self.showHoverTint {
+            self.defaultBackgroundColor = self.color
+            let c = self.defaultBackgroundColor
+            let f = CGFloat(self.hoverTintFactor)
+            self.color = UIColor(colorLiteralRed: Float(c.redValue * f),
+                                 green: Float(c.greenValue * f),
+                                 blue: Float(c.blueValue * f),
+                                 alpha: Float(c.alphaValue))
+        }
+    }
+    
+    public func onTouchEnded() -> Void {
+        self.isTouched = false
+        
+        if self.showHoverTint {
+            self.color = self.defaultBackgroundColor
+        }
     }
 
-    func onClick() -> Void {
+    public func onClick() -> Void {
         // No default action
     }
 }
