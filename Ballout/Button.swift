@@ -15,6 +15,8 @@ class Button: SKSpriteNode {
     public var hoverTintFactor: Float = 0.9
     public var isTouched: Bool = false
     
+    public var clickCallback: (()->Void)?
+    
     private var defaultBackgroundColor: UIColor
     
     required init?(coder aDecoder: NSCoder) {
@@ -50,6 +52,6 @@ class Button: SKSpriteNode {
     }
 
     public func onClick() -> Void {
-        // No default action
+        self.clickCallback?()
     }
 }

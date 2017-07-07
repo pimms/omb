@@ -26,6 +26,11 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
     public var gameScore: GameScore?
     
     
+    public func reset() {
+        self.gameScore?.reset()
+        self.gridController?.despawnAll()
+    }
+    
     private func initialize() {
         if (self.isInitialized) {
             return

@@ -79,11 +79,10 @@ class TouchHandler: NSObject {
     
     func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches {
-            let loc = t.location(in: self.scene)
             let state = self.stateMachine.currentState as! GameState
             
             if self.stateTouch == t.hash {
-                state.onTouchUp(atPos: loc)
+                state.onTouchUp(atPos: t.location(in: self.scene))
                 self.stateTouch = 0
             }
             
@@ -93,7 +92,7 @@ class TouchHandler: NSObject {
                     button!.onTouchEnded()
                 }
                 
-                if button!.contains(loc) {
+                if button!.contains(t.location(in: button!.parent!)) {
                     button!.onClick()
                 }
                 

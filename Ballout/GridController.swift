@@ -42,6 +42,15 @@ class GridController: NSObject {
         
         super.init()
     }
+    
+    public func despawnAll() {
+        for y in 0...self.gridHeight-1 {
+            for x in 0...self.gridWidth-1 {
+                self.blocks[x]![y]?.removeFromParent()
+                self.blocks[x]![y] = nil
+            }
+        }
+    }
 
     public func canShiftWithoutDropping() -> Bool {
         let y = self.gridHeight - 2
