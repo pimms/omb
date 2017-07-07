@@ -44,7 +44,7 @@ class GridController: NSObject {
     }
 
     public func canShiftWithoutDropping() -> Bool {
-        let y = self.gridHeight - 1
+        let y = self.gridHeight - 2
         for x in 0...self.gridWidth-1 {
             if self.blocks[x]![y] != nil && self.blocks[x]![y]!.isDeadly() {
                 return false
@@ -125,9 +125,9 @@ class GridController: NSObject {
                 self.blocks[x]![y]?.run(SKAction.move(to: getCenterForCoord(x: x, y: y),
                                                       duration: GridController.animationDuration))
                 
-                if y == self.gridHeight-1 {
+                if y == self.gridHeight-2 {
                     self.blocks[x]![y]?.showWarning(level: .Error)
-                } else if (y == self.gridHeight - 2) {
+                } else if (y == self.gridHeight - 3) {
                     self.blocks[x]![y]?.showWarning(level: .Warning)
                 }
             }

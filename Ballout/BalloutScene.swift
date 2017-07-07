@@ -51,7 +51,7 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
         self.updateScoreLabel()
         
         // 2. Initialize the GridController
-        self.gridController = GridController(withScene: self, bounds: playRect, width: 8, height: 10)
+        self.gridController = GridController(withScene: self, bounds: playRect, width: 8, height: 11)
         
         // 3. Add a launch indiator node to the launchNode
         let launchIndicator = Ball(createPhysics: false)

@@ -30,8 +30,9 @@ class SpawnState: GameState {
                 self.stateMachine?.enter(ShootoutState.self)
             }
         } else {
-            // Transition to the game-over screen, the user is being a moron
-            self.stateMachine?.enter(GameOverState.self)
+            grid.update(hitCountGuideline: self.gameScore.numBalls) { () in
+                self.stateMachine?.enter(GameOverState.self)
+            }
         }
         
         // Initiate the ball-count label
