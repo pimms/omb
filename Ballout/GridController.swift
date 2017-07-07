@@ -66,7 +66,7 @@ class GridController: NSObject {
         despawnNonFatals()
         shiftBlocksDown()
 
-        var numToSpawn = Int(arc4random()) % self.gridWidth / 2 + 2
+        var numToSpawn = Int(arc4random()) % self.gridWidth + 3
         if (numToSpawn > self.gridWidth) {
             numToSpawn = self.gridWidth
         }
@@ -157,7 +157,7 @@ class GridController: NSObject {
             fatalError("Index out of bounds")
         }
 
-        let y = 6
+        let y = 1
         if (self.blocks[x]![y] != nil) {
             fatalError("Element already exists at coordinate")
         }
