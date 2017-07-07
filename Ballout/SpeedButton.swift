@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-class SpeedButton: Button {
+class SpeedButton: HUDButton {
     private var fastForward: Bool = true
     private var scale: CGFloat = CGFloat(0.14)
     

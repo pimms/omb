@@ -15,6 +15,7 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
     private var stateMachine: GKStateMachine?
     private var scoreLabel: SKLabelNode?
     private var speedButton: Button?
+    private var touchHandler: TouchHandler?
     
     public var entities = [GKEntity]()
     public var graphs = [String : GKGraph]()
@@ -66,6 +67,9 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
         self.stateMachine = GKStateMachine(states: states)
         self.stateMachine!.enter(SpawnState.self)
         
+        // 5. Initialize the Touch Handler
+        self.touchHandler = TouchHandler(scene: self, stateMachine: self.stateMachine!)
+        
         self.isInitialized = true
     }
     
@@ -75,41 +79,19 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches {
-            let loc = t.location(in: self)
-            let nodes = self.nodes(at: loc)
-            var handled = false
-            
-            for n in nodes {
-                if let button = n as? Button {
-                    handled = true
-                    button.onClick()
-                    break
-                }
-            }
-            
-            if !handled {
-                (stateMachine?.currentState as! GameState).onTouchDown(atPos: t.location(in: self))
-            }
-        }
+        self.touchHandler?.touchesBegan(touches, with: event)
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches {
-            (stateMachine?.currentState as! GameState).onTouchMoved(atPos: t.location(in: self))
-        }
+        self.touchHandler?.touchesMoved(touches, with: event)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches {
-            (stateMachine?.currentState as! GameState).onTouchUp(atPos: t.location(in: self))
-        }
+        self.touchHandler?.touchesEnded(touches, with: event)
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches {
-            (stateMachine?.currentState as! GameState).onTouchUp(atPos: t.location(in: self))
-        }
+        self.touchHandler?.touchesCancelled(touches, with: event)
     }
     
     

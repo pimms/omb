@@ -24,6 +24,9 @@
 		193F0AE01EF5CF9500A03F94 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0ADF1EF5CF9500A03F94 /* Block.swift */; };
 		193F0AE21EF5D1B400A03F94 /* GridController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0AE11EF5D1B400A03F94 /* GridController.swift */; };
 		193F0AE41EF5EF9500A03F94 /* PhysicsFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0AE31EF5EF9500A03F94 /* PhysicsFlags.swift */; };
+		194796E31F0F7D9E0042F3E7 /* HUDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194796E21F0F7D9E0042F3E7 /* HUDButton.swift */; };
+		194796E61F0F800C0042F3E7 /* UIColor_rgb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194796E51F0F800C0042F3E7 /* UIColor_rgb.swift */; };
+		194796E81F0F815A0042F3E7 /* TouchHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194796E71F0F815A0042F3E7 /* TouchHandler.swift */; };
 		1973BF1E1F0187A600BE0406 /* WarningLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1973BF1D1F0187A600BE0406 /* WarningLevel.swift */; };
 		197F48DC1EF686F800A469F4 /* ExtraBall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197F48DB1EF686F800A469F4 /* ExtraBall.swift */; };
 		197F48E01EF6878A00A469F4 /* Spawnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197F48DF1EF6878A00A469F4 /* Spawnable.swift */; };
@@ -77,6 +80,9 @@
 		193F0ADF1EF5CF9500A03F94 /* Block.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
 		193F0AE11EF5D1B400A03F94 /* GridController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridController.swift; sourceTree = "<group>"; };
 		193F0AE31EF5EF9500A03F94 /* PhysicsFlags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsFlags.swift; sourceTree = "<group>"; };
+		194796E21F0F7D9E0042F3E7 /* HUDButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDButton.swift; sourceTree = "<group>"; };
+		194796E51F0F800C0042F3E7 /* UIColor_rgb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor_rgb.swift; sourceTree = "<group>"; };
+		194796E71F0F815A0042F3E7 /* TouchHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchHandler.swift; sourceTree = "<group>"; };
 		1973BF1D1F0187A600BE0406 /* WarningLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningLevel.swift; sourceTree = "<group>"; };
 		197F48DB1EF686F800A469F4 /* ExtraBall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtraBall.swift; sourceTree = "<group>"; };
 		197F48DF1EF6878A00A469F4 /* Spawnable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spawnable.swift; sourceTree = "<group>"; };
@@ -170,6 +176,7 @@
 		193F0AD11EF57F6600A03F94 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				194796E41F0F7FFE0042F3E7 /* Extensions */,
 				193F0ADA1EF59D3700A03F94 /* Doodads */,
 				193F0AD51EF5810D00A03F94 /* Scenes */,
 				193F0AD21EF57F7200A03F94 /* GameState */,
@@ -195,6 +202,7 @@
 			children = (
 				193F0ACD1EF57AFC00A03F94 /* BalloutScene.sks */,
 				193F0ACF1EF57BA900A03F94 /* BalloutScene.swift */,
+				194796E71F0F815A0042F3E7 /* TouchHandler.swift */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -213,6 +221,14 @@
 			name = Doodads;
 			sourceTree = "<group>";
 		};
+		194796E41F0F7FFE0042F3E7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				194796E51F0F800C0042F3E7 /* UIColor_rgb.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		197F48DD1EF6877600A469F4 /* Spawnable */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,6 +245,7 @@
 			children = (
 				19BA1C8A1F01A14F00EA4976 /* Button.swift */,
 				19BA1C8D1F01A19300EA4976 /* SpeedButton.swift */,
+				194796E21F0F7D9E0042F3E7 /* HUDButton.swift */,
 			);
 			name = HUD;
 			sourceTree = "<group>";
@@ -296,21 +313,24 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Joakim Stien";
 				TargetAttributes = {
 					193F0A931EF5741700A03F94 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = WSQ25TFDK3;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					193F0AAD1EF5741700A03F94 = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 193F0A931EF5741700A03F94;
 					};
 					193F0AB81EF5741700A03F94 = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 193F0A931EF5741700A03F94;
 					};
@@ -371,6 +391,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				193F0AD71EF5826400A03F94 /* ShootoutState.swift in Sources */,
+				194796E81F0F815A0042F3E7 /* TouchHandler.swift in Sources */,
+				194796E61F0F800C0042F3E7 /* UIColor_rgb.swift in Sources */,
 				193F0AE41EF5EF9500A03F94 /* PhysicsFlags.swift in Sources */,
 				193F0AE21EF5D1B400A03F94 /* GridController.swift in Sources */,
 				193F0AD41EF57F8800A03F94 /* GameState.swift in Sources */,
@@ -387,6 +409,7 @@
 				193F0AE01EF5CF9500A03F94 /* Block.swift in Sources */,
 				197F48E21EF68B0800A469F4 /* GameScore.swift in Sources */,
 				193F0AD91EF5952100A03F94 /* Ball.swift in Sources */,
+				194796E31F0F7D9E0042F3E7 /* HUDButton.swift in Sources */,
 				19BA1C8E1F01A19300EA4976 /* SpeedButton.swift in Sources */,
 				197F48DC1EF686F800A469F4 /* ExtraBall.swift in Sources */,
 				193F0A981EF5741700A03F94 /* AppDelegate.swift in Sources */,
@@ -454,7 +477,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -462,7 +487,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -505,7 +534,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -513,7 +544,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -549,7 +584,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jstien.Ballout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -563,7 +599,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jstien.Ballout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -576,7 +613,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jstien.BalloutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ballout.app/Ballout";
 			};
 			name = Debug;
@@ -590,7 +628,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jstien.BalloutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ballout.app/Ballout";
 			};
 			name = Release;
@@ -603,7 +642,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jstien.BalloutUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = Ballout;
 			};
 			name = Debug;
@@ -616,7 +656,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jstien.BalloutUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = Ballout;
 			};
 			name = Release;

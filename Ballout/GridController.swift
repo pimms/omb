@@ -54,7 +54,7 @@ class GridController: NSObject {
         return true
     }
     
-    public func update(hitCountGuideline count: Int, completion: @escaping (Void)->Void) {
+    public func update(hitCountGuideline count: Int, completion: @escaping ()->Void) {
         update(hitCountGuideline: count)
         
         let durMs = Int(GridController.animationDuration * 1000.0)
