@@ -166,7 +166,7 @@ class GridController: NSObject {
             fatalError("Index out of bounds")
         }
 
-        let y = self.gridHeight-2
+        let y = 1
         if (self.blocks[x]![y] != nil) {
             fatalError("Element already exists at coordinate")
         }

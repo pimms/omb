@@ -30,6 +30,8 @@ class GameOverViewNode: SKNode {
             self.addChild(copy)
         }
         
+        self.zPosition = templ.zPosition
+        
         findChildren()
     }
     
