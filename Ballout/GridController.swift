@@ -11,11 +11,12 @@ import SpriteKit
 import GameplayKit
 import UIKit
 
-class GridController: NSObject {
+
+class GridController: NSObject, Serializable {
+    private var scene: SKScene!
     private static let animationDuration: TimeInterval = 0.4
     private var gridWidth: Int = 0
     private var gridHeight: Int = 0
-    private var scene: SKScene!
     private var bounds: CGRect
     private var blockSize: CGSize
     private var animationsRunning: Bool = false
@@ -42,6 +43,67 @@ class GridController: NSObject {
         
         super.init()
     }
+    
+    
+    func serialize(coder: NSCoder) {
+        // Only the Spawnables themselves are being coded. We assume the properties
+        // of the grid as a whole to remain unchanged. The only case in which this
+        // assumption fails, is if the user has had an active session in the background,
+        // and the app was updated to use a different grid-dimension. Soo... Let's not change
+        // the grid-dimensions, ever :)
+        var array = [Dictionary<String, Any>]()
+        
+        for y in 0...self.gridHeight-1 {
+            for x in 0...self.gridWidth-1 {
+                if self.blocks[x]![y] == nil {
+                    continue
+                }
+                
+                let subArch = NSKeyedArchiver()
+                self.blocks[x]![y]!.serialize(coder: subArch)
+                subArch.finishEncoding()
+                let data = subArch.encodedData
+                
+                var dict = Dictionary<String, Any>()
+                dict["data"] = data
+                dict["x"] = x
+                dict["y"] = y
+                dict["type"] = self.blocks[x]![y]!.spawnType.rawValue
+                array.append(dict)
+            }
+        }
+        
+        coder.encode(array, forKey: "spawnables")
+    }
+    
+    func deserialize(coder: NSCoder) {
+        let array = coder.decodeObject(forKey: "spawnables") as! Array<Dictionary<String, Any>>
+        
+        for dict in array {
+            let x: Int = dict["x"] as! Int
+            let y: Int = dict["y"] as! Int
+            let data: Data = dict["data"] as! Data
+            let type: SpawnType = SpawnType(rawValue: dict["type"] as! Int)!
+            
+            var spawnable: Spawnable?
+            switch type {
+            case .extraBall:
+                spawnable = ExtraBall(size: self.blockSize)
+                break
+            case .block:
+                // We must provide a mock hit-count, but this will be overriden in a bit
+                spawnable = Block(hitCount: 1, size: self.blockSize)
+                break
+            default:
+                fatalError("Spawnable type \(type) not handled")
+            }
+            
+            let unarch = NSKeyedUnarchiver(forReadingWith: data)
+            spawnable?.deserialize(coder: unarch)
+            spawn(spawnable: spawnable!, x: x, y: y, animated: false)
+        }
+    }
+    
     
     public func despawnAll() {
         for y in 0...self.gridHeight-1 {
@@ -115,7 +177,7 @@ class GridController: NSObject {
                 spawnable = Block(hitCount: hitCount, size: self.blockSize)
             }
             
-            spawn(spawnable: spawnable, x: xCoord, hitCount: hitCount)
+            spawn(spawnable: spawnable, x: xCoord, y: 1, animated: true)
         }
     }
     
@@ -128,6 +190,7 @@ class GridController: NSObject {
             }
         }
     }
+    
     
     private func shiftBlocksDown() {
         for y in stride(from: self.gridHeight-1, to: 0, by: -1) {
@@ -164,24 +227,33 @@ class GridController: NSObject {
         }
     }
 
-    private func spawn(spawnable: Spawnable, x: Int, hitCount: Int) {
+    private func spawn(spawnable: Spawnable, x: Int, y: Int, animated: Bool) {
         if (x < 0 || x >= self.gridWidth) {
-            fatalError("Index out of bounds")
+            fatalError("Index x=\(x) out of bounds")
+        }
+        
+        if (y < 1 || y >= self.gridHeight) {
+            fatalError("Index y=\(y) out of bounds")
         }
 
-        let y = 1
         if (self.blocks[x]![y] != nil) {
-            fatalError("Element already exists at coordinate")
+            fatalError("Element already exists at coordinate (\(x), \(y)")
         }
 
         let dest = getCenterForCoord(x: x, y: y)
-        let from = CGPoint(x: dest.x, y: dest.y + self.blockSize.height)
-        let fadeIn = SKAction.fadeIn(withDuration: GridController.animationDuration)
-        let move = SKAction.move(to: dest, duration: GridController.animationDuration)
         
-        spawnable.alpha = 0.0
-        spawnable.position = from
-        spawnable.run(SKAction.group([fadeIn, move]))
+        if animated {
+            let from = CGPoint(x: dest.x, y: dest.y + self.blockSize.height)
+            let fadeIn = SKAction.fadeIn(withDuration: GridController.animationDuration)
+            let move = SKAction.move(to: dest, duration: GridController.animationDuration)
+            
+            spawnable.alpha = 0.0
+            spawnable.position = from
+            spawnable.run(SKAction.group([fadeIn, move]))
+        } else {
+            spawnable.position = dest
+        }
+        
         self.blocks[x]![y] = spawnable
         self.scene.addChild(spawnable)
     }

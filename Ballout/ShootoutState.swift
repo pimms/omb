@@ -29,12 +29,12 @@ class ShootoutState: GameState {
     }
     
     override func didEnter(from previousState: GKState?) {
-        print("ShootoutState entered")
+        //print("ShootoutState entered")
         self.shootOnRelease = false
     }
     
     override func willExit(to nextState: GKState) {
-        print("ShootoutState exiting")
+        //print("ShootoutState exiting")
         
         
         if let destroyState: DestroyState = nextState as? DestroyState {

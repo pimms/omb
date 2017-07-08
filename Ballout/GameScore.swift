@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GameScore: NSObject {
+class GameScore: NSObject, Serializable {
     public var destroyedBlocks: Int = 0
     public var numBalls: Int = 0
     public var spawnedRows: Int = 0
@@ -24,5 +24,17 @@ class GameScore: NSObject {
         self.destroyedBlocks = 0
         self.numBalls = 1
         self.spawnedRows = 0
+    }
+    
+    func serialize(coder: NSCoder) {
+        coder.encode(self.destroyedBlocks, forKey: "destroyedBlocks")
+        coder.encode(self.numBalls, forKey: "numBalls")
+        coder.encode(self.spawnedRows, forKey: "spawnedRows")
+    }
+    
+    func deserialize(coder: NSCoder) {
+        self.destroyedBlocks = coder.decodeInteger(forKey: "destroyedBlocks")
+        self.numBalls = coder.decodeInteger(forKey: "numBalls")
+        self.spawnedRows = coder.decodeInteger(forKey: "spawnedRows")
     }
 }

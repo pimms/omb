@@ -13,6 +13,8 @@ import SpriteKit
 class ExtraBall: Spawnable {
     private var hit: Bool = false
     
+    override var spawnType: SpawnType { return .extraBall }
+    
     init(size: CGSize) {
         super.init(gridSize: CGSize(width: size.width/2, height: size.height/2),
                    collideWithBall: false, shape: .Circle)
@@ -41,5 +43,13 @@ class ExtraBall: Spawnable {
     
     override func isDeadly() -> Bool {
         return false
+    }
+    
+    override func serialize(coder: NSCoder) {
+        // Nothing to do
+    }
+    
+    override func deserialize(coder: NSCoder) {
+        // Nothing to do
     }
 }

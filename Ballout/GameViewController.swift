@@ -12,9 +12,12 @@ import GameplayKit
 import GameKit
 
 class GameViewController: UIViewController {
-
+    public static var activeInstance: GameViewController?
+    private var balloutScene: BalloutScene?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        GameViewController.activeInstance = self
         
         // Load 'GameScene.sks' as a GKScene. This provides gameplay related content
         // including entities and graphs.
@@ -22,6 +25,7 @@ class GameViewController: UIViewController {
             
             // Get the SKScene from the loaded GKScene
             if let sceneNode = scene.rootNode as! BalloutScene? {
+                self.balloutScene = sceneNode
                 
                 sceneNode.bindViewController(viewController: self)
                 
@@ -44,6 +48,10 @@ class GameViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    public func serializeState() {
+        self.balloutScene?.serializeState()
     }
 
     override var shouldAutorotate: Bool {

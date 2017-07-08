@@ -8,7 +8,8 @@
 
 import Foundation
 
-enum WarningLevel {
-    case Warning
-    case Error
+enum WarningLevel: Int {
+    case None       = 0
+    case Warning    = 1
+    case Error      = 2
 }

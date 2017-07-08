@@ -15,10 +15,14 @@ class Block: Spawnable {
     private var hitCount: Int = 0
     private var initialHitCount: Int = 0
     private var label: SKLabelNode?
+    private var warningLevel: WarningLevel
+    
+    override var spawnType: SpawnType { return .block }
     
     init(hitCount count: Int, size: CGSize) {
         self.hitCount = count
         self.initialHitCount = self.hitCount
+        self.warningLevel = .None
         
         let displaySize = CGSize(width: size.width*0.85, height: size.height * 0.85)
         let rect = CGRect(x: -displaySize.width/2,
@@ -67,6 +71,7 @@ class Block: Spawnable {
     }
     
     override func showWarning(level: WarningLevel) {
+        self.warningLevel = level
         let name = "warningLight"
         let maxScale = 1.0
         let maxAlpha = 0.8
@@ -79,11 +84,13 @@ class Block: Spawnable {
         self.childNode(withName: name)?.removeFromParent()
         
         switch level {
-        case WarningLevel.Warning:
+        case .None:
+            return
+        case .Warning:
             color = UIColor.yellow
             duration = 1.0
             
-        case WarningLevel.Error:
+        case .Error:
             color = UIColor.red
             duration = 0.5
         }
@@ -130,6 +137,21 @@ class Block: Spawnable {
         self.fillColor = UIColor(hue: CGFloat(hue),
                                  saturation: 0.43,
                                  brightness: 0.66, alpha: 1.0)
+    }
+
+    override func serialize(coder: NSCoder) {
+        coder.encode(self.hitCount, forKey: "hitCount")
+        coder.encode(self.initialHitCount, forKey: "initialHitCount")
+        coder.encode(self.warningLevel.rawValue, forKey: "warningLevel")
+    }
+    
+    override func deserialize(coder: NSCoder) {
+        self.hitCount = coder.decodeInteger(forKey: "hitCount")
+        self.initialHitCount = coder.decodeInteger(forKey: "initialHitCount")
+        self.warningLevel = WarningLevel(rawValue: coder.decodeInteger(forKey: "warningLevel"))!
+        updateColorTint()
+        showWarning(level: self.warningLevel)
+        self.label?.text = String(self.hitCount)
     }
 }
 

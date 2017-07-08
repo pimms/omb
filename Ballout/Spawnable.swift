@@ -10,11 +10,13 @@ import Foundation
 import GameplayKit
 import SpriteKit
 
-class Spawnable: SKShapeNode {
+class Spawnable: SKShapeNode, Serializable {
     enum PhysicsShape {
         case Circle
         case Square
     }
+    
+    var spawnType: SpawnType { fatalError("spawnType attribute must be overriden") }
     
     private var size: CGSize
     
@@ -68,5 +70,13 @@ class Spawnable: SKShapeNode {
     
     public func showWarning(level: WarningLevel) {
         // No default behaviour
+    }
+    
+    func serialize(coder: NSCoder) {
+        fatalError("Spawnables must override serialize(coder:)")
+    }
+    
+    func deserialize(coder: NSCoder) {
+        fatalError("Spawnables must override deserialize(coder:)")
     }
 }

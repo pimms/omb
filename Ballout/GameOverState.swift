@@ -21,7 +21,7 @@ class GameOverState: GameState {
     }
     
     override func didEnter(from previousState: GKState?) {
-        print("GameOverState entered")
+        //print("GameOverState entered")
         
         self.gameOverView = GameOverViewNode(scene: self.gameScene)
         self.gameOverView!.position = CGPoint(x: 0, y: 0)
@@ -37,7 +37,7 @@ class GameOverState: GameState {
     }
     
     override func willExit(to nextState: GKState) {
-        print("GameOverState exiting")
+        //print("GameOverState exiting")
         self.gameOverView?.removeFromParent()
         self.gameOverView = nil
         self.gameScene.reset()

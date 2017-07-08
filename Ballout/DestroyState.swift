@@ -33,7 +33,7 @@ class DestroyState: GameState {
     }
     
     override func didEnter(from previousState: GKState?) {
-        print("DestroyState entered")
+        //print("DestroyState entered")
         assert(self.angleDefined)
         
         self.launchPoint = self.launchNode!.position
@@ -45,7 +45,7 @@ class DestroyState: GameState {
     }
     
     override func willExit(to nextState: GKState) {
-        print("DestroyState exiting")
+        //print("DestroyState exiting")
         self.angleDefined = false
         self.balls = nil
         

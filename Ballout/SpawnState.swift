@@ -21,7 +21,7 @@ class SpawnState: GameState {
     }
     
     override func didEnter(from previousState: GKState?) {
-        print("SpawnState entering")
+        //print("SpawnState entering")
         
         let grid = self.gameScene!.gridController!
         
@@ -45,7 +45,7 @@ class SpawnState: GameState {
     }
     
     override func willExit(to nextState: GKState) {
-        print("SpawnState exiting")
+        //print("SpawnState exiting")
         
         if nextState is ShootoutState && self.lastInitiatedTouch != nil {
             print("Forwarding touch to ShootoutState")

@@ -18,6 +18,7 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
     private var speedButton: Button?
     private var touchHandler: TouchHandler?
     private var lastUpdateTime: TimeInterval = 0
+    private static let SERIALIZATION_VERSION = 1
     
     public var entities = [GKEntity]()
     public var graphs = [String : GKGraph]()
@@ -68,12 +69,17 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
         
         // 4. Initialize the state machine and kick it off
         var states = [GKState]()
+        states.append(SpawnState(scene: self))
         states.append(ShootoutState(scene: self))
         states.append(DestroyState(scene: self))
         states.append(GameOverState(scene: self))
-        states.append(SpawnState(scene: self))
         self.stateMachine = GKStateMachine(states: states)
-        self.stateMachine!.enter(SpawnState.self)
+        
+        if deserializeState() {
+            self.stateMachine!.enter(ShootoutState.self)
+        } else {
+            self.stateMachine!.enter(SpawnState.self)
+        }
         
         // 5. Initialize the Touch Handler
         self.touchHandler = TouchHandler(scene: self, stateMachine: self.stateMachine!)
@@ -117,6 +123,39 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
         }
     }
 
+    public func serializeState() {
+        print("-- Serializing game-state")
+        let coder = NSKeyedArchiver()
+        
+        coder.encode(BalloutScene.SERIALIZATION_VERSION, forKey: "version")
+        self.gameScore?.serialize(coder: coder)
+        self.gridController?.serialize(coder: coder)
+        
+        coder.finishEncoding()
+        try? coder.encodedData.write(to: URL(fileURLWithPath: persistentStatePath()))
+    }
+    
+    public func deserializeState() -> Bool {
+        let url = URL(fileURLWithPath: persistentStatePath())
+        let data = try? Data(contentsOf: url)
+        if data == nil {
+            return false
+        }
+        
+        let decoder = NSKeyedUnarchiver(forReadingWith: data!)
+        let version = decoder.decodeInteger(forKey: "version")
+        if version != BalloutScene.SERIALIZATION_VERSION {
+            print("Persisted state is of uncompatible version \(version), expected \(BalloutScene.SERIALIZATION_VERSION)")
+            return false
+        }
+        
+        self.gameScore?.deserialize(coder: decoder)
+        self.gridController?.deserialize(coder: decoder)
+        updateScoreLabel()
+        
+        print("-- Successfully deserialized game-state")
+        return true
+    }
     
     func didBegin(_ contact: SKPhysicsContact) {
         let a = contact.bodyA
@@ -176,6 +215,13 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
         for n in node.children {
             updateNode(deltaTime: deltaTime, node: n)
         }
+    }
+    
+    private func persistentStatePath() -> String {
+        let documents = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        let path = documents.appending("/persisted_state.dat")
+        print("PERSISTENT STATE PATH: \(path)")
+        return path
     }
     
 }

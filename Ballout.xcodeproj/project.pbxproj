@@ -30,6 +30,8 @@
 		1973BF1E1F0187A600BE0406 /* WarningLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1973BF1D1F0187A600BE0406 /* WarningLevel.swift */; };
 		19775F501F111C710091FE44 /* SFXController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19775F4F1F111C710091FE44 /* SFXController.swift */; };
 		19775F521F1125220091FE44 /* pop1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 19775F511F1125220091FE44 /* pop1.wav */; };
+		19775F551F113C840091FE44 /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19775F541F113C840091FE44 /* Serializable.swift */; };
+		19775F571F1142A10091FE44 /* SpawnType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19775F561F1142A10091FE44 /* SpawnType.swift */; };
 		197F48DC1EF686F800A469F4 /* ExtraBall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197F48DB1EF686F800A469F4 /* ExtraBall.swift */; };
 		197F48E01EF6878A00A469F4 /* Spawnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197F48DF1EF6878A00A469F4 /* Spawnable.swift */; };
 		197F48E21EF68B0800A469F4 /* GameScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197F48E11EF68B0800A469F4 /* GameScore.swift */; };
@@ -92,6 +94,8 @@
 		1973BF1D1F0187A600BE0406 /* WarningLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningLevel.swift; sourceTree = "<group>"; };
 		19775F4F1F111C710091FE44 /* SFXController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFXController.swift; sourceTree = "<group>"; };
 		19775F511F1125220091FE44 /* pop1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pop1.wav; sourceTree = "<group>"; };
+		19775F541F113C840091FE44 /* Serializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serializable.swift; sourceTree = "<group>"; };
+		19775F561F1142A10091FE44 /* SpawnType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpawnType.swift; sourceTree = "<group>"; };
 		197F48DB1EF686F800A469F4 /* ExtraBall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtraBall.swift; sourceTree = "<group>"; };
 		197F48DF1EF6878A00A469F4 /* Spawnable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spawnable.swift; sourceTree = "<group>"; };
 		197F48E11EF68B0800A469F4 /* GameScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScore.swift; sourceTree = "<group>"; };
@@ -191,6 +195,7 @@
 		193F0AD11EF57F6600A03F94 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				19775F531F113C730091FE44 /* Protocols */,
 				194796E41F0F7FFE0042F3E7 /* Extensions */,
 				193F0ADA1EF59D3700A03F94 /* Doodads */,
 				193F0AD51EF5810D00A03F94 /* Scenes */,
@@ -246,6 +251,14 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		19775F531F113C730091FE44 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				19775F541F113C840091FE44 /* Serializable.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
 		197F48DD1EF6877600A469F4 /* Spawnable */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,6 +266,7 @@
 				197F48DB1EF686F800A469F4 /* ExtraBall.swift */,
 				197F48DF1EF6878A00A469F4 /* Spawnable.swift */,
 				1973BF1D1F0187A600BE0406 /* WarningLevel.swift */,
+				19775F561F1142A10091FE44 /* SpawnType.swift */,
 			);
 			name = Spawnable;
 			sourceTree = "<group>";
@@ -448,11 +462,13 @@
 				193F0ADC1EF59D5000A03F94 /* AimTrajectory.swift in Sources */,
 				193F0AD01EF57BA900A03F94 /* BalloutScene.swift in Sources */,
 				193F0ADE1EF5A99F00A03F94 /* DestroyState.swift in Sources */,
+				19775F571F1142A10091FE44 /* SpawnType.swift in Sources */,
 				197F48E01EF6878A00A469F4 /* Spawnable.swift in Sources */,
 				19775F501F111C710091FE44 /* SFXController.swift in Sources */,
 				194796EA1F0FC1D40042F3E7 /* GameOverViewNode.swift in Sources */,
 				197F48E81EF6CC5B00A469F4 /* Updatable.swift in Sources */,
 				193F0AE01EF5CF9500A03F94 /* Block.swift in Sources */,
+				19775F551F113C840091FE44 /* Serializable.swift in Sources */,
 				197F48E21EF68B0800A469F4 /* GameScore.swift in Sources */,
 				193F0AD91EF5952100A03F94 /* Ball.swift in Sources */,
 				19BA1C8E1F01A19300EA4976 /* SpeedButton.swift in Sources */,
