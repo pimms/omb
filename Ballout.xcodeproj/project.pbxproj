@@ -149,6 +149,7 @@
 		193F0A961EF5741700A03F94 /* Ballout */ = {
 			isa = PBXGroup;
 			children = (
+				19F6B8CB1F11080100551810 /* Sound Assets */,
 				19BA1C881F019F9500EA4976 /* Assets.xcassets */,
 				193F0AD11EF57F6600A03F94 /* Game */,
 				193F0A971EF5741700A03F94 /* AppDelegate.swift */,
@@ -263,6 +264,13 @@
 				194796E91F0FC1D40042F3E7 /* GameOverViewNode.swift */,
 			);
 			name = HUD;
+			sourceTree = "<group>";
+		};
+		19F6B8CB1F11080100551810 /* Sound Assets */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Sound Assets";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

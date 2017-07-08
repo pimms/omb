@@ -75,7 +75,7 @@ class GridController: NSObject {
         despawnNonFatals()
         shiftBlocksDown()
 
-        var numToSpawn = Int(arc4random()) % self.gridWidth + 3
+        var numToSpawn = Int(arc4random()) % (self.gridWidth)/2 + 3
         if (numToSpawn > self.gridWidth) {
             numToSpawn = self.gridWidth
         }
@@ -88,15 +88,17 @@ class GridController: NSObject {
         var shuffled = indices.shuffled()
         
         for i in 0...numToSpawn-1 {
-            // Give blocks a 25% chance to have twice the guidance-count
-            var hitCount: Int = count
+            // Give blocks a 25% chance to have twice the guidance-count. The guidance-count is
+            // as named just guide, so if it holds a zero or negative value, force it to 1.
+            var hitCount: Int = max(count, 1)
             if count > 4 {
                 // Add some extra noise
-                let range = count / 2
+                let range = count / 4
                 let ran = arc4random() % UInt32(range)
                 hitCount += Int(ran) - range / 2
             }
             
+            // Blocks has a 25% chance to have twice the hit-count
             if arc4random() % 4 == 0 {
                 hitCount *= 2
             }

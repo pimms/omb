@@ -26,7 +26,7 @@ class SpawnState: GameState {
         let grid = self.gameScene!.gridController!
         
         if grid.canShiftWithoutDropping() {
-            grid.update(hitCountGuideline: self.gameScore.numBalls) { () in
+            grid.update(hitCountGuideline: self.gameScore.spawnedRows) { () in
                 self.gameScore.spawnedRows += 1
                 self.gameScene.updateScoreLabel()
                 
