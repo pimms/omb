@@ -45,6 +45,7 @@ class Block: Spawnable {
 
     override func onFulfillment(gameScore: GameScore!) {
         gameScore.destroyedBlocks += 1
+        SFXController.shared?.play(sfx: .blockDestroyed)
     }
     
     override func shouldBeRemoved() -> Bool {
@@ -55,6 +56,10 @@ class Block: Spawnable {
         self.hitCount -= 1
         self.label?.text = String(self.hitCount)
         self.updateColorTint()
+        
+        if self.hitCount != 0 {
+            SFXController.shared?.play(sfx: .blockHit)
+        }
     }
     
     override func isDeadly() -> Bool {

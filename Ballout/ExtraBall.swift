@@ -36,6 +36,7 @@ class ExtraBall: Spawnable {
     
     override func onBallCollided() {
         self.hit = true
+        SFXController.shared?.play(sfx: .extraBallHit)
     }
     
     override func isDeadly() -> Bool {

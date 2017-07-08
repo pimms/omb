@@ -13,6 +13,7 @@ import GameKit
 class BalloutScene: SKScene, SKPhysicsContactDelegate {
     private var isInitialized: Bool = false
     private var stateMachine: GKStateMachine?
+    private var sfx: SFXController?
     private var scoreLabel: SKLabelNode?
     private var speedButton: Button?
     private var touchHandler: TouchHandler?
@@ -54,6 +55,8 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.contactDelegate = self
         self.scoreLabel = self.childNode(withName: "scoreLabel") as? SKLabelNode
         self.updateScoreLabel()
+        self.sfx = SFXController(playNode: self)
+        SFXController.shared = self.sfx
         
         // 2. Initialize the GridController
         self.gridController = GridController(withScene: self, bounds: playRect, width: 8, height: 11)
