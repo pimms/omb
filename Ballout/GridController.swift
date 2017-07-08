@@ -75,7 +75,9 @@ class GridController: NSObject {
         despawnNonFatals()
         shiftBlocksDown()
 
-        var numToSpawn = Int(arc4random()) % (self.gridWidth)/2 + 3
+        
+        // Spawn between 1/3 and 1/1 of the available blocks, uniformly distributed
+        var numToSpawn = (Int(arc4random()) % (2*self.gridWidth)/3) + (self.gridWidth / 3)
         if (numToSpawn > self.gridWidth) {
             numToSpawn = self.gridWidth
         }
