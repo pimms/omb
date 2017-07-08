@@ -100,6 +100,10 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
     }
 
     
+    public func updateScoreLabel() {
+        self.scoreLabel?.text = String(describing: self.gameScore!.score)
+    }
+    
     public func bindViewController(viewController: UIViewController) {
         self.gameCenterController = GameCenterController(activeViewController: viewController)
         self.gameCenterController?.authenticatePlayer()
@@ -131,7 +135,6 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
                     spawnable.onFulfillment(gameScore: self.gameScore)
                     self.gridController?.onSpawnableDestroyed(spawnable: spawnable)
                     spawnable.removeFromParent()
-                    self.updateScoreLabel()
                 }
             }
         }
@@ -171,9 +174,5 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
             updateNode(deltaTime: deltaTime, node: n)
         }
     }
-
     
-    private func updateScoreLabel() {
-        self.scoreLabel?.text = String(describing: self.gameScore!.score)
-    }
 }

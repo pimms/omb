@@ -27,6 +27,9 @@ class SpawnState: GameState {
         
         if grid.canShiftWithoutDropping() {
             grid.update(hitCountGuideline: self.gameScore.numBalls) { () in
+                self.gameScore.spawnedRows += 1
+                self.gameScene.updateScoreLabel()
+                
                 self.stateMachine?.enter(ShootoutState.self)
             }
         } else {
