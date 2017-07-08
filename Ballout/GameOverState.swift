@@ -29,6 +29,8 @@ class GameOverState: GameState {
         self.gameOverView!.setScore(score: self.gameScore.score)
         self.gameOverView!.runPresentationAnimation()
         
+        self.gameScene.gameCenterController?.submitScore(score: self.gameScore!)
+        
         self.gameOverView!.setContinue(action: { () in
             self.stateMachine!.enter(SpawnState.self)
         })

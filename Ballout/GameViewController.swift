@@ -11,20 +11,10 @@ import SpriteKit
 import GameplayKit
 import GameKit
 
-class GameViewController: UIViewController, GKGameCenterControllerDelegate {
-    var gcEnabled: Bool = false
-    var gcDefaultLeaderboard: String?
-    let gcLeaderboardId: String = "com.jstien.ballout.ldb"
-    
-    @available(iOS 6.0, *)
-    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
-        gameCenterViewController.dismiss(animated: true, completion: nil)
-    }
+class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        authenticatePlayer()
         
         // Load 'GameScene.sks' as a GKScene. This provides gameplay related content
         // including entities and graphs.
@@ -32,6 +22,8 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
             
             // Get the SKScene from the loaded GKScene
             if let sceneNode = scene.rootNode as! BalloutScene? {
+                
+                sceneNode.bindViewController(viewController: self)
                 
                 // Copy gameplay related content over to the scene
                 sceneNode.entities = scene.entities
@@ -70,34 +62,5 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
 
     override var prefersStatusBarHidden: Bool {
         return true
-    }
-    
-    private func authenticatePlayer() {
-        let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
-        
-        localPlayer.authenticateHandler = {(ViewController, error) -> Void in
-            if((ViewController) != nil) {
-                // 1. Show login if player is not logged in
-                self.present(ViewController!, animated: true, completion: nil)
-            } else if (localPlayer.isAuthenticated) {
-                // 2. Player is already authenticated & logged in, load game center
-                self.gcEnabled = true
-                
-                // Get the default leaderboard ID
-                localPlayer.loadDefaultLeaderboardIdentifier(completionHandler: { (leaderboardIdentifer, error) in
-                    if error != nil {
-                        print(error!)
-                    } else {
-                        self.gcDefaultLeaderboard = leaderboardIdentifer!
-                    }
-                })
-                
-            } else {
-                // 3. Game center is not enabled on the users device
-                self.gcEnabled = false
-                print("Local player could not be authenticated!")
-                print(error!)
-            }
-        }
     }
 }

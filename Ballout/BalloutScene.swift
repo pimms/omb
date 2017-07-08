@@ -16,14 +16,14 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
     private var scoreLabel: SKLabelNode?
     private var speedButton: Button?
     private var touchHandler: TouchHandler?
+    private var lastUpdateTime: TimeInterval = 0
     
     public var entities = [GKEntity]()
     public var graphs = [String : GKGraph]()
-    
-    private var lastUpdateTime: TimeInterval = 0
+
     public var gridController: GridController? = nil
-    
     public var gameScore: GameScore?
+    public var gameCenterController: GameCenterController?
     
     
     public func reset() {
@@ -98,7 +98,18 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.touchHandler?.touchesCancelled(touches, with: event)
     }
+
     
+    public func bindViewController(viewController: UIViewController) {
+        self.gameCenterController = GameCenterController(activeViewController: viewController)
+        self.gameCenterController?.authenticatePlayer()
+        
+        let b = childNode(withName: "leaderboardButton") as! Button
+        b.clickCallback = { () in
+            self.gameCenterController?.presentLeaderboard()
+        }
+    }
+
     
     func didBegin(_ contact: SKPhysicsContact) {
         let a = contact.bodyA
