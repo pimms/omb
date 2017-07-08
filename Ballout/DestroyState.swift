@@ -143,11 +143,15 @@ class DestroyState: GameState {
             
             // Ensure that the new position is within the screen boundaries
             let half = self.gameScene.frame.width / 2
-            let minimum = ball.frame.width
-            if newPos.x + minimum < -half {
-                newPos.x = -half + ball.frame.width
-            } else if newPos.x - minimum > half {
-                newPos.x = half - ball.frame.width
+            let rad = (ball.frame.width / 2) + 1
+            
+            let minPos = -half + rad
+            let maxPos = half - rad
+            
+            if newPos.x < minPos {
+                newPos.x = minPos
+            } else if newPos.x > maxPos {
+                newPos.x = maxPos
             }
             
             self.homePoint = newPos
