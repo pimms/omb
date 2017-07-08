@@ -16,6 +16,7 @@ class DestroyState: GameState {
     private var angle: CGFloat = 0.0
     private var launchPoint: CGPoint = CGPoint(x:0, y:0)
     private var homePoint: CGPoint?
+    private var homeBall: Ball?
     private var countLabel: SKLabelNode?
     
     private var nextShot: TimeInterval = 0
@@ -41,14 +42,17 @@ class DestroyState: GameState {
         self.shotBalls = 0
         self.ballsAtHome = 0
         self.ballsToShoot = self.gameScore.numBalls
-        
-        self.removeLaunchIndicator()
     }
     
     override func willExit(to nextState: GKState) {
         print("DestroyState exiting")
         self.angleDefined = false
         self.balls = nil
+        
+        self.homeBall?.removeFromParent()
+        self.homeBall = nil
+        self.launchNode!.position = self.homePoint!
+        self.addLaunchIndicator()
     }
     
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
@@ -78,6 +82,11 @@ class DestroyState: GameState {
             } else {
                 self.countLabel?.text = String(left)
             }
+        }
+        
+        // If we've shot all the balls we should, remove the launch indicator
+        if self.shotBalls == self.ballsToShoot {
+            self.removeLaunchIndicator()
         }
         
         // Check if any of the balls have bounces below the threshold, and if so
@@ -134,16 +143,17 @@ class DestroyState: GameState {
             
             // Ensure that the new position is within the screen boundaries
             let half = self.gameScene.frame.width / 2
-            let rad = ball.frame.width / 2
-            if newPos.x + rad < -half {
+            let minimum = ball.frame.width
+            if newPos.x + minimum < -half {
                 newPos.x = -half + ball.frame.width
-            } else if newPos.x - rad > half {
+            } else if newPos.x - minimum > half {
                 newPos.x = half - ball.frame.width
             }
             
             self.homePoint = newPos
-            self.launchNode!.position = self.homePoint!
-            self.addLaunchIndicator()
+            self.homeBall = Ball(createPhysics: false)
+            self.homeBall?.position = self.homePoint!
+            self.gameScene.addChild(self.homeBall!)
         }
         
         let duration: CGFloat = 0.1
