@@ -137,7 +137,7 @@ class GridController: NSObject, Serializable {
         despawnNonFatals()
         shiftBlocksDown()
 
-        let minSpawn = 2
+        let minSpawn = 3
         var numToSpawn = Int(arc4random()) % self.gridWidth
         if numToSpawn < minSpawn {
             numToSpawn = minSpawn
