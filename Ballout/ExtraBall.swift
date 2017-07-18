@@ -16,7 +16,7 @@ class ExtraBall: Spawnable {
     override var spawnType: SpawnType { return .extraBall }
     
     init(size: CGSize) {
-        super.init(gridSize: CGSize(width: size.width/2, height: size.height/2),
+        super.init(gridSize: CGSize(width: size.width/3, height: size.height/3),
                    collideWithBall: false, shape: .Circle)
         
         let ball = Ball(createPhysics: false)
