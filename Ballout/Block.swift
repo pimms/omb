@@ -118,16 +118,25 @@ class Block: Spawnable {
     }
     
     private func updateColorTint() {
-        // The hue is projected from 235 degrees to 110 degrees (0.65->0.3) with
+        // The hue is projected from 170 degrees to 110 degrees with
         // a logarithmic falloff.
         
-        let maxHue = 0.65
-        let minHue = 0.3
+        let maxHue = 0.472
+        let minHue = 0.305
         let range = (1.0 - maxHue) + minHue
         
         var hue = log(pow(Double(self.hitCount) + 1, 2.0))
-        hue /= 13.0
+        hue /= 10
         hue = 1.0 - hue
+        
+        // Limit within the acceptable boundaries
+        if hue < 0.0 {
+            hue = 0.0
+        } else if hue > 1.0 {
+            hue = 1.0
+        }
+        
+        // Handle the wraparound (remember that we're *really* in the range [maxHue..1][0..minHue]
         hue *= range
         hue -= (1.0 - maxHue)
         while hue < 0.0 {
