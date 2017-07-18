@@ -32,7 +32,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        GameViewController.activeInstance?.serializeState()
+        
+        // Don't serialize here! If we're doing this mid-shootstate for instance, we'll open up for a myriad of glitches.
+        // Instead, we'll serialize every time the ShootoutState is entered.
+        // GameViewController.activeInstance?.serializeState()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {

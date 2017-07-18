@@ -31,6 +31,9 @@ class ShootoutState: GameState {
     override func didEnter(from previousState: GKState?) {
         //print("ShootoutState entered")
         self.shootOnRelease = false
+        
+        // Always serialize when we enter this state!
+        self.gameScene.serializeState()
     }
     
     override func willExit(to nextState: GKState) {
