@@ -37,7 +37,7 @@ class Block: Spawnable {
         self.label = SKLabelNode(text: String(self.hitCount))
         self.label?.verticalAlignmentMode = .center
         self.label?.horizontalAlignmentMode = .center
-        self.label?.fontName = "Arial"
+        self.label?.fontName = "Helvetica Neue Thin"
         self.addChild(self.label!)
         
         self.updateColorTint()
