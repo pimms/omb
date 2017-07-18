@@ -29,7 +29,7 @@ class Block: Spawnable {
                           y: -displaySize.height/2,
                           width: displaySize.width,
                           height: displaySize.height)
-        super.init(gridSize: size, collideWithBall: true, shape: .Square)
+        super.init(gridSize: displaySize, collideWithBall: true, shape: .Square)
         
         self.path = CGPath(rect: rect, transform: nil)
         self.strokeColor = UIColor.clear
