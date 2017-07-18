@@ -31,6 +31,7 @@ class BestScoreController: NSObject {
     
     public func submitScore(_ score: Int64) {
         if score > self.highScore {
+            self.highScore = score
             print("Writing score \(score) to user defaults")
             UserDefaults.standard.set(Int(score), forKey: SCORE_KEY)
         }
