@@ -17,7 +17,7 @@ class GameOverState: GameState {
     }
     
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass == SpawnState.self
+        return stateClass == SpawnState.self || stateClass == AdState.self
     }
     
     override func didEnter(from previousState: GKState?) {
@@ -32,7 +32,9 @@ class GameOverState: GameState {
         self.gameScene.gameCenterController?.submitScore(score: self.gameScore!)
         
         self.gameOverView!.setContinue(action: { () in
-            self.stateMachine!.enter(SpawnState.self)
+            // TODO: Don't go here if (a) the user has purchased ad-free play,
+            // and (b) I have implemented IAP.
+            self.stateMachine!.enter(AdState.self)
         })
     }
     

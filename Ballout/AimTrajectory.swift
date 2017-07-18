@@ -34,8 +34,6 @@ class AimTrajectory: SKNode, Updatable {
     private func createBalls() {
         for _ in 0...9 {
             let b = Ball(createPhysics: false)
-            b.xScale = 0.7
-            b.yScale = 0.7
             balls.append(b)
             addChild(b)
         }

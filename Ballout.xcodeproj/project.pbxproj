@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F54C18D662B5D0AB2B22C68 /* Pods_Ballout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C20D4D26013FF07010B859E /* Pods_Ballout.framework */; };
 		193F0A981EF5741700A03F94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0A971EF5741700A03F94 /* AppDelegate.swift */; };
 		193F0A9C1EF5741700A03F94 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 193F0A9B1EF5741700A03F94 /* Actions.sks */; };
 		193F0AA01EF5741700A03F94 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0A9F1EF5741700A03F94 /* GameViewController.swift */; };
@@ -29,6 +30,7 @@
 		194796EA1F0FC1D40042F3E7 /* GameOverViewNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194796E91F0FC1D40042F3E7 /* GameOverViewNode.swift */; };
 		1973BF1E1F0187A600BE0406 /* WarningLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1973BF1D1F0187A600BE0406 /* WarningLevel.swift */; };
 		197603E01F1E4806000D4ED3 /* BestScoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197603DF1F1E4806000D4ED3 /* BestScoreController.swift */; };
+		197603E21F1E5BDF000D4ED3 /* AdState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197603E11F1E5BDF000D4ED3 /* AdState.swift */; };
 		19775F501F111C710091FE44 /* SFXController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19775F4F1F111C710091FE44 /* SFXController.swift */; };
 		19775F521F1125220091FE44 /* pop1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 19775F511F1125220091FE44 /* pop1.wav */; };
 		19775F551F113C840091FE44 /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19775F541F113C840091FE44 /* Serializable.swift */; };
@@ -46,6 +48,8 @@
 		19F6B8CA1F10F87100551810 /* GameCenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F6B8C91F10F87100551810 /* GameCenterController.swift */; };
 		19F6B8D11F1117A500551810 /* pop2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 19F6B8D01F1117A500551810 /* pop2.wav */; };
 		19F6B8D31F1117A900551810 /* pop3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 19F6B8D21F1117A900551810 /* pop3.mp3 */; };
+		5D45F75A106057D23BCB92C7 /* Pods_BalloutUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A75DBE3C2C422EE1BE2E3178 /* Pods_BalloutUITests.framework */; };
+		D8041F68E4906EEAA664A781 /* Pods_BalloutTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C59B70653DBAA5D8FE83C7D /* Pods_BalloutTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +68,19 @@
 			remoteInfo = Ballout;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		191A1EEF1F1E72BF00DD0FC8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		193F0A941EF5741700A03F94 /* Ballout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ballout.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +111,7 @@
 		194796E91F0FC1D40042F3E7 /* GameOverViewNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewNode.swift; sourceTree = "<group>"; };
 		1973BF1D1F0187A600BE0406 /* WarningLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningLevel.swift; sourceTree = "<group>"; };
 		197603DF1F1E4806000D4ED3 /* BestScoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestScoreController.swift; sourceTree = "<group>"; };
+		197603E11F1E5BDF000D4ED3 /* AdState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdState.swift; sourceTree = "<group>"; };
 		19775F4F1F111C710091FE44 /* SFXController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFXController.swift; sourceTree = "<group>"; };
 		19775F511F1125220091FE44 /* pop1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pop1.wav; sourceTree = "<group>"; };
 		19775F541F113C840091FE44 /* Serializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serializable.swift; sourceTree = "<group>"; };
@@ -111,6 +129,15 @@
 		19F6B8C91F10F87100551810 /* GameCenterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenterController.swift; sourceTree = "<group>"; };
 		19F6B8D01F1117A500551810 /* pop2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pop2.wav; sourceTree = "<group>"; };
 		19F6B8D21F1117A900551810 /* pop3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pop3.mp3; sourceTree = "<group>"; };
+		43EFA6B9D8583291CC7471EE /* Pods-BalloutUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BalloutUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BalloutUITests/Pods-BalloutUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		56E69965D8C81099D4733E78 /* Pods-Ballout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ballout.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ballout/Pods-Ballout.debug.xcconfig"; sourceTree = "<group>"; };
+		5C59B70653DBAA5D8FE83C7D /* Pods_BalloutTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BalloutTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C20D4D26013FF07010B859E /* Pods_Ballout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ballout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		812FADA668FA685AE91A2826 /* Pods-BalloutTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BalloutTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BalloutTests/Pods-BalloutTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A75DBE3C2C422EE1BE2E3178 /* Pods_BalloutUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BalloutUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7DCF0B8F983F2208CA849CB /* Pods-BalloutTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BalloutTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BalloutTests/Pods-BalloutTests.release.xcconfig"; sourceTree = "<group>"; };
+		DC50AE70CFA34F25180D2A15 /* Pods-BalloutUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BalloutUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BalloutUITests/Pods-BalloutUITests.release.xcconfig"; sourceTree = "<group>"; };
+		ECA218A017D96EDD5B7CD1F0 /* Pods-Ballout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ballout.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ballout/Pods-Ballout.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				19945CAC1F10ECDF00F82C80 /* GameKit.framework in Frameworks */,
+				0F54C18D662B5D0AB2B22C68 /* Pods_Ballout.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8041F68E4906EEAA664A781 /* Pods_BalloutTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +162,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D45F75A106057D23BCB92C7 /* Pods_BalloutUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +177,7 @@
 				193F0ABC1EF5741700A03F94 /* BalloutUITests */,
 				193F0A951EF5741700A03F94 /* Products */,
 				19945CAA1F10ECDF00F82C80 /* Frameworks */,
+				2C91C25601E4A2410362C1A6 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -218,6 +249,7 @@
 				197F48E11EF68B0800A469F4 /* GameScore.swift */,
 				197F48E31EF69A6B00A469F4 /* GameOverState.swift */,
 				197F48E51EF6B75B00A469F4 /* SpawnState.swift */,
+				197603E11F1E5BDF000D4ED3 /* AdState.swift */,
 			);
 			name = GameState;
 			sourceTree = "<group>";
@@ -278,6 +310,9 @@
 			isa = PBXGroup;
 			children = (
 				19945CAB1F10ECDF00F82C80 /* GameKit.framework */,
+				7C20D4D26013FF07010B859E /* Pods_Ballout.framework */,
+				5C59B70653DBAA5D8FE83C7D /* Pods_BalloutTests.framework */,
+				A75DBE3C2C422EE1BE2E3178 /* Pods_BalloutUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -302,6 +337,19 @@
 			name = "Sound Assets";
 			sourceTree = "<group>";
 		};
+		2C91C25601E4A2410362C1A6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				56E69965D8C81099D4733E78 /* Pods-Ballout.debug.xcconfig */,
+				ECA218A017D96EDD5B7CD1F0 /* Pods-Ballout.release.xcconfig */,
+				812FADA668FA685AE91A2826 /* Pods-BalloutTests.debug.xcconfig */,
+				A7DCF0B8F983F2208CA849CB /* Pods-BalloutTests.release.xcconfig */,
+				43EFA6B9D8583291CC7471EE /* Pods-BalloutUITests.debug.xcconfig */,
+				DC50AE70CFA34F25180D2A15 /* Pods-BalloutUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -309,9 +357,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 193F0AC21EF5741700A03F94 /* Build configuration list for PBXNativeTarget "Ballout" */;
 			buildPhases = (
+				E7B6BBA09A5B605EEEEF0346 /* [CP] Check Pods Manifest.lock */,
 				193F0A901EF5741700A03F94 /* Sources */,
 				193F0A911EF5741700A03F94 /* Frameworks */,
 				193F0A921EF5741700A03F94 /* Resources */,
+				191A1EEF1F1E72BF00DD0FC8 /* Embed Frameworks */,
+				FE88B59ABA1F920AF5D3C69F /* [CP] Embed Pods Frameworks */,
+				E0CA550F55FD161F81E0D310 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -326,9 +378,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 193F0AC51EF5741700A03F94 /* Build configuration list for PBXNativeTarget "BalloutTests" */;
 			buildPhases = (
+				6A50C9DD846FDA1E6471CECB /* [CP] Check Pods Manifest.lock */,
 				193F0AAA1EF5741700A03F94 /* Sources */,
 				193F0AAB1EF5741700A03F94 /* Frameworks */,
 				193F0AAC1EF5741700A03F94 /* Resources */,
+				8977DE06FE7CCB032AA47EB3 /* [CP] Embed Pods Frameworks */,
+				E25D0049C5328C30BDD80703 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -344,9 +399,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 193F0AC81EF5741700A03F94 /* Build configuration list for PBXNativeTarget "BalloutUITests" */;
 			buildPhases = (
+				020D5383BDFA59F633266E60 /* [CP] Check Pods Manifest.lock */,
 				193F0AB51EF5741700A03F94 /* Sources */,
 				193F0AB61EF5741700A03F94 /* Frameworks */,
 				193F0AB71EF5741700A03F94 /* Resources */,
+				AF8FD6BFD34C883BB8F79DBD /* [CP] Embed Pods Frameworks */,
+				4BCF49BCEE0C6F7B2A07E060 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -445,6 +503,144 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		020D5383BDFA59F633266E60 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4BCF49BCEE0C6F7B2A07E060 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BalloutUITests/Pods-BalloutUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6A50C9DD846FDA1E6471CECB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8977DE06FE7CCB032AA47EB3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BalloutTests/Pods-BalloutTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF8FD6BFD34C883BB8F79DBD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BalloutUITests/Pods-BalloutUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E0CA550F55FD161F81E0D310 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Ballout/Pods-Ballout-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E25D0049C5328C30BDD80703 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BalloutTests/Pods-BalloutTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E7B6BBA09A5B605EEEEF0346 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FE88B59ABA1F920AF5D3C69F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Ballout/Pods-Ballout-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		193F0A901EF5741700A03F94 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -461,6 +657,7 @@
 				19BA1C8B1F01A14F00EA4976 /* Button.swift in Sources */,
 				197F48E41EF69A6B00A469F4 /* GameOverState.swift in Sources */,
 				193F0AA01EF5741700A03F94 /* GameViewController.swift in Sources */,
+				197603E21F1E5BDF000D4ED3 /* AdState.swift in Sources */,
 				197F48E61EF6B75B00A469F4 /* SpawnState.swift in Sources */,
 				193F0ADC1EF59D5000A03F94 /* AimTrajectory.swift in Sources */,
 				193F0AD01EF57BA900A03F94 /* BalloutScene.swift in Sources */,
@@ -641,6 +838,7 @@
 		};
 		193F0AC31EF5741700A03F94 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56E69965D8C81099D4733E78 /* Pods-Ballout.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = WSQ25TFDK3;
@@ -656,6 +854,7 @@
 		};
 		193F0AC41EF5741700A03F94 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ECA218A017D96EDD5B7CD1F0 /* Pods-Ballout.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = WSQ25TFDK3;
@@ -665,12 +864,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jstien.Ballout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		193F0AC61EF5741700A03F94 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 812FADA668FA685AE91A2826 /* Pods-BalloutTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -679,13 +879,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jstien.BalloutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ballout.app/Ballout";
 			};
 			name = Debug;
 		};
 		193F0AC71EF5741700A03F94 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A7DCF0B8F983F2208CA849CB /* Pods-BalloutTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -694,13 +895,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jstien.BalloutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ballout.app/Ballout";
 			};
 			name = Release;
 		};
 		193F0AC91EF5741700A03F94 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43EFA6B9D8583291CC7471EE /* Pods-BalloutUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = BalloutUITests/Info.plist;
@@ -708,13 +910,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jstien.BalloutUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Ballout;
 			};
 			name = Debug;
 		};
 		193F0ACA1EF5741700A03F94 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC50AE70CFA34F25180D2A15 /* Pods-BalloutUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = BalloutUITests/Info.plist;
@@ -722,7 +925,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jstien.BalloutUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Ballout;
 			};
 			name = Release;

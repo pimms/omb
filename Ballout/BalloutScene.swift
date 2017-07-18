@@ -78,6 +78,7 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
         states.append(ShootoutState(scene: self))
         states.append(DestroyState(scene: self))
         states.append(GameOverState(scene: self))
+        states.append(AdState(scene: self))
         self.stateMachine = GKStateMachine(states: states)
         
         if deserializeState() {
@@ -139,7 +140,6 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
     }
 
     public func serializeState() {
-        print("-- Serializing game-state")
         let coder = NSKeyedArchiver()
         
         coder.encode(BalloutScene.SERIALIZATION_VERSION, forKey: "version")
@@ -235,7 +235,6 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
     private func persistentStatePath() -> String {
         let documents = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         let path = documents.appending("/persisted_state.dat")
-        print("PERSISTENT STATE PATH: \(path)")
         return path
     }
     

@@ -13,7 +13,7 @@ import GameplayKit
 class Ball: SKShapeNode {
     var radius : Int
     
-    private static var defaultRadius: Int = 20
+    private static var defaultRadius: Int = 14
     private static var defaultTexture: String = "Spaceship"
     
     init(createPhysics physics: Bool) {
@@ -27,6 +27,7 @@ class Ball: SKShapeNode {
         self.strokeColor = UIColor.clear
         self.name = "ball"
         self.zPosition = 1
+
         //self.fillTexture = textureBall
         self.fillColor = UIColor.white
         
