@@ -10,9 +10,10 @@ import Foundation
 import SpriteKit
 
 class Button: SKSpriteNode {
-    public var gameScene: SKScene?
     public var showHoverTint: Bool = true
     public var hoverTintFactor: Float = 0.9
+    
+    public var gameScene: SKScene?
     public var isTouched: Bool = false
     
     public var clickCallback: (()->Void)?

@@ -34,6 +34,12 @@ class ShootoutState: GameState {
         
         // Always serialize when we enter this state!
         self.gameScene.serializeState()
+        
+        // In case we entered from a serialized state, we need to update the
+        // count label ourselves, as it is usually done during the SpawnState,
+        // which is not preceeding this state when entering from a serialized state.
+        let countLabel = self.launchNode?.childNode(withName: "countLabel") as? SKLabelNode
+        countLabel?.text = String(self.gameScore.numBalls)
     }
     
     override func willExit(to nextState: GKState) {

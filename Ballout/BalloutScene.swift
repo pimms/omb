@@ -132,6 +132,7 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
         self.updateScoreLabel()
         
         let b = childNode(withName: "leaderboardButton") as! Button
+        b.showHoverTint = false
         b.clickCallback = { () in
             self.gameCenterController?.presentLeaderboard()
         }
