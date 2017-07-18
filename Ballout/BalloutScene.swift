@@ -65,7 +65,7 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
         SFXController.shared = self.sfx
         
         // 2. Initialize the GridController
-        self.gridController = GridController(withScene: self, bounds: playRect, width: 8, height: 11)
+        self.gridController = GridController(withScene: self, bounds: playRect, width: 7, height: 11)
         
         // 3. Add a launch indiator node to the launchNode
         let launchIndicator = Ball(createPhysics: false)
