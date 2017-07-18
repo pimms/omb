@@ -48,7 +48,6 @@ class SpawnState: GameState {
         //print("SpawnState exiting")
         
         if nextState is ShootoutState && self.lastInitiatedTouch != nil {
-            print("Forwarding touch to ShootoutState")
             (nextState as! ShootoutState).onTouchDown(atPos: self.lastInitiatedTouch!)
         }
     }

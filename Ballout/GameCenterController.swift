@@ -75,6 +75,18 @@ class GameCenterController: NSObject, GKGameCenterControllerDelegate {
         })
     }
     
+    public func getHighScore(callback: @escaping (_: Int64) -> Void) {
+        let leaderboard = GKLeaderboard()
+        leaderboard.identifier = scoreBoardID
+        leaderboard.loadScores { (scores, error) in
+            if error == nil && scores != nil {
+                if leaderboard.localPlayerScore != nil {
+                    callback(leaderboard.localPlayerScore!.value)
+                }
+            }
+        }
+    }
+    
     
     @available(iOS 6.0, *)
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {

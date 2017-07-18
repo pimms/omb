@@ -14,10 +14,14 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
     private var isInitialized: Bool = false
     private var stateMachine: GKStateMachine?
     private var sfx: SFXController?
+    
     private var scoreLabel: SKLabelNode?
+    private var highScoreLabel: SKLabelNode?
     private var speedButton: Button?
+    
     private var touchHandler: TouchHandler?
     private var lastUpdateTime: TimeInterval = 0
+    private var highScoreControl: BestScoreController?
     private static let SERIALIZATION_VERSION = 1
     
     public var entities = [GKEntity]()
@@ -55,6 +59,7 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
         self.physicsBody?.friction = 0.0
         self.physicsWorld.contactDelegate = self
         self.scoreLabel = self.childNode(withName: "scoreLabel") as? SKLabelNode
+        self.highScoreLabel = self.childNode(withName: "leaderboardButton")?.childNode(withName: "bestLabel") as? SKLabelNode
         self.updateScoreLabel()
         self.sfx = SFXController(playNode: self)
         SFXController.shared = self.sfx
@@ -111,11 +116,20 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
     
     public func updateScoreLabel() {
         self.scoreLabel?.text = String(describing: self.gameScore!.score)
+        self.highScoreControl?.submitScore(Int64(self.gameScore!.score))
+        
+        // Update the best-score at the same time
+        if let score = self.highScoreControl?.getHighScore() {
+            self.highScoreLabel?.text = String(score)
+        }
     }
     
     public func bindViewController(viewController: UIViewController) {
         self.gameCenterController = GameCenterController(activeViewController: viewController)
-        self.gameCenterController?.authenticatePlayer()
+        self.gameCenterController!.authenticatePlayer()
+        self.highScoreControl = BestScoreController(gameCenterController: self.gameCenterController!)
+        
+        self.updateScoreLabel()
         
         let b = childNode(withName: "leaderboardButton") as! Button
         b.clickCallback = { () in

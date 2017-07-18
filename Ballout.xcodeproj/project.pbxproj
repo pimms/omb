@@ -28,6 +28,7 @@
 		194796E81F0F815A0042F3E7 /* TouchHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194796E71F0F815A0042F3E7 /* TouchHandler.swift */; };
 		194796EA1F0FC1D40042F3E7 /* GameOverViewNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194796E91F0FC1D40042F3E7 /* GameOverViewNode.swift */; };
 		1973BF1E1F0187A600BE0406 /* WarningLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1973BF1D1F0187A600BE0406 /* WarningLevel.swift */; };
+		197603E01F1E4806000D4ED3 /* BestScoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197603DF1F1E4806000D4ED3 /* BestScoreController.swift */; };
 		19775F501F111C710091FE44 /* SFXController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19775F4F1F111C710091FE44 /* SFXController.swift */; };
 		19775F521F1125220091FE44 /* pop1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 19775F511F1125220091FE44 /* pop1.wav */; };
 		19775F551F113C840091FE44 /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19775F541F113C840091FE44 /* Serializable.swift */; };
@@ -92,6 +93,7 @@
 		194796E71F0F815A0042F3E7 /* TouchHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchHandler.swift; sourceTree = "<group>"; };
 		194796E91F0FC1D40042F3E7 /* GameOverViewNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewNode.swift; sourceTree = "<group>"; };
 		1973BF1D1F0187A600BE0406 /* WarningLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningLevel.swift; sourceTree = "<group>"; };
+		197603DF1F1E4806000D4ED3 /* BestScoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestScoreController.swift; sourceTree = "<group>"; };
 		19775F4F1F111C710091FE44 /* SFXController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFXController.swift; sourceTree = "<group>"; };
 		19775F511F1125220091FE44 /* pop1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pop1.wav; sourceTree = "<group>"; };
 		19775F541F113C840091FE44 /* Serializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serializable.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				193F0AD21EF57F7200A03F94 /* GameState */,
 				19F6B8C91F10F87100551810 /* GameCenterController.swift */,
 				19775F4F1F111C710091FE44 /* SFXController.swift */,
+				197603DF1F1E4806000D4ED3 /* BestScoreController.swift */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				19775F571F1142A10091FE44 /* SpawnType.swift in Sources */,
 				197F48E01EF6878A00A469F4 /* Spawnable.swift in Sources */,
 				19775F501F111C710091FE44 /* SFXController.swift in Sources */,
+				197603E01F1E4806000D4ED3 /* BestScoreController.swift in Sources */,
 				194796EA1F0FC1D40042F3E7 /* GameOverViewNode.swift in Sources */,
 				197F48E81EF6CC5B00A469F4 /* Updatable.swift in Sources */,
 				193F0AE01EF5CF9500A03F94 /* Block.swift in Sources */,
