@@ -146,6 +146,9 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
         self.gameScore?.serialize(coder: coder)
         self.gridController?.serialize(coder: coder)
         
+        let launchX: Float = Float((self.childNode(withName: "launchNode")?.position.x)!)
+        coder.encode(launchX, forKey: "launchNodeX")
+        
         coder.finishEncoding()
         try? coder.encodedData.write(to: URL(fileURLWithPath: persistentStatePath()))
     }
@@ -167,6 +170,9 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
         self.gameScore?.deserialize(coder: decoder)
         self.gridController?.deserialize(coder: decoder)
         updateScoreLabel()
+        
+        let launchX = decoder.decodeFloat(forKey: "launchNodeX");
+        self.childNode(withName: "launchNode")?.position.x = CGFloat(launchX)
         
         print("-- Successfully deserialized game-state")
         return true
