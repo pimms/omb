@@ -135,7 +135,7 @@ class Block: Spawnable {
         let range = (1.0 - maxHue) + minHue
         
         var hue = log(pow(Double(self.hitCount) + 1, 2.0))
-        hue /= 10
+        hue /= 16
         hue = 1.0 - hue
         
         // Limit within the acceptable boundaries
