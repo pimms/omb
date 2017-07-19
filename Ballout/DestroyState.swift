@@ -158,6 +158,11 @@ class DestroyState: GameState {
             self.homeBall = Ball(createPhysics: false)
             self.homeBall?.position = self.homePoint!
             self.gameScene.addChild(self.homeBall!)
+            
+            // Also, as a final action, launch a sweet particle effect
+            SKEmitterNode.fireAndForget(name: "BallHome.sks",
+                                        position: CGPoint(x: self.homePoint!.x, y: self.homePoint!.y + 20.0),
+                                        parent: ball.parent)
         }
         
         let duration: CGFloat = 0.1

@@ -11,6 +11,7 @@
 		190A082E1F1FD30B0036CD7C /* BlockBoom.sks in Resources */ = {isa = PBXBuildFile; fileRef = 190A082C1F1FD30B0036CD7C /* BlockBoom.sks */; };
 		190A082F1F1FD30B0036CD7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 190A082D1F1FD30B0036CD7C /* Assets.xcassets */; };
 		190A08331F1FDD020036CD7C /* BallHome.sks in Resources */ = {isa = PBXBuildFile; fileRef = 190A08321F1FDD020036CD7C /* BallHome.sks */; };
+		190A08351F1FDDE90036CD7C /* SKEmitterNode_fireAndForget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190A08341F1FDDE90036CD7C /* SKEmitterNode_fireAndForget.swift */; };
 		193F0A981EF5741700A03F94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0A971EF5741700A03F94 /* AppDelegate.swift */; };
 		193F0A9C1EF5741700A03F94 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 193F0A9B1EF5741700A03F94 /* Actions.sks */; };
 		193F0AA01EF5741700A03F94 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0A9F1EF5741700A03F94 /* GameViewController.swift */; };
@@ -89,6 +90,7 @@
 		190A082C1F1FD30B0036CD7C /* BlockBoom.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BlockBoom.sks; sourceTree = "<group>"; };
 		190A082D1F1FD30B0036CD7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Assets/Assets.xcassets; sourceTree = "<group>"; };
 		190A08321F1FDD020036CD7C /* BallHome.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BallHome.sks; sourceTree = "<group>"; };
+		190A08341F1FDDE90036CD7C /* SKEmitterNode_fireAndForget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKEmitterNode_fireAndForget.swift; sourceTree = "<group>"; };
 		193F0A941EF5741700A03F94 /* Ballout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ballout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		193F0A971EF5741700A03F94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		193F0A9B1EF5741700A03F94 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				194796E51F0F800C0042F3E7 /* UIColor_rgb.swift */,
+				190A08341F1FDDE90036CD7C /* SKEmitterNode_fireAndForget.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -689,6 +692,7 @@
 				194796EA1F0FC1D40042F3E7 /* GameOverViewNode.swift in Sources */,
 				197F48E81EF6CC5B00A469F4 /* Updatable.swift in Sources */,
 				193F0AE01EF5CF9500A03F94 /* Block.swift in Sources */,
+				190A08351F1FDDE90036CD7C /* SKEmitterNode_fireAndForget.swift in Sources */,
 				19775F551F113C840091FE44 /* Serializable.swift in Sources */,
 				197F48E21EF68B0800A469F4 /* GameScore.swift in Sources */,
 				193F0AD91EF5952100A03F94 /* Ball.swift in Sources */,

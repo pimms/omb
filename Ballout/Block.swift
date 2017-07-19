@@ -53,26 +53,12 @@ class Block: Spawnable {
         SFXController.shared?.play(sfx: .blockDestroyed)
         
         // Pop up a particle effect where we died
-        let emitter = SKEmitterNode(fileNamed: "BlockBoom.sks")
-        if emitter != nil {
-            emitter!.position = self.position
-            
-            // Spread the particles out evenly in the box-area
-            emitter?.particlePositionRange = CGVector(dx: self.displaySize.width,
-                                                      dy: self.displaySize.height)
-            
-            // Update the color to whatever the current color curve is
-            emitter!.particleColor = self.fillColor
-            emitter!.particleColorRedRange = 0.2
-            emitter!.particleColorBlueRange = 0.2
-            emitter!.particleColorGreenRange = 0.2
-            emitter!.particleColorSequence = nil
-            
-            // Remove the emitter after 1 second
-            emitter?.run(SKAction.sequence([SKAction.wait(forDuration: 1.0),
-                                            SKAction.removeFromParent()]))
-            self.parent?.addChild(emitter!)
-        }
+        let emitter = SKEmitterNode.fireAndForget(name: "BlockBoom.sks", position: self.position, parent: self.parent)
+        emitter?.particleColor = self.fillColor
+        emitter?.particleColorRedRange = 0.2
+        emitter?.particleColorBlueRange = 0.2
+        emitter?.particleColorGreenRange = 0.2
+        emitter?.particleColorSequence = nil
     }
     
     override func shouldBeRemoved() -> Bool {
