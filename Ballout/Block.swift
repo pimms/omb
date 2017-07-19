@@ -50,6 +50,18 @@ class Block: Spawnable {
     override func onFulfillment(gameScore: GameScore!) {
         gameScore.destroyedBlocks += 1
         SFXController.shared?.play(sfx: .blockDestroyed)
+        
+        // Pop up a particle effect where we died
+        let emitter = SKEmitterNode(fileNamed: "BlockBoom.sks")
+        if emitter != nil {
+            emitter!.position = self.position
+            emitter!.particleColor = self.fillColor
+            emitter!.particleColorRedRange = 0.2
+            emitter!.particleColorBlueRange = 0.2
+            emitter!.particleColorGreenRange = 0.2
+            emitter!.particleColorSequence = nil
+            self.parent?.addChild(emitter!)
+        }
     }
     
     override func shouldBeRemoved() -> Bool {
