@@ -10,6 +10,7 @@
 		0F54C18D662B5D0AB2B22C68 /* Pods_Ballout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C20D4D26013FF07010B859E /* Pods_Ballout.framework */; };
 		190A082E1F1FD30B0036CD7C /* BlockBoom.sks in Resources */ = {isa = PBXBuildFile; fileRef = 190A082C1F1FD30B0036CD7C /* BlockBoom.sks */; };
 		190A082F1F1FD30B0036CD7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 190A082D1F1FD30B0036CD7C /* Assets.xcassets */; };
+		190A08331F1FDD020036CD7C /* BallHome.sks in Resources */ = {isa = PBXBuildFile; fileRef = 190A08321F1FDD020036CD7C /* BallHome.sks */; };
 		193F0A981EF5741700A03F94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0A971EF5741700A03F94 /* AppDelegate.swift */; };
 		193F0A9C1EF5741700A03F94 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 193F0A9B1EF5741700A03F94 /* Actions.sks */; };
 		193F0AA01EF5741700A03F94 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0A9F1EF5741700A03F94 /* GameViewController.swift */; };
@@ -86,7 +87,8 @@
 
 /* Begin PBXFileReference section */
 		190A082C1F1FD30B0036CD7C /* BlockBoom.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BlockBoom.sks; sourceTree = "<group>"; };
-		190A082D1F1FD30B0036CD7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		190A082D1F1FD30B0036CD7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Assets/Assets.xcassets; sourceTree = "<group>"; };
+		190A08321F1FDD020036CD7C /* BallHome.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BallHome.sks; sourceTree = "<group>"; };
 		193F0A941EF5741700A03F94 /* Ballout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ballout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		193F0A971EF5741700A03F94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		193F0A9B1EF5741700A03F94 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -178,7 +180,7 @@
 			children = (
 				193F0ACD1EF57AFC00A03F94 /* BalloutScene.sks */,
 				190A082C1F1FD30B0036CD7C /* BlockBoom.sks */,
-				190A082D1F1FD30B0036CD7C /* Assets.xcassets */,
+				190A08321F1FDD020036CD7C /* BallHome.sks */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -208,6 +210,7 @@
 		193F0A961EF5741700A03F94 /* Ballout */ = {
 			isa = PBXGroup;
 			children = (
+				190A082D1F1FD30B0036CD7C /* Assets.xcassets */,
 				190A082B1F1FD2AF0036CD7C /* Assets */,
 				19F6B8CB1F11080100551810 /* Sound Assets */,
 				19BA1C881F019F9500EA4976 /* Assets.xcassets */,
@@ -493,6 +496,7 @@
 				19775F521F1125220091FE44 /* pop1.wav in Resources */,
 				193F0AA31EF5741700A03F94 /* Main.storyboard in Resources */,
 				19F6B8D31F1117A900551810 /* pop3.mp3 in Resources */,
+				190A08331F1FDD020036CD7C /* BallHome.sks in Resources */,
 				193F0AA81EF5741700A03F94 /* LaunchScreen.storyboard in Resources */,
 				190A082F1F1FD30B0036CD7C /* Assets.xcassets in Resources */,
 				193F0ACE1EF57AFC00A03F94 /* BalloutScene.sks in Resources */,

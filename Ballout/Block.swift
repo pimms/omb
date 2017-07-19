@@ -16,6 +16,7 @@ class Block: Spawnable {
     private var initialHitCount: Int = 0
     private var label: SKLabelNode?
     private var warningLevel: WarningLevel
+    private let displaySize: CGSize
     
     override var spawnType: SpawnType { return .block }
     
@@ -23,8 +24,8 @@ class Block: Spawnable {
         self.hitCount = count
         self.initialHitCount = self.hitCount
         self.warningLevel = .None
+        self.displaySize = CGSize(width: size.width*0.85, height: size.height * 0.85)
         
-        let displaySize = CGSize(width: size.width*0.85, height: size.height * 0.85)
         let rect = CGRect(x: -displaySize.width/2,
                           y: -displaySize.height/2,
                           width: displaySize.width,
@@ -55,11 +56,19 @@ class Block: Spawnable {
         let emitter = SKEmitterNode(fileNamed: "BlockBoom.sks")
         if emitter != nil {
             emitter!.position = self.position
+            
+            // Spread the particles out evenly in the box-area
+            emitter?.particlePositionRange = CGVector(dx: self.displaySize.width,
+                                                      dy: self.displaySize.height)
+            
+            // Update the color to whatever the current color curve is
             emitter!.particleColor = self.fillColor
             emitter!.particleColorRedRange = 0.2
             emitter!.particleColorBlueRange = 0.2
             emitter!.particleColorGreenRange = 0.2
             emitter!.particleColorSequence = nil
+            
+            // Remove the emitter after 1 second
             emitter?.run(SKAction.sequence([SKAction.wait(forDuration: 1.0),
                                             SKAction.removeFromParent()]))
             self.parent?.addChild(emitter!)
