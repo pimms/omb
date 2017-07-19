@@ -43,5 +43,9 @@ class GameOverState: GameState {
         self.gameOverView?.removeFromParent()
         self.gameOverView = nil
         self.gameScene.reset()
+        
+        // Move the launch node back home
+        let launchNode = self.gameScene.childNode(withName: "launchNode")
+        launchNode?.position.x = 0
     }
 }
