@@ -110,6 +110,7 @@ class DestroyState: GameState {
         let ball = Ball(createPhysics: true)
         ball.position.x = self.launchPoint.x
         ball.position.y = self.launchPoint.y
+        ball.zPosition = self.launchNode!.zPosition
         
         let impulse = CGVector(dx: cos(self.angle) * 1500, dy: sin(self.angle) * 1500)
         
@@ -157,6 +158,7 @@ class DestroyState: GameState {
             self.homePoint = newPos
             self.homeBall = Ball(createPhysics: false)
             self.homeBall?.position = self.homePoint!
+            self.homeBall?.zPosition = self.launchNode!.zPosition
             self.gameScene.addChild(self.homeBall!)
             
             // Also, as a final action, launch a sweet particle effect
