@@ -60,6 +60,8 @@ class Block: Spawnable {
             emitter!.particleColorBlueRange = 0.2
             emitter!.particleColorGreenRange = 0.2
             emitter!.particleColorSequence = nil
+            emitter?.run(SKAction.sequence([SKAction.wait(forDuration: 1.0),
+                                            SKAction.removeFromParent()]))
             self.parent?.addChild(emitter!)
         }
     }
