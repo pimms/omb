@@ -30,6 +30,8 @@ class ExtraBall: Spawnable {
     
     override func onFulfillment(gameScore: GameScore!) {
         gameScore.numBalls += 1
+        
+        _ = SKEmitterNode.fireAndForget(name: "ExtraPickedUp.sks", position: self.position, parent: self.parent)
     }
     
     override func shouldBeRemoved() -> Bool {
