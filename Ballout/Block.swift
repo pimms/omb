@@ -59,6 +59,8 @@ class Block: Spawnable {
         emitter?.particleColorBlueRange = 0.2
         emitter?.particleColorGreenRange = 0.2
         emitter?.particleColorSequence = nil
+        
+        HapticFeedback.sharedInstance?.fire()
     }
     
     override func shouldBeRemoved() -> Bool {

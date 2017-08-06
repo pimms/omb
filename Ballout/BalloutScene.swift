@@ -47,6 +47,7 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
         
         self.speedButton = self.childNode(withName: "speedButton") as? Button
         self.speedButton?.gameScene = self;
+        HapticFeedback.sharedInstance = HapticFeedback()
         
         // 1. Initialize myself
         let physBounds = CGRect(x: self.frame.minX,
