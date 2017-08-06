@@ -51,6 +51,7 @@
 		19BA1C891F019F9500EA4976 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19BA1C881F019F9500EA4976 /* Assets.xcassets */; };
 		19BA1C8B1F01A14F00EA4976 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BA1C8A1F01A14F00EA4976 /* Button.swift */; };
 		19BA1C8E1F01A19300EA4976 /* SpeedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BA1C8D1F01A19300EA4976 /* SpeedButton.swift */; };
+		19F4E1151F37AC7D003F1665 /* OMBLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F4E1141F37AC7D003F1665 /* OMBLabel.swift */; };
 		19F6B8CA1F10F87100551810 /* GameCenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F6B8C91F10F87100551810 /* GameCenterController.swift */; };
 		19F6B8D11F1117A500551810 /* pop2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 19F6B8D01F1117A500551810 /* pop2.wav */; };
 		19F6B8D31F1117A900551810 /* pop3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 19F6B8D21F1117A900551810 /* pop3.mp3 */; };
@@ -138,6 +139,7 @@
 		19BA1C881F019F9500EA4976 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		19BA1C8A1F01A14F00EA4976 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		19BA1C8D1F01A19300EA4976 /* SpeedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedButton.swift; sourceTree = "<group>"; };
+		19F4E1141F37AC7D003F1665 /* OMBLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMBLabel.swift; sourceTree = "<group>"; };
 		19F6B8C91F10F87100551810 /* GameCenterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenterController.swift; sourceTree = "<group>"; };
 		19F6B8D01F1117A500551810 /* pop2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pop2.wav; sourceTree = "<group>"; };
 		19F6B8D21F1117A900551810 /* pop3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pop3.mp3; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 				193F0AE11EF5D1B400A03F94 /* GridController.swift */,
 				193F0AE31EF5EF9500A03F94 /* PhysicsFlags.swift */,
 				197F48E71EF6CC5B00A469F4 /* Updatable.swift */,
+				19F4E1141F37AC7D003F1665 /* OMBLabel.swift */,
 			);
 			name = Doodads;
 			sourceTree = "<group>";
@@ -683,6 +686,7 @@
 				19F6B8CA1F10F87100551810 /* GameCenterController.swift in Sources */,
 				193F0AE21EF5D1B400A03F94 /* GridController.swift in Sources */,
 				193F0AD41EF57F8800A03F94 /* GameState.swift in Sources */,
+				19F4E1151F37AC7D003F1665 /* OMBLabel.swift in Sources */,
 				191B15631F2FC9A600243846 /* HapticFeedback.swift in Sources */,
 				1973BF1E1F0187A600BE0406 /* WarningLevel.swift in Sources */,
 				19BA1C8B1F01A14F00EA4976 /* Button.swift in Sources */,
