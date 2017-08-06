@@ -53,7 +53,7 @@ class Spawnable: SKShapeNode, Serializable {
     }
     
     // Called whenever a Spawnable has been hit by a ball.
-    public func onBallCollided() -> Void {
+    public func onBallCollided(ball: Ball) -> Void {
         fatalError("Spawnable must override 'onBallCollided'")
     }
     

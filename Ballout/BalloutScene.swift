@@ -184,17 +184,22 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
         let b = contact.bodyB
         
         var blockBody: SKPhysicsBody?
+        var ballBody: SKPhysicsBody?
         if a.node as? Spawnable != nil && b.categoryBitMask == PhysicsFlags.ballBit {
             blockBody = a
+            ballBody = b
         } else if b.node as? Spawnable != nil && a.categoryBitMask == PhysicsFlags.ballBit {
+            ballBody = a
             blockBody = b
         } else {
             return
         }
         
+        let ball = ballBody!.node! as! Ball
+        
         if blockBody?.node != nil {
             if let spawnable: Spawnable = (blockBody?.node as! Spawnable?)  {
-                spawnable.onBallCollided()
+                spawnable.onBallCollided(ball: ball)
                 if spawnable.shouldBeRemoved() {
                     spawnable.onFulfillment(gameScore: self.gameScore)
                     self.gridController?.onSpawnableDestroyed(spawnable: spawnable)

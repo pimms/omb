@@ -67,7 +67,7 @@ class Block: Spawnable {
         return self.hitCount <= 0
     }
     
-    override func onBallCollided() {
+    override func onBallCollided(ball: Ball) {
         self.hitCount -= 1
         self.label?.text = String(self.hitCount)
         self.updateColorTint()

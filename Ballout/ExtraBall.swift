@@ -30,17 +30,28 @@ class ExtraBall: Spawnable {
     
     override func onFulfillment(gameScore: GameScore!) {
         gameScore.numBalls += 1
-        
-        _ = SKEmitterNode.fireAndForget(name: "ExtraPickedUp.sks", position: self.position, parent: self.parent)
     }
     
     override func shouldBeRemoved() -> Bool {
         return self.hit
     }
     
-    override func onBallCollided() {
+    override func onBallCollided(ball: Ball) {
         self.hit = true
         SFXController.shared?.play(sfx: .extraBallHit)
+        
+        let vel = ball.physicsBody!.velocity
+        let theta = atan2(vel.dy, vel.dx)
+        
+        let emitter = SKEmitterNode(fileNamed: "ExtraPickedUp.sks")
+        if emitter != nil {
+            let dur = TimeInterval(emitter!.particleLifetime + emitter!.particleLifetimeRange)
+            emitter!.run(SKAction.sequence([SKAction.wait(forDuration: dur),
+                                            SKAction.removeFromParent()]))
+            emitter?.position = self.position
+            emitter?.emissionAngle = theta
+            self.parent?.addChild(emitter!)
+        }
     }
     
     override func isDeadly() -> Bool {
