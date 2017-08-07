@@ -13,6 +13,7 @@
 		190A08331F1FDD020036CD7C /* BallHome.sks in Resources */ = {isa = PBXBuildFile; fileRef = 190A08321F1FDD020036CD7C /* BallHome.sks */; };
 		190A08351F1FDDE90036CD7C /* SKEmitterNode_fireAndForget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190A08341F1FDDE90036CD7C /* SKEmitterNode_fireAndForget.swift */; };
 		190A08371F1FF8440036CD7C /* ExtraPickedUp.sks in Resources */ = {isa = PBXBuildFile; fileRef = 190A08361F1FF8440036CD7C /* ExtraPickedUp.sks */; };
+		1910FB1E1F38DF190089A4D9 /* EventDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1910FB1D1F38DF190089A4D9 /* EventDispatch.swift */; };
 		191B15631F2FC9A600243846 /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191B15621F2FC9A600243846 /* HapticFeedback.swift */; };
 		193F0A981EF5741700A03F94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0A971EF5741700A03F94 /* AppDelegate.swift */; };
 		193F0A9C1EF5741700A03F94 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 193F0A9B1EF5741700A03F94 /* Actions.sks */; };
@@ -95,6 +96,7 @@
 		190A08321F1FDD020036CD7C /* BallHome.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BallHome.sks; sourceTree = "<group>"; };
 		190A08341F1FDDE90036CD7C /* SKEmitterNode_fireAndForget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKEmitterNode_fireAndForget.swift; sourceTree = "<group>"; };
 		190A08361F1FF8440036CD7C /* ExtraPickedUp.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ExtraPickedUp.sks; sourceTree = "<group>"; };
+		1910FB1D1F38DF190089A4D9 /* EventDispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDispatch.swift; sourceTree = "<group>"; };
 		191B15621F2FC9A600243846 /* HapticFeedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
 		193F0A941EF5741700A03F94 /* Ballout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ballout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		193F0A971EF5741700A03F94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				193F0AE31EF5EF9500A03F94 /* PhysicsFlags.swift */,
 				197F48E71EF6CC5B00A469F4 /* Updatable.swift */,
 				19F4E1141F37AC7D003F1665 /* OMBLabel.swift */,
+				1910FB1D1F38DF190089A4D9 /* EventDispatch.swift */,
 			);
 			name = Doodads;
 			sourceTree = "<group>";
@@ -698,6 +701,7 @@
 				193F0AD01EF57BA900A03F94 /* BalloutScene.swift in Sources */,
 				193F0ADE1EF5A99F00A03F94 /* DestroyState.swift in Sources */,
 				19775F571F1142A10091FE44 /* SpawnType.swift in Sources */,
+				1910FB1E1F38DF190089A4D9 /* EventDispatch.swift in Sources */,
 				197F48E01EF6878A00A469F4 /* Spawnable.swift in Sources */,
 				19775F501F111C710091FE44 /* SFXController.swift in Sources */,
 				197603E01F1E4806000D4ED3 /* BestScoreController.swift in Sources */,

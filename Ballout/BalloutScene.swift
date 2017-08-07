@@ -48,6 +48,8 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
         self.speedButton = self.childNode(withName: "speedButton") as? Button
         self.speedButton?.gameScene = self;
         HapticFeedback.sharedInstance = HapticFeedback()
+
+        EventDispatch.createSingleton()
         
         // 1. Initialize myself
         let physBounds = CGRect(x: self.frame.minX,
@@ -197,6 +199,8 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
         
         let ball = ballBody!.node! as! Ball
         
+        let pre = self.gridController?.numberOfBlocks()
+        
         if blockBody?.node != nil {
             if let spawnable: Spawnable = (blockBody?.node as! Spawnable?)  {
                 spawnable.onBallCollided(ball: ball)
@@ -206,6 +210,11 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
                     spawnable.removeFromParent()
                 }
             }
+        }
+        
+        let post = self.gridController?.numberOfBlocks()
+        if pre == 1 && post == 0 {
+            EventDispatch.dispatch(event: .noBlocksRemaining)
         }
     }
     

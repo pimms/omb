@@ -10,20 +10,35 @@ import Foundation
 import SpriteKit
 
 class OMBLabel : SKNode {
+    private var label: SKLabelNode?
     private var scaleDirection: Int = 1
     private var rotateDirection: Float = -1.0
+    private var isBusy: Bool = false
     
     override init() {
         super.init()
+        bindChildren()
         scheduleRotation()
         scheduleScaling()
+        registerEventHandlers()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        bindChildren()
         scheduleRotation()
         scheduleScaling()
+        registerEventHandlers()
     }
+    
+    private func bindChildren() {
+        self.label = self.childNode(withName: "label") as? SKLabelNode
+    }
+
+    private func registerEventHandlers() {
+        EventDispatch.addHandler(.noBlocksRemaining, self.onNoBlocksRemaining)
+    }
+    
     
     private func scheduleRotation() {
         let dur = 2.5
@@ -47,6 +62,27 @@ class OMBLabel : SKNode {
         let call = SKAction.run({() in self.scheduleScaling()})
         let seq = SKAction.sequence([scale, call])
         self.run(seq)
+    }
+    
+    private func onNoBlocksRemaining() {
+        if self.isBusy {
+            return;
+        }
+        
+        self.isBusy = true
+        let text = self.label?.text
+        let fadeOut1 = SKAction.fadeOut(withDuration: 0.3)
+        let change1 = SKAction.run { self.label?.text = ":D" }
+        let fadeIn1 = SKAction.fadeIn(withDuration: 0.3)
+        let wait = SKAction.wait(forDuration: 1.0)
+        let fadeOut2 = SKAction.fadeOut(withDuration: 0.3)
+        let change2 = SKAction.run { self.label?.text = text }
+        let fadeIn2 = SKAction.fadeIn(withDuration: 0.3)
+        let flag = SKAction.run { self.isBusy = false }
+        
+        let seq = [fadeOut1, change1, fadeIn1, wait, fadeOut2, change2, fadeIn2, flag]
+        for a in seq { a.timingMode = .easeInEaseOut }
+        self.run(SKAction.sequence(seq))
     }
     
 }

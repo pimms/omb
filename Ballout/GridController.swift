@@ -191,6 +191,18 @@ class GridController: NSObject, Serializable {
         }
     }
     
+    public func numberOfBlocks() -> Int {
+        var count = 0
+        for x in 0...self.gridWidth-1 {
+            for y in 0...self.gridHeight-1 {
+                if self.blocks[x]![y] != nil && self.blocks[x]![y]! is Block {
+                    count += 1
+                }
+            }
+        }
+        return count
+    }
+    
     
     private func shiftBlocksDown() {
         for y in stride(from: self.gridHeight-1, to: 0, by: -1) {
