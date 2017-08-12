@@ -15,9 +15,12 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
     private var stateMachine: GKStateMachine?
     private var sfx: SFXController?
     
+    private var playfield : SKSpriteNode?
+    private var particleBlocker: SKSpriteNode?
     private var scoreLabel: SKLabelNode?
     private var highScoreLabel: SKLabelNode?
     private var speedButton: Button?
+    private var leaderboardButton: Button?
     
     private var touchHandler: TouchHandler?
     private var lastUpdateTime: TimeInterval = 0
@@ -42,27 +45,39 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
             return
         }
         
-        let playfield = self.childNode(withName: "playfield")!
-        let playRect = playfield.frame
+        self.camera = self.childNode(withName: "mainCamera") as? SKCameraNode
         
+        self.playfield = self.childNode(withName: "playfield") as? SKSpriteNode
+        self.particleBlocker = self.childNode(withName: "particleBlocker") as? SKSpriteNode
         self.speedButton = self.childNode(withName: "speedButton") as? Button
+        self.scoreLabel = self.childNode(withName: "scoreRoot")!.childNode(withName: "scoreLabel") as? SKLabelNode
+        self.leaderboardButton = self.childNode(withName: "leaderboardButton") as? Button
+        self.highScoreLabel = self.leaderboardButton?.childNode(withName: "bestLabel") as? SKLabelNode
+        
+        // Adjust the user-interface for iPad if that's the user's deal
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            print("Running on iPad - adjust UI!")
+            adjustForIPadIdiom()
+        }
+        
         self.speedButton?.gameScene = self;
         HapticFeedback.sharedInstance = HapticFeedback()
 
         EventDispatch.createSingleton()
         
         // 1. Initialize myself
-        let physBounds = CGRect(x: self.frame.minX,
-                                y: self.frame.minY,
-                                width: self.frame.width,
-                                height: self.frame.height - (self.frame.maxY - playRect.maxY))
+        let physBounds = self.playfield!.frame
+        let playRect = CGRect(x: physBounds.origin.x,
+                              y: physBounds.origin.y + self.particleBlocker!.size.height,
+                              width: physBounds.size.width,
+                              height: physBounds.size.height - self.particleBlocker!.size.height)
+        
+        
         self.gameScore = GameScore()
         self.physicsBody = SKPhysicsBody(edgeLoopFrom: physBounds)
         self.physicsBody?.isDynamic = false
         self.physicsBody?.friction = 0.0
         self.physicsWorld.contactDelegate = self
-        self.scoreLabel = self.childNode(withName: "scoreLabel") as? SKLabelNode
-        self.highScoreLabel = self.childNode(withName: "leaderboardButton")?.childNode(withName: "bestLabel") as? SKLabelNode
         self.updateScoreLabel()
         self.sfx = SFXController(playNode: self)
         SFXController.shared = self.sfx
@@ -94,6 +109,36 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
         self.touchHandler = TouchHandler(scene: self, stateMachine: self.stateMachine!)
         
         self.isInitialized = true
+    }
+    
+    private func adjustForIPadIdiom() {
+        print("Screen dimensions: \(UIScreen.main.bounds.width) x \(UIScreen.main.bounds.height)")
+        print("Scene dimensions: \(self.size.width) x \(self.size.height)")
+        let vratio = self.size.height / UIScreen.main.bounds.height
+        self.camera!.setScale(vratio)
+        print("Scale: \(vratio)")
+        print("Actual scale: \(self.camera?.xScale ?? 0) x \(self.camera?.yScale ?? 0)")
+
+        // All right, time to move some elements. We need to move:
+        // - The top left 'best' element
+        // - The top right 'speed' button
+        // - Resize the playfield
+        // - Change the grid-dimensions
+        let width = self.size.height * (UIScreen.main.bounds.width / UIScreen.main.bounds.height)
+        self.size = CGSize(width: width, height: 1334.0)
+        
+        print("Rough viewport size: \(width) x \(self.size.height)")
+        
+        // Update the playfield
+        var size = self.playfield!.size
+        size.width = width
+        self.playfield!.size = size
+        
+        // Move the top-left best-root
+        self.leaderboardButton?.position.x = -(width / 2.0)
+        
+        // Move the top-right speed button
+        self.speedButton?.position.x = (width / 2.0)
     }
     
     override func sceneDidLoad() {

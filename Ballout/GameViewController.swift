@@ -34,7 +34,7 @@ class GameViewController: UIViewController {
                 sceneNode.graphs = scene.graphs
                 
                 // Set the scale mode to scale to fit the window
-                sceneNode.scaleMode = .aspectFill
+                sceneNode.scaleMode = .resizeFill
                 
                 // Present the scene
                 if let view = self.view as! SKView? {
@@ -44,7 +44,7 @@ class GameViewController: UIViewController {
                     
                     // view.showsFPS = true
                     // view.showsNodeCount = true
-                    //view.showsPhysics = true
+                    view.showsPhysics = true
                 }
             }
         }
@@ -59,7 +59,6 @@ class GameViewController: UIViewController {
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        // if UIDevice.current.userInterfaceIdiom == .phone { }
         return UIInterfaceOrientationMask.portrait
     }
 

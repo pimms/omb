@@ -44,6 +44,7 @@ class AdState: GameState, GADInterstitialDelegate {
         self.interstitial = GADInterstitial(adUnitID: self.adMobUnitId)
         self.interstitial?.delegate = self
         let request = GADRequest()
+        request.testDevices = [ kGADSimulatorID ];
         self.interstitial?.load(request)
     }
     
