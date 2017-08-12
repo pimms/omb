@@ -41,8 +41,14 @@ class OMBLabel : SKNode {
     
     
     private func scheduleRotation() {
-        let dur = 2.5
-        let angle = 0.261799 * 2 * self.rotateDirection
+        var dur = 2.5
+        var angle = 0.261799 * 2 * self.rotateDirection
+        
+        if arc4random() % 26 == 0 {
+            dur = 1.0
+            angle += Float.pi * 2 * self.rotateDirection
+        }
+        
         self.rotateDirection *= -1.0
         
         let rot = SKAction.rotate(byAngle: CGFloat(angle), duration: dur)
