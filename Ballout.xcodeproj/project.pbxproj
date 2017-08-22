@@ -49,7 +49,7 @@
 		197F48E61EF6B75B00A469F4 /* SpawnState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197F48E51EF6B75B00A469F4 /* SpawnState.swift */; };
 		197F48E81EF6CC5B00A469F4 /* Updatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197F48E71EF6CC5B00A469F4 /* Updatable.swift */; };
 		19945CAC1F10ECDF00F82C80 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19945CAB1F10ECDF00F82C80 /* GameKit.framework */; };
-		19BA1C891F019F9500EA4976 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19BA1C881F019F9500EA4976 /* Assets.xcassets */; };
+		1998C9F71F49BC40009F7630 /* default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1998C9F61F49BC40009F7630 /* default.png */; };
 		19BA1C8B1F01A14F00EA4976 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BA1C8A1F01A14F00EA4976 /* Button.swift */; };
 		19BA1C8E1F01A19300EA4976 /* SpeedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BA1C8D1F01A19300EA4976 /* SpeedButton.swift */; };
 		19F4E1151F37AC7D003F1665 /* OMBLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F4E1141F37AC7D003F1665 /* OMBLabel.swift */; };
@@ -138,7 +138,7 @@
 		197F48E51EF6B75B00A469F4 /* SpawnState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpawnState.swift; sourceTree = "<group>"; };
 		197F48E71EF6CC5B00A469F4 /* Updatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Updatable.swift; sourceTree = "<group>"; };
 		19945CAB1F10ECDF00F82C80 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		19BA1C881F019F9500EA4976 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1998C9F61F49BC40009F7630 /* default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default.png; sourceTree = "<group>"; };
 		19BA1C8A1F01A14F00EA4976 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		19BA1C8D1F01A19300EA4976 /* SpeedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedButton.swift; sourceTree = "<group>"; };
 		19F4E1141F37AC7D003F1665 /* OMBLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMBLabel.swift; sourceTree = "<group>"; };
@@ -188,6 +188,7 @@
 		190A082B1F1FD2AF0036CD7C /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				1998C9F51F49BBE5009F7630 /* Images */,
 				193F0ACD1EF57AFC00A03F94 /* BalloutScene.sks */,
 				190A082C1F1FD30B0036CD7C /* BlockBoom.sks */,
 				190A08321F1FDD020036CD7C /* BallHome.sks */,
@@ -224,7 +225,6 @@
 				190A082D1F1FD30B0036CD7C /* Assets.xcassets */,
 				190A082B1F1FD2AF0036CD7C /* Assets */,
 				19F6B8CB1F11080100551810 /* Sound Assets */,
-				19BA1C881F019F9500EA4976 /* Assets.xcassets */,
 				193F0AD11EF57F6600A03F94 /* Game */,
 				193F0A971EF5741700A03F94 /* AppDelegate.swift */,
 				193F0A9B1EF5741700A03F94 /* Actions.sks */,
@@ -347,6 +347,14 @@
 				A75DBE3C2C422EE1BE2E3178 /* Pods_BalloutUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1998C9F51F49BBE5009F7630 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				1998C9F61F49BC40009F7630 /* default.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		19BA1C8C1F01A18000EA4976 /* HUD */ = {
@@ -513,11 +521,11 @@
 				19F6B8D31F1117A900551810 /* pop3.mp3 in Resources */,
 				190A08331F1FDD020036CD7C /* BallHome.sks in Resources */,
 				193F0AA81EF5741700A03F94 /* LaunchScreen.storyboard in Resources */,
+				1998C9F71F49BC40009F7630 /* default.png in Resources */,
 				190A082F1F1FD30B0036CD7C /* Assets.xcassets in Resources */,
 				193F0ACE1EF57AFC00A03F94 /* BalloutScene.sks in Resources */,
 				190A08371F1FF8440036CD7C /* ExtraPickedUp.sks in Resources */,
 				193F0A9C1EF5741700A03F94 /* Actions.sks in Resources */,
-				19BA1C891F019F9500EA4976 /* Assets.xcassets in Resources */,
 				190A082E1F1FD30B0036CD7C /* BlockBoom.sks in Resources */,
 				19F6B8D11F1117A500551810 /* pop2.wav in Resources */,
 			);
@@ -883,7 +891,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = WSQ25TFDK3;
 				INFOPLIST_FILE = Ballout/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jstien.Ballout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -900,7 +908,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = WSQ25TFDK3;
 				INFOPLIST_FILE = Ballout/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jstien.Ballout;
 				PRODUCT_NAME = "$(TARGET_NAME)";

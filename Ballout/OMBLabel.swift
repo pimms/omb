@@ -10,6 +10,8 @@ import Foundation
 import SpriteKit
 
 class OMBLabel : SKNode {
+    private var numRotations: Int = 0
+    
     private var label: SKLabelNode?
     private var scaleDirection: Int = 1
     private var rotateDirection: Float = -1.0
@@ -44,7 +46,7 @@ class OMBLabel : SKNode {
         var dur = 2.5
         var angle = 0.261799 * 2 * self.rotateDirection
         
-        if arc4random() % 26 == 0 {
+        if self.numRotations == 0 || arc4random() % 26 == 0 {
             dur = 1.0
             angle += Float.pi * 2 * self.rotateDirection
         }
@@ -56,6 +58,8 @@ class OMBLabel : SKNode {
         let call = SKAction.run({() in self.scheduleRotation()})
         let seq = SKAction.sequence([rot, call])
         self.run(seq)
+        
+        self.numRotations += 1
     }
     
     private func scheduleScaling() {

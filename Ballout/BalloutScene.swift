@@ -60,6 +60,12 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
             adjustForIPadIdiom()
         }
         
+        let splashMode = false
+        if splashMode == true {
+            self.enterSplashMode()
+            return
+        }
+        
         self.speedButton?.gameScene = self;
         HapticFeedback.sharedInstance = HapticFeedback()
 
@@ -139,6 +145,15 @@ class BalloutScene: SKScene, SKPhysicsContactDelegate {
         
         // Move the top-right speed button
         self.speedButton?.position.x = (width / 2.0)
+    }
+    
+    private func enterSplashMode() {
+        self.gameScore = GameScore()
+        
+        self.childNode(withName: "ombLabelRoot")?.isPaused = true
+        self.childNode(withName: "launchNode")?.isHidden = true
+        self.scoreLabel?.isHidden = true
+        self.highScoreLabel?.isHidden = true
     }
     
     override func sceneDidLoad() {
