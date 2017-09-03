@@ -37,6 +37,8 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>UILaunchStoryboardName~ipad</key>
+	<string>LaunchScreen_ipad.storyboard</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

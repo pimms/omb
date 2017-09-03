@@ -14,6 +14,8 @@
 		190A08351F1FDDE90036CD7C /* SKEmitterNode_fireAndForget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190A08341F1FDDE90036CD7C /* SKEmitterNode_fireAndForget.swift */; };
 		190A08371F1FF8440036CD7C /* ExtraPickedUp.sks in Resources */ = {isa = PBXBuildFile; fileRef = 190A08361F1FF8440036CD7C /* ExtraPickedUp.sks */; };
 		1910FB1E1F38DF190089A4D9 /* EventDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1910FB1D1F38DF190089A4D9 /* EventDispatch.swift */; };
+		19180FB91F5C9B9F00324DA5 /* default_ipad.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 19180FB81F5C9B9F00324DA5 /* default_ipad.PNG */; };
+		19180FBB1F5C9E0400324DA5 /* LaunchScreen_ipad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19180FBA1F5C9E0400324DA5 /* LaunchScreen_ipad.storyboard */; };
 		191B15631F2FC9A600243846 /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191B15621F2FC9A600243846 /* HapticFeedback.swift */; };
 		193F0A981EF5741700A03F94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F0A971EF5741700A03F94 /* AppDelegate.swift */; };
 		193F0A9C1EF5741700A03F94 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 193F0A9B1EF5741700A03F94 /* Actions.sks */; };
@@ -97,6 +99,8 @@
 		190A08341F1FDDE90036CD7C /* SKEmitterNode_fireAndForget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKEmitterNode_fireAndForget.swift; sourceTree = "<group>"; };
 		190A08361F1FF8440036CD7C /* ExtraPickedUp.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ExtraPickedUp.sks; sourceTree = "<group>"; };
 		1910FB1D1F38DF190089A4D9 /* EventDispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDispatch.swift; sourceTree = "<group>"; };
+		19180FB81F5C9B9F00324DA5 /* default_ipad.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_ipad.PNG; sourceTree = "<group>"; };
+		19180FBA1F5C9E0400324DA5 /* LaunchScreen_ipad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen_ipad.storyboard; sourceTree = "<group>"; };
 		191B15621F2FC9A600243846 /* HapticFeedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
 		193F0A941EF5741700A03F94 /* Ballout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ballout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		193F0A971EF5741700A03F94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 				193F0AA11EF5741700A03F94 /* Main.storyboard */,
 				193F0AA61EF5741700A03F94 /* LaunchScreen.storyboard */,
 				193F0AA91EF5741700A03F94 /* Info.plist */,
+				19180FBA1F5C9E0400324DA5 /* LaunchScreen_ipad.storyboard */,
 			);
 			path = Ballout;
 			sourceTree = "<group>";
@@ -352,6 +357,7 @@
 		1998C9F51F49BBE5009F7630 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				19180FB81F5C9B9F00324DA5 /* default_ipad.PNG */,
 				1998C9F61F49BC40009F7630 /* default.png */,
 			);
 			name = Images;
@@ -521,7 +527,9 @@
 				19F6B8D31F1117A900551810 /* pop3.mp3 in Resources */,
 				190A08331F1FDD020036CD7C /* BallHome.sks in Resources */,
 				193F0AA81EF5741700A03F94 /* LaunchScreen.storyboard in Resources */,
+				19180FB91F5C9B9F00324DA5 /* default_ipad.PNG in Resources */,
 				1998C9F71F49BC40009F7630 /* default.png in Resources */,
+				19180FBB1F5C9E0400324DA5 /* LaunchScreen_ipad.storyboard in Resources */,
 				190A082F1F1FD30B0036CD7C /* Assets.xcassets in Resources */,
 				193F0ACE1EF57AFC00A03F94 /* BalloutScene.sks in Resources */,
 				190A08371F1FF8440036CD7C /* ExtraPickedUp.sks in Resources */,
