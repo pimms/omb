@@ -1,1 +1,4 @@
 .idea/
+Podfile.lock
+Pods/
+*/xcuserdata/
