@@ -26,7 +26,10 @@ class DestroyState: GameState {
     private var ballsAtHome: Int = 0
     private var balls: NSMutableArray?
     
+    private var originalGravity: CGVector
+    
     required init(scene s: BalloutScene) {
+        self.originalGravity = CGVector()
         super.init(scene: s)
         self.launchNode = self.gameScene.childNode(withName: "launchNode")
         self.countLabel = self.launchNode?.childNode(withName: "countLabel") as? SKLabelNode
@@ -42,6 +45,10 @@ class DestroyState: GameState {
         self.shotBalls = 0
         self.ballsAtHome = 0
         self.ballsToShoot = self.gameScore.numBalls
+        
+        self.elapsedTime = 0.0
+        self.nextShot = 0.0
+        self.originalGravity = self.gameScene!.physicsWorld.gravity
     }
     
     override func willExit(to nextState: GKState) {
@@ -53,6 +60,8 @@ class DestroyState: GameState {
         self.homeBall = nil
         self.launchNode!.position = self.homePoint!
         self.addLaunchIndicator()
+        
+        self.gameScene?.physicsWorld.gravity = self.originalGravity
     }
     
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
@@ -67,6 +76,8 @@ class DestroyState: GameState {
     
     override func update(deltaTime seconds: TimeInterval) {
         self.elapsedTime += seconds
+        
+        updateGravity()
         
         // If we've got balls to shoot, and enough time has elapsed for us to
         // do so, shoot a ball.
@@ -105,6 +116,17 @@ class DestroyState: GameState {
             self.balls?.remove(o)
         }
     }
+    
+    private func updateGravity() {
+        let delayPeriod = 10.0
+        if self.elapsedTime >= delayPeriod {
+            let ratio = max((self.elapsedTime - delayPeriod) / 5.0, 1.0)
+            let x = self.elapsedTime
+            let sine = sin(x) + sin(1.2*x) + sin(1.5*x) + sin(2*x)
+            self.gameScene?.physicsWorld.gravity.dx = CGFloat(sine * ratio)
+        }
+    }
+    
     
     private func shootBall() {
         let ball = Ball(createPhysics: true)
