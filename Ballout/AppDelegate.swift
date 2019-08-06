@@ -14,14 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func applicationDidFinishLaunching(_ application: UIApplication) {
         // Override point for customization after application launch.
-        
-        try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: .mixWithOthers)
-        try? AVAudioSession.sharedInstance().setMode(AVAudioSessionModeDefault)
+
+        try? AVAudioSession.sharedInstance().setCategory(.playback)
+        try? AVAudioSession.sharedInstance().setMode(.default)
         try? AVAudioSession.sharedInstance().setActive(true)
-        
-        return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

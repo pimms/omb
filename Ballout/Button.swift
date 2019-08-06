@@ -37,10 +37,10 @@ class Button: SKSpriteNode {
             self.defaultBackgroundColor = self.color
             let c = self.defaultBackgroundColor
             let f = CGFloat(self.hoverTintFactor)
-            self.color = UIColor(colorLiteralRed: Float(c.redValue * f),
-                                 green: Float(c.greenValue * f),
-                                 blue: Float(c.blueValue * f),
-                                 alpha: Float(c.alphaValue))
+            self.color = UIColor(red: CGFloat(c.redValue * f),
+                                 green: CGFloat(c.greenValue * f),
+                                 blue: CGFloat(c.blueValue * f),
+                                 alpha: CGFloat(c.alphaValue))
         }
     }
     

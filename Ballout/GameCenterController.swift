@@ -23,7 +23,7 @@ class GameCenterController: NSObject, GKGameCenterControllerDelegate {
     }
     
     public func authenticatePlayer() {
-        let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
+        let localPlayer: GKLocalPlayer = .local
         
         localPlayer.authenticateHandler = {(ViewController, error) -> Void in
             if((ViewController) != nil) {
